@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "lint": "npx eslint . --ext .ts,.js,.cjs,.vue",
+    "lint-fix": "npx eslint --fix . --ext .ts,.js,.cjs,.vue"
   },
   "dependencies": {
     "vue": "^3.3.4"
