@@ -11,7 +11,9 @@
     "lint-fix": "npx eslint --fix . --ext .ts,.js,.cjs,.vue"
   },
   "dependencies": {
-    "vue": "^3.3.4"
+    "echarts": "^5.4.3",
+    "vue": "^3.3.4",
+    "vue-echarts": "^6.6.1"
   },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^6.4.0",
