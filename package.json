@@ -11,6 +11,7 @@
     "lint-fix": "npx eslint --fix . --ext .ts,.js,.cjs,.vue"
   },
   "dependencies": {
+    "dayjs": "^1.11.9",
     "echarts": "^5.4.3",
     "vue": "^3.3.4",
     "vue-echarts": "^6.6.1"
