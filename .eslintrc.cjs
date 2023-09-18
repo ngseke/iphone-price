@@ -6,6 +6,7 @@ module.exports = {
   extends: [
     'standard-with-typescript',
     'plugin:vue/vue3-recommended',
+    'plugin:tailwindcss/recommended',
   ],
   overrides: [
     {

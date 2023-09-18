@@ -27,6 +27,7 @@
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-n": "^15.0.0 || ^16.0.0 ",
     "eslint-plugin-promise": "^6.0.0",
+    "eslint-plugin-tailwindcss": "^3.13.0",
     "eslint-plugin-vue": "^9.17.0",
     "postcss": "^8.4.29",
     "tailwindcss": "^3.3.3",
