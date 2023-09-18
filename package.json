@@ -18,6 +18,7 @@
     "vue-echarts": "^6.6.1"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.10",
     "@typescript-eslint/eslint-plugin": "^6.4.0",
     "@vitejs/plugin-vue": "^4.2.3",
     "autoprefixer": "^10.4.15",
