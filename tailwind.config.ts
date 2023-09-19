@@ -3,7 +3,6 @@ import daisyui from 'daisyui'
 import typography from '@tailwindcss/typography'
 
 export default {
-  darkMode: 'class',
   content: [
     './index.html',
     './src/**/*.{js,ts,vue}',
@@ -23,4 +22,8 @@ export default {
     typography,
     daisyui,
   ],
+  daisyui: {
+    themes: true,
+    logs: false,
+  },
 } satisfies Config
