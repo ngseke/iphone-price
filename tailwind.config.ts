@@ -13,6 +13,10 @@ export default {
       center: true,
     },
     extend: {
+      fontFamily: {
+        sans: ['"Noto Sans TC"', 'sans-serif'],
+        rubik: ['Rubik', '"Noto Sans TC"', 'sans-serif'],
+      },
     },
   },
   plugins: [
