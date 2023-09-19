@@ -31,6 +31,7 @@ module.exports = {
   plugins: [
     'vue',
   ],
+  ignorePatterns: ['dist'],
   rules: {
     '@typescript-eslint/triple-slash-reference': 'off',
     '@typescript-eslint/comma-dangle': ['error', {

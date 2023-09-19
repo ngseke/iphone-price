@@ -27,7 +27,11 @@
     "src/**/*.vue",
     "vite.config.ts",
     "tailwind.config.ts",
+    "postcss.config.js",
     ".eslintrc.cjs"
+  ],
+  "exclude": [
+    "dist/**/*.*"
   ],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
