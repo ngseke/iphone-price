@@ -18,6 +18,7 @@ import { chartTypeOptions } from './modules/chartType'
 import useChartType from './composables/useChartType'
 import { iphoneList } from './databases/iphone'
 import { taiwanMinimumWageList } from './databases/taiwanMinimumWage'
+import DataSource from './components/DataSource.vue'
 
 const { chartType } = useChartType()
 
@@ -50,7 +51,7 @@ const iphoneDataset = computed(() => (
 <template>
   <TheHero />
 
-  <div class="container min-h-screen px-4 py-6">
+  <div class="container min-h-screen space-y-16 px-4 py-6">
     <div class="flex flex-wrap items-start gap-y-8">
       <div class="top-8 h-[24rem] w-full sm:h-[32rem] lg:sticky lg:w-2/3">
         <Chart
@@ -126,6 +127,10 @@ const iphoneDataset = computed(() => (
           </div>
         </FormGroupLayout>
       </div>
+    </div>
+
+    <div class="mx-auto max-w-2xl space-y-4">
+      <DataSource />
     </div>
   </div>
 
