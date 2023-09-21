@@ -171,7 +171,7 @@ const option = computed<EChartsOption>(() => ({
   grid: {
     containLabel: true,
     top: '5%',
-    right: '6%',
+    right: '4%',
     bottom: '0%',
     left: '4%',
   },

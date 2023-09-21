@@ -11,7 +11,7 @@ const isDark = useDark()
     :data-tip="`切換至${isDark ? '淺色模式' : '深色模式'}`"
   >
     <button
-      class="btn btn-circle btn-neutral  text-xl"
+      class="btn btn-circle btn-neutral text-xl"
       type="button"
       @click="isDark = !isDark"
     >

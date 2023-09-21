@@ -9,7 +9,7 @@ const list = [
 </script>
 
 <template>
-  <div class="collapse-plus collapse bg-base-200">
+  <div class="collapse collapse-plus bg-base-200">
     <input type="checkbox">
     <div class="collapse-title text-lg font-medium">
       資料來源
