@@ -2,6 +2,7 @@
 import { useVModel } from '@vueuse/core'
 import { ref, watch } from 'vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
 const props = defineProps<{
   modelValue?: boolean
@@ -30,7 +31,7 @@ watch(() => props.modelValue, (isShown) => {
       <div class="flex justify-end">
         <form method="dialog">
           <button class="btn btn-circle text-xl" type="submit">
-            <FontAwesomeIcon :icon="['fas', 'xmark']" />
+            <FontAwesomeIcon :icon="faXmark" />
           </button>
         </form>
       </div>

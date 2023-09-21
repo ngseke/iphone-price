@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import Link from './Link.vue'
 
 const githubUrl = 'https://github.com/ngseke/iphone-price'
@@ -17,7 +18,7 @@ const links = [
         class="link"
         :href="githubUrl"
       >
-        <FontAwesomeIcon :icon="['fab', 'github']" />
+        <FontAwesomeIcon :icon="faGithub" />
       </Link>
       <Link
         v-for="(link, index) in links"

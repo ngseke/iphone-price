@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faRotateLeft } from '@fortawesome/free-solid-svg-icons'
 
 withDefaults(defineProps<{
   size?: 'xs' | 'sm'
@@ -23,6 +24,6 @@ defineEmits<{
     type="button"
     @click="$emit('click')"
   >
-    <FontAwesomeIcon :icon="['fas', 'rotate-left']" />
+    <FontAwesomeIcon :icon="faRotateLeft" />
   </button>
 </template>

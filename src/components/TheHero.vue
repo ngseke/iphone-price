@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import dayjs from 'dayjs'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faArrowTrendUp } from '@fortawesome/free-solid-svg-icons'
 import { latestReleasedAt } from '../databases/iphone'
 import StatGroupLatestPrice from './StatGroupLatestPrice.vue'
 
@@ -19,7 +20,7 @@ const lastUpdatedAtYear = dayjs(latestReleasedAt, 'YYYY-MM').year()
             台灣 iPhone 價格<br>歷史趨勢
             <FontAwesomeIcon
               class="text-2xl text-primary sm:text-4xl"
-              :icon="['fas', 'arrow-trend-up']"
+              :icon="faArrowTrendUp"
             />
           </h1>
         </div>

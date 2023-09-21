@@ -21,6 +21,7 @@ import { taiwanMinimumWageList } from './databases/taiwanMinimumWage'
 import DataSource from './components/DataSource.vue'
 import ModelFullscreen from './components/ModelFullscreen.vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faExpand, faDownload } from '@fortawesome/free-solid-svg-icons'
 
 const { chartType } = useChartType()
 
@@ -79,12 +80,12 @@ const chartBind = computed(() => ({
           <ul class="menu rounded-box menu-horizontal bg-base-200 font-medium">
             <li>
               <button type="button" @click="isFullscreenChartShown = true">
-                <FontAwesomeIcon :icon="['fas', 'expand']" />
+                <FontAwesomeIcon :icon="faExpand" />
               </button>
             </li>
             <li :class="{ 'disabled': !downloadUrl }">
               <a download="chart.png" :href="downloadUrl ?? 'javascript:void(0)'">
-                <FontAwesomeIcon :icon="['fas', 'download']" />
+                <FontAwesomeIcon :icon="faDownload" />
               </a>
             </li>
           </ul>

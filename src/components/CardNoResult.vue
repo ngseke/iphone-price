@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import { faRotateLeft } from '@fortawesome/free-solid-svg-icons'
 
 defineEmits<{
   reset: []
@@ -20,7 +21,7 @@ defineEmits<{
             type="button"
             @click="$emit('reset')"
           >
-            <FontAwesomeIcon :icon="['fas', 'rotate-left']" />
+            <FontAwesomeIcon :icon="faRotateLeft" />
             重置篩選條件
           </button>
         </div>
