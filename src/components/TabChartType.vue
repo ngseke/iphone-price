@@ -24,7 +24,7 @@ const description = computed(() => (
 </script>
 
 <template>
-  <div class="flex flex-col gap-y-3">
+  <div class="flex flex-col items-start gap-y-3">
     <div class="tabs-boxed tabs font-semibold">
       <button
         v-for="(tab, index) in tabs"

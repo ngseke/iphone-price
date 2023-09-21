@@ -52,19 +52,23 @@ const iphoneDataset = computed(() => (
   <TheHero />
 
   <div class="container min-h-screen space-y-16 px-4 py-6">
-    <div class="flex flex-wrap items-start gap-y-8">
-      <div class="top-8 h-[24rem] w-full sm:h-[32rem] lg:sticky lg:w-2/3">
-        <Chart
-          :iphoneDataset="iphoneDataset"
-          :modelNameAbbreviation="displayOptions.isModelNameAbbreviation"
-          :priceAbbreviation="displayOptions.isPriceAbbreviation"
-          :showTaiwanMinimumWageList="displayOptions.isShowTaiwanMinimumWageList"
-          :taiwanMinimumWageList="taiwanMinimumWageList"
-          @reset="resetFilter"
-        />
+    <div class="flex flex-wrap gap-y-8">
+      <div class="-mx-4 min-w-full sm:mx-0 sm:flex-1 lg:min-w-0">
+        <div class="w-full overflow-x-auto lg:sticky lg:top-8">
+          <div class="h-[24rem] w-full min-w-[36rem] sm:h-[32rem]">
+            <Chart
+              :iphoneDataset="iphoneDataset"
+              :modelNameAbbreviation="displayOptions.isModelNameAbbreviation"
+              :priceAbbreviation="displayOptions.isPriceAbbreviation"
+              :showTaiwanMinimumWageList="displayOptions.isShowTaiwanMinimumWageList"
+              :taiwanMinimumWageList="taiwanMinimumWageList"
+              @reset="resetFilter"
+            />
+          </div>
+        </div>
       </div>
 
-      <div class="flex flex-1 flex-col gap-y-4">
+      <div class="flex w-full flex-col gap-y-4 lg:w-1/3">
         <Title>圖表類型</Title>
         <TabChartType v-model="chartType" />
 
@@ -122,7 +126,7 @@ const iphoneDataset = computed(() => (
           <template #title>其他指標</template>
           <div class="flex flex-wrap gap-x-4">
             <Switch v-model="displayOptions.isShowTaiwanMinimumWageList">
-              顯示台灣基本工資
+              顯示台灣基本工資（月薪）
             </Switch>
           </div>
         </FormGroupLayout>

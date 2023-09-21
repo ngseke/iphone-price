@@ -8,7 +8,7 @@ const lastUpdatedAtYear = dayjs(latestReleasedAt, 'YYYY-MM').year()
 </script>
 
 <template>
-  <div class="hero bg-base-200 sm:min-h-screen">
+  <div class="hero bg-base-200 py-8 sm:min-h-screen sm:py-0">
     <div class="hero-content w-full">
       <div class="w-full max-w-2xl flex-1 space-y-8">
         <div class="space-y-2">
