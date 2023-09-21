@@ -1,11 +1,11 @@
 export interface DisplayOptions {
   isModelNameAbbreviation: boolean
   isPriceAbbreviation: boolean
-  isShowTaiwanMinimumWageList: boolean
+  isTaiwanMinimumWageListShown: boolean
 }
 
 export const defaultDisplayOptions: Readonly<DisplayOptions> = {
   isModelNameAbbreviation: false,
   isPriceAbbreviation: false,
-  isShowTaiwanMinimumWageList: false,
+  isTaiwanMinimumWageListShown: false,
 }

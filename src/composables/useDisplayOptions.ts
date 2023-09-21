@@ -18,7 +18,7 @@ export default function useDisplayOptions () {
     return [
       value.isModelNameAbbreviation !== defaultDisplayOptions.isModelNameAbbreviation,
       value.isPriceAbbreviation !== defaultDisplayOptions.isPriceAbbreviation,
-      value.isShowTaiwanMinimumWageList !== defaultDisplayOptions.isShowTaiwanMinimumWageList,
+      value.isTaiwanMinimumWageListShown !== defaultDisplayOptions.isTaiwanMinimumWageListShown,
     ].some(Boolean)
   })
 
