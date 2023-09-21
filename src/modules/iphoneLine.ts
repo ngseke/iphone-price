@@ -6,14 +6,14 @@ export const iphoneLines: Record<IphoneLine, {
 }> = {
   'entry-level': {
     name: '入門級',
-    description: '',
+    description: '例如各代 SE',
   },
   regular: {
     name: '高階級',
-    description: '',
+    description: '例如 XR, 8, 11, 13 mini, 15 Plus ...',
   },
   premium: {
     name: '旗艦級',
-    description: '',
+    description: '例如 X, XS, 11 Pro, 15 Pro Max ...',
   },
 }

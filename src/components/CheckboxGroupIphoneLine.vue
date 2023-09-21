@@ -18,11 +18,14 @@ const vModel = useVModel(props, 'modelValue', emit)
 </script>
 
 <template>
-  <div class="flex flex-wrap gap-x-4">
-    <template v-for="item in options" :key="item">
+  <div class="flex flex-col flex-wrap items-start gap-y-2">
+    <div v-for="item in options" :key="item">
       <Checkbox v-model="vModel" :value="item">
         {{ iphoneLines[item].name }}
       </Checkbox>
-    </template>
+      <p class="pl-9 text-xs opacity-80">
+        {{ iphoneLines[item].description }}
+      </p>
+    </div>
   </div>
 </template>
