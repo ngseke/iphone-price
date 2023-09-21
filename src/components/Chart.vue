@@ -33,8 +33,9 @@ const props = defineProps<{
   showTaiwanMinimumWageList: boolean
 }>()
 
-defineEmits<{
+const emit = defineEmits<{
   reset: []
+  dataUrlChanged: [url: string]
 }>()
 
 const isDark = useDark()
@@ -202,14 +203,23 @@ const option = computed<EChartsOption>(() => ({
 }))
 
 const isEmpty = computed(() => !props.iphoneDataset.length)
+
+const chartRef = ref<InstanceType<typeof VueECharts> | null>(null)
+
+function handleFinished () {
+  const url = chartRef.value?.getDataURL({ type: 'png' })
+  if (url) emit('dataUrlChanged', url)
+}
 </script>
 
 <template>
   <CardNoResult v-if="isEmpty" @reset="$emit('reset')" />
   <VueECharts
     v-else
+    ref="chartRef"
     autoresize
     class="h-full w-full"
     :option="option"
+    @finished="handleFinished"
   />
 </template>

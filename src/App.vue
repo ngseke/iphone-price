@@ -49,6 +49,9 @@ const iphoneDataset = computed(() => (
   })
 ))
 
+const isFullscreenChartShown = ref(false)
+const downloadUrl = ref<string | null>(null)
+
 const chartBind = computed(() => ({
   iphoneDataset: iphoneDataset.value,
   taiwanMinimumWageList,
@@ -56,9 +59,8 @@ const chartBind = computed(() => ({
   priceAbbreviation: displayOptions.value.isPriceAbbreviation,
   showTaiwanMinimumWageList: displayOptions.value.isTaiwanMinimumWageListShown,
   onReset: resetFilter,
+  onDataUrlChanged: (url: string) => { downloadUrl.value = url },
 }))
-
-const isFullscreenChartShown = ref(false)
 </script>
 
 <template>
@@ -79,6 +81,11 @@ const isFullscreenChartShown = ref(false)
               <button type="button" @click="isFullscreenChartShown = true">
                 <FontAwesomeIcon :icon="['fas', 'expand']" />
               </button>
+            </li>
+            <li :class="{ 'disabled': !downloadUrl }">
+              <a download="chart.png" :href="downloadUrl ?? 'javascript:void(0)'">
+                <FontAwesomeIcon :icon="['fas', 'download']" />
+              </a>
             </li>
           </ul>
         </div>
