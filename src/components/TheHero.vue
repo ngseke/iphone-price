@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faArrowTrendUp } from '@fortawesome/free-solid-svg-icons'
 import { latestReleasedAt } from '../databases/iphone'
 import StatGroupLatestPrice from './StatGroupLatestPrice.vue'
+import TextVerticalScrolling from './TextVerticalScrolling.vue'
 
 const lastUpdatedAtYear = dayjs(latestReleasedAt, 'YYYY-MM').year()
 </script>
@@ -12,16 +13,24 @@ const lastUpdatedAtYear = dayjs(latestReleasedAt, 'YYYY-MM').year()
   <div class="hero bg-base-200 py-8 sm:min-h-screen sm:py-0">
     <div class="hero-content w-full">
       <div class="w-full max-w-2xl flex-1 space-y-8">
-        <div class="space-y-2">
+        <div class="flex flex-col items-start space-y-2">
           <span class="badge badge-accent font-bold sm:badge-lg">
             {{ lastUpdatedAtYear }} 年
           </span>
-          <h1 class="text-3xl font-extrabold sm:text-5xl sm:leading-tight">
-            台灣 iPhone 價格<br>歷史趨勢
-            <FontAwesomeIcon
-              class="text-2xl text-primary sm:text-4xl"
-              :icon="faArrowTrendUp"
-            />
+          <h1 class="flex flex-col text-3xl font-extrabold sm:text-5xl sm:leading-tight">
+            <span>台灣 iPhone 價格</span>
+            <span class="text-4xl sm:text-6xl sm:leading-[1.275]">
+              <TextVerticalScrolling
+                v-for="(char, index) in '歷史趨勢'"
+                :key="index"
+                :char="char"
+                :index="index"
+              />
+              <FontAwesomeIcon
+                class="pl-2 text-2xl text-primary sm:text-4xl"
+                :icon="faArrowTrendUp"
+              />
+            </span>
           </h1>
         </div>
         <StatGroupLatestPrice />
