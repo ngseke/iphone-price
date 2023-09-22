@@ -30,6 +30,8 @@ const props = defineProps<{
 
   modelNameAbbreviation: boolean
   priceAbbreviation: boolean
+  hidePrice: boolean
+
   showTaiwanMinimumWageList: boolean
 }>()
 
@@ -55,8 +57,11 @@ const labelRichPrice = computed(() => ({
 }))
 
 const label = computed<LineSeriesOption['label']>(() => {
-  const isModelNameAbbreviation = props.modelNameAbbreviation
-  const isPriceAbbreviation = props.priceAbbreviation
+  const {
+    modelNameAbbreviation: isModelNameAbbreviation,
+    priceAbbreviation: isPriceAbbreviation,
+    hidePrice: isPriceHidden,
+  } = props
 
   return {
     show: true,
@@ -75,16 +80,18 @@ const label = computed<LineSeriesOption['label']>(() => {
 
       return [
       `{name|${formattedModelName}}`,
-      `{price|${formattedPrice}}`,
-      ].join(isModelNameAbbreviation ? '' : '\n')
+      isPriceHidden ? null : `{price|${formattedPrice}}`,
+      ]
+        .filter(Boolean)
+        .join(isModelNameAbbreviation ? '' : '\n')
     },
     rich: {
       name: {
         ...commonLabelRich.value,
         color: colors.neutral[isDark.value ? 400 : 600],
-        fontSize: 10,
+        fontSize: isPriceHidden ? 12 : 10,
+        fontWeight: isPriceHidden ? 500 : 400,
         lineHeight: 16,
-        fontWeight: 400,
         padding: [0, 4, 0, 0],
       },
       price: labelRichPrice.value,
@@ -93,7 +100,10 @@ const label = computed<LineSeriesOption['label']>(() => {
 })
 
 const taiwanMinimumWageLabel = computed<LineSeriesOption['label']>(() => {
-  const isPriceAbbreviation = props.priceAbbreviation
+  const {
+    priceAbbreviation: isPriceAbbreviation,
+    hidePrice: isPriceHidden,
+  } = props
 
   return {
     show: true,
@@ -105,7 +115,7 @@ const taiwanMinimumWageLabel = computed<LineSeriesOption['label']>(() => {
         ? formatPriceAbbreviation(price)
         : formatPrice(price)
 
-      return `{price|${formattedPrice}}`
+      return isPriceHidden ? '' : `{price|${formattedPrice}}`
     },
     rich: {
       price: labelRichPrice.value,

@@ -58,6 +58,7 @@ const chartBind = computed(() => ({
   taiwanMinimumWageList,
   modelNameAbbreviation: displayOptions.value.isModelNameAbbreviation,
   priceAbbreviation: displayOptions.value.isPriceAbbreviation,
+  hidePrice: displayOptions.value.isPriceHidden,
   showTaiwanMinimumWageList: displayOptions.value.isTaiwanMinimumWageListShown,
   onReset: resetFilter,
 }))
@@ -138,11 +139,17 @@ const chartBind = computed(() => ({
         </Title>
         <FormGroupLayout>
           <template #title>標籤</template>
-          <div class="flex flex-wrap gap-x-4">
+          <div class="flex flex-col flex-wrap gap-x-4">
             <Switch v-model="displayOptions.isModelNameAbbreviation">
               簡化產品名稱
             </Switch>
-            <Switch v-model="displayOptions.isPriceAbbreviation">
+            <Switch v-model="displayOptions.isPriceHidden">
+              隱藏價格
+            </Switch>
+            <Switch
+              v-model="displayOptions.isPriceAbbreviation"
+              :disabled="displayOptions.isPriceHidden"
+            >
               簡化價格
             </Switch>
           </div>

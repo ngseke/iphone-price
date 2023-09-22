@@ -6,6 +6,7 @@ import Label from './Label.vue'
 const props = defineProps<{
   modelValue: unknown
   value?: unknown
+  disabled?: boolean
 }>()
 
 const emit = defineEmits<{
@@ -27,6 +28,7 @@ const isChecked = computed(() =>
         v-model="vModel"
         class="toggle toggle-sm"
         :class="{ 'toggle-primary': isChecked }"
+        :disabled="disabled"
         type="checkbox"
         :value="value"
       >
