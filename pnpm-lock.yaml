@@ -7,6 +7,7 @@ specifiers:
   '@fortawesome/free-solid-svg-icons': ^6.4.2
   '@fortawesome/vue-fontawesome': ^3.0.3
   '@tailwindcss/typography': ^0.5.10
+  '@types/node': ^20.6.3
   '@typescript-eslint/eslint-plugin': ^6.4.0
   '@vitejs/plugin-vue': ^4.2.3
   '@vueuse/core': ^10.4.1
@@ -47,6 +48,7 @@ dependencies:
 
 devDependencies:
   '@tailwindcss/typography': 0.5.10_tailwindcss@3.3.3
+  '@types/node': 20.6.3
   '@typescript-eslint/eslint-plugin': 6.7.0_rngtr6f3b25lvetpihwplgecf4
   '@vitejs/plugin-vue': 4.3.4_vite@4.4.9+vue@3.3.4
   autoprefixer: 10.4.15_postcss@8.4.29
@@ -61,7 +63,7 @@ devDependencies:
   sass: 1.68.0
   tailwindcss: 3.3.3
   typescript: 5.2.2
-  vite: 4.4.9_sass@1.68.0
+  vite: 4.4.9_64tj46k4quhv5ljf3qphrfiauy
   vue-tsc: 1.8.11_typescript@5.2.2
 
 packages:
@@ -464,6 +466,10 @@ packages:
     resolution: {integrity: sha512-dRLjCWHYg4oaA77cxO64oO+7JwCwnIzkZPdrrC71jQmQtlhM556pwKo5bUzqvZndkVbeFLIIi+9TC40JNF5hNQ==}
     dev: true
 
+  /@types/node/20.6.3:
+    resolution: {integrity: sha512-HksnYH4Ljr4VQgEy2lTStbCKv/P590tmPe5HqOnv9Gprffgv5WXAY+Y5Gqniu0GGqeTCUdBnzC3QSrzPkBkAMA==}
+    dev: true
+
   /@types/semver/7.5.2:
     resolution: {integrity: sha512-7aqorHYgdNO4DM36stTiGO3DvKoex9TQRwsJU6vMaFGyqpBA1MNZkz+PG3gaNUPpTAOYhT1WR7M1JyA3fbS9Cw==}
     dev: true
@@ -609,7 +615,7 @@ packages:
       vite: ^4.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 4.4.9_sass@1.68.0
+      vite: 4.4.9_64tj46k4quhv5ljf3qphrfiauy
       vue: 3.3.4
     dev: true
 
@@ -2672,7 +2678,7 @@ packages:
   /util-deprecate/1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
-  /vite/4.4.9_sass@1.68.0:
+  /vite/4.4.9_64tj46k4quhv5ljf3qphrfiauy:
     resolution: {integrity: sha512-2mbUn2LlUmNASWwSCNSJ/EG2HuSRTnVNaydp6vMCm5VIqJsjMfbIWtbH2kDuwUVW5mMUKKZvGPX/rqeqVvv1XA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -2700,6 +2706,7 @@ packages:
       terser:
         optional: true
     dependencies:
+      '@types/node': 20.6.3
       esbuild: 0.18.20
       postcss: 8.4.29
       rollup: 3.29.2
