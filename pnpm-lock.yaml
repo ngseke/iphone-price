@@ -23,6 +23,7 @@ specifiers:
   eslint-plugin-vue: ^9.17.0
   nanoid: ^5.0.1
   postcss: ^8.4.29
+  sass: ^1.68.0
   tailwindcss: ^3.3.3
   typescript: '*'
   vite: ^4.4.5
@@ -57,9 +58,10 @@ devDependencies:
   eslint-plugin-tailwindcss: 3.13.0_tailwindcss@3.3.3
   eslint-plugin-vue: 9.17.0_eslint@8.49.0
   postcss: 8.4.29
+  sass: 1.68.0
   tailwindcss: 3.3.3
   typescript: 5.2.2
-  vite: 4.4.9
+  vite: 4.4.9_sass@1.68.0
   vue-tsc: 1.8.11_typescript@5.2.2
 
 packages:
@@ -607,7 +609,7 @@ packages:
       vite: ^4.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 4.4.9
+      vite: 4.4.9_sass@1.68.0
       vue: 3.3.4
     dev: true
 
@@ -1755,6 +1757,10 @@ packages:
     engines: {node: '>= 4'}
     dev: true
 
+  /immutable/4.3.4:
+    resolution: {integrity: sha512-fsXeu4J4i6WNWSikpI88v/PcVflZz+6kMhUfIwc5SY+poQRPnaf5V7qds6SUyUN3cVxEzuCab7QIoLOQ+DQ1wA==}
+    dev: true
+
   /import-fresh/3.3.0:
     resolution: {integrity: sha512-veYYhQa+D1QBKznvhUHxb8faxlrwUnxseDAbAp457E0wLNio2bOSKnjYDhMj+YiAq61xrMGhQk9iXVk5FzgQMw==}
     engines: {node: '>=6'}
@@ -2374,6 +2380,16 @@ packages:
       is-regex: 1.1.4
     dev: true
 
+  /sass/1.68.0:
+    resolution: {integrity: sha512-Lmj9lM/fef0nQswm1J2HJcEsBUba4wgNx2fea6yJHODREoMFnwRpZydBnX/RjyXw2REIwdkbqE4hrTo4qfDBUA==}
+    engines: {node: '>=14.0.0'}
+    hasBin: true
+    dependencies:
+      chokidar: 3.5.3
+      immutable: 4.3.4
+      source-map-js: 1.0.2
+    dev: true
+
   /semver/6.3.1:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}
     hasBin: true
@@ -2656,7 +2672,7 @@ packages:
   /util-deprecate/1.0.2:
     resolution: {integrity: sha512-EPD5q1uXyFxJpCrLnCc1nHnq3gOa6DZBocAIiI2TaSCA7VCJ1UJDMagCzIkXNsUYfD1daK//LTEQ8xiIbrHtcw==}
 
-  /vite/4.4.9:
+  /vite/4.4.9_sass@1.68.0:
     resolution: {integrity: sha512-2mbUn2LlUmNASWwSCNSJ/EG2HuSRTnVNaydp6vMCm5VIqJsjMfbIWtbH2kDuwUVW5mMUKKZvGPX/rqeqVvv1XA==}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -2687,6 +2703,7 @@ packages:
       esbuild: 0.18.20
       postcss: 8.4.29
       rollup: 3.29.2
+      sass: 1.68.0
     optionalDependencies:
       fsevents: 2.3.3
     dev: true
