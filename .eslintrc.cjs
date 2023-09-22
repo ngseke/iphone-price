@@ -77,5 +77,8 @@ module.exports = {
     'vue/space-infix-ops': 'error',
     'vue/space-unary-ops': 'error',
     'vue/singleline-html-element-content-newline': 'off',
+    'tailwindcss/no-custom-classname': ['warn', {
+      whitelist: ['scroll'],
+    }],
   },
 }
