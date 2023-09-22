@@ -37,8 +37,16 @@ const description = computed(() => (
         {{ tab.name }}
       </button>
     </div>
-    <p class="text-sm opacity-80">
-      {{ description }}
-    </p>
+    <Transition
+      enterActiveClass="transition duration-150"
+      enterFromClass="opacity-0 translate-y-1"
+      mode="out-in"
+    >
+      <div :key="description">
+        <p class="text-sm opacity-80">
+          {{ description }}
+        </p>
+      </div>
+    </Transition>
   </div>
 </template>
