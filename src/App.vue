@@ -2,13 +2,11 @@
 import { computed, ref } from 'vue'
 import Chart from './components/Chart.vue'
 import TheHero from './components/TheHero.vue'
-import FormGroupLayout from './components/FormGroupLayout.vue'
+import LayoutFormGroup from './components/LayoutFormGroup.vue'
 import RadioGroupStorageSize from './components/RadioGroupStorageSize.vue'
 import CheckboxGroupIphoneLine from './components/CheckboxGroupIphoneLine.vue'
 import TheFooter from './components/TheFooter.vue'
 import Switch from './components/Switch.vue'
-import Title from './components/Title.vue'
-import IconButtonReset from './components/IconButtonReset.vue'
 import useFilter from './composables/useFilter'
 import IconButtonDarkMode from './components/IconButtonDarkMode.vue'
 import TabChartType from './components/TabChartType.vue'
@@ -24,6 +22,7 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faExpand, faDownload } from '@fortawesome/free-solid-svg-icons'
 import RangeSlider from './components/RangeSlider.vue'
 import { defaultFilter } from './modules/filter'
+import LayoutFormSectionGroup from './components/LayoutFormSectionGroup.vue'
 
 const { chartType } = useChartType()
 
@@ -101,37 +100,33 @@ const chartBind = computed(() => ({
       </div>
 
       <div class="flex w-full flex-col gap-y-4 lg:w-1/3">
-        <Title>圖表類型</Title>
-        <TabChartType v-model="chartType" />
+        <LayoutFormSectionGroup>
+          <template #title>圖表類型</template>
+          <TabChartType v-model="chartType" />
+        </LayoutFormSectionGroup>
 
-        <Title>
-          篩選條件
-          <template #titleActions>
-            <IconButtonReset
-              v-if="isSomeFilterChanged"
-              size="sm"
-              @click="resetFilter"
-            />
-          </template>
-        </Title>
-        <div class="flex flex-col gap-y-4">
-          <FormGroupLayout
+        <LayoutFormSectionGroup
+          :showReset="isSomeFilterChanged"
+          @reset="resetFilter"
+        >
+          <template #title>篩選條件</template>
+          <LayoutFormGroup
             :showReset="isFilterStorageSizeChanged"
             @reset="resetFilterStorageSize"
           >
             <template #title>儲存空間</template>
             <RadioGroupStorageSize v-model="filter.storage" />
-          </FormGroupLayout>
+          </LayoutFormGroup>
 
-          <FormGroupLayout
+          <LayoutFormGroup
             :showReset="isFilterLinesChanged"
             @reset="resetFilterLines"
           >
             <template #title>產品線</template>
             <CheckboxGroupIphoneLine v-model="filter.lines" />
-          </FormGroupLayout>
+          </LayoutFormGroup>
 
-          <FormGroupLayout
+          <LayoutFormGroup
             :showReset="isFilterYearRangeChanged"
             @reset="resetYearRange"
           >
@@ -141,45 +136,40 @@ const chartBind = computed(() => ({
               :max="defaultFilter.yearRange[1]"
               :min="defaultFilter.yearRange[0]"
             />
-          </FormGroupLayout>
-        </div>
+          </LayoutFormGroup>
+        </LayoutFormSectionGroup>
 
-        <Title>
-          顯示方式
-          <template #titleActions>
-            <IconButtonReset
-              v-if="isSomeDisplayOptionsChanged"
-              size="sm"
-              @click="resetDisplayOptions"
-            />
-          </template>
-        </Title>
-        <FormGroupLayout>
-          <template #title>標籤</template>
-          <div class="flex flex-col flex-wrap gap-x-4">
-            <Switch v-model="displayOptions.isModelNameAbbreviation">
-              簡化產品名稱
-            </Switch>
-            <Switch v-model="displayOptions.isPriceHidden">
-              隱藏價格
-            </Switch>
-            <Switch
-              v-model="displayOptions.isPriceAbbreviation"
-              :disabled="displayOptions.isPriceHidden"
-            >
-              簡化價格
-            </Switch>
-          </div>
-        </FormGroupLayout>
-
-        <FormGroupLayout>
-          <template #title>其他指標</template>
-          <div class="flex flex-wrap gap-x-4">
-            <Switch v-model="displayOptions.isTaiwanMinimumWageListShown">
-              顯示台灣基本工資（月薪）
-            </Switch>
-          </div>
-        </FormGroupLayout>
+        <LayoutFormSectionGroup
+          :showReset="isSomeDisplayOptionsChanged"
+          @reset="resetDisplayOptions"
+        >
+          <template #title>顯示方式</template>
+          <LayoutFormGroup>
+            <template #title>標籤</template>
+            <div class="flex flex-col flex-wrap gap-x-4">
+              <Switch v-model="displayOptions.isModelNameAbbreviation">
+                簡化產品名稱
+              </Switch>
+              <Switch v-model="displayOptions.isPriceHidden">
+                隱藏價格
+              </Switch>
+              <Switch
+                v-model="displayOptions.isPriceAbbreviation"
+                :disabled="displayOptions.isPriceHidden"
+              >
+                簡化價格
+              </Switch>
+            </div>
+          </LayoutFormGroup>
+          <LayoutFormGroup>
+            <template #title>其他指標</template>
+            <div class="flex flex-wrap gap-x-4">
+              <Switch v-model="displayOptions.isTaiwanMinimumWageListShown">
+                顯示台灣基本工資（月薪）
+              </Switch>
+            </div>
+          </LayoutFormGroup>
+        </LayoutFormSectionGroup>
       </div>
     </div>
 
