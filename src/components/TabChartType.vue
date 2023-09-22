@@ -42,11 +42,9 @@ const description = computed(() => (
       enterFromClass="opacity-0 translate-y-1"
       mode="out-in"
     >
-      <div :key="description">
-        <p class="text-sm opacity-80">
-          {{ description }}
-        </p>
-      </div>
+      <p :key="description" class="text-sm text-base-content/80">
+        {{ description }}
+      </p>
     </Transition>
   </div>
 </template>

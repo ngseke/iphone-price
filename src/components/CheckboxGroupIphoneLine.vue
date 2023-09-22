@@ -23,7 +23,7 @@ const vModel = useVModel(props, 'modelValue', emit)
       <Checkbox v-model="vModel" :value="item">
         {{ iphoneLines[item].name }}
       </Checkbox>
-      <p class="pl-9 text-xs opacity-80">
+      <p class="pl-9 text-xs text-base-content/80">
         {{ iphoneLines[item].description }}
       </p>
     </div>
