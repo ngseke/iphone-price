@@ -2,13 +2,21 @@
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faGithub } from '@fortawesome/free-brands-svg-icons'
 import Link from './Link.vue'
+import dayjs from 'dayjs'
+import localizedFormat from 'dayjs/plugin/localizedFormat'
+
+dayjs.extend(localizedFormat)
 
 const githubUrl = 'https://github.com/ngseke/iphone-price'
 
 const links = [
   { name: 'GitHub', url: githubUrl },
-  { name: 'Issues', url: 'https://github.com/ngseke/iphone-price/issues' },
+  { name: 'Issues', url: `${githubUrl}/issues` },
 ]
+
+const formattedBuiltAt = dayjs(BUILT_AT).format('LLL')
+const commitHash = COMMIT_HASH
+const commitUrl = `${githubUrl}/tree/${commitHash}`
 </script>
 
 <template>
@@ -29,8 +37,12 @@ const links = [
         {{ link.name }}
       </Link>
     </nav>
-    <aside class="grid-flow-col items-center">
-      <p class="text-xs">
+    <aside>
+      <p class="text-xs text-base-content/80">
+        上次更新：{{ formattedBuiltAt }}
+        (<Link class="link" :href="commitUrl">{{ commitHash }}</Link>)
+      </p>
+      <p class="text-xs font-medium">
         Made with <span title="IPA">🍺</span> by
         <Link class="link" href="https://ngseke.me/">ngseke</Link>
       </p>
