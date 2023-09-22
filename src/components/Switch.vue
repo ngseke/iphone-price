@@ -23,7 +23,7 @@ const isChecked = computed(() =>
 
 <template>
   <div class="form-control">
-    <Label>
+    <Label :disabled="disabled">
       <input
         v-model="vModel"
         class="toggle toggle-sm"
@@ -34,7 +34,10 @@ const isChecked = computed(() =>
       >
       <span
         class="label-text"
-        :class="{ 'text-primary': isChecked }"
+        :class="{
+          'text-primary': isChecked,
+          'opacity-50': disabled,
+        }"
       >
         <slot />
       </span>

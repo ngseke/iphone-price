@@ -38,7 +38,7 @@ const isChecked = computed(() => {
         class="label-text"
         :class="{
           'text-primary': isChecked,
-          'opacity-20': disabled
+          'opacity-50': disabled,
         }"
       >
         <slot />
