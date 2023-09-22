@@ -22,6 +22,8 @@ import DataSource from './components/DataSource.vue'
 import ModelFullscreen from './components/ModelFullscreen.vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faExpand, faDownload } from '@fortawesome/free-solid-svg-icons'
+import RangeSlider from './components/RangeSlider.vue'
+import { defaultFilter } from './modules/filter'
 
 const { chartType } = useChartType()
 
@@ -29,10 +31,12 @@ const {
   filter,
   isFilterStorageSizeChanged,
   isFilterLinesChanged,
+  isFilterYearRangeChanged,
   isSomeFilterChanged,
   resetFilter,
   resetFilterStorageSize,
   resetFilterLines,
+  resetYearRange,
 } = useFilter()
 
 const {
@@ -47,6 +51,7 @@ const iphoneDataset = computed(() => (
     lines: filter.value.lines,
     groupBy: chartTypeOptions[chartType.value].groupBy,
     showAllRelease: chartType.value === 'priceAdjustment',
+    yearRange: filter.value.yearRange,
   })
 ))
 
@@ -124,6 +129,18 @@ const chartBind = computed(() => ({
           >
             <template #title>產品線</template>
             <CheckboxGroupIphoneLine v-model="filter.lines" />
+          </FormGroupLayout>
+
+          <FormGroupLayout
+            :showReset="isFilterYearRangeChanged"
+            @reset="resetYearRange"
+          >
+            <template #title>發售年份</template>
+            <RangeSlider
+              v-model="filter.yearRange"
+              :max="defaultFilter.yearRange[1]"
+              :min="defaultFilter.yearRange[0]"
+            />
           </FormGroupLayout>
         </div>
 

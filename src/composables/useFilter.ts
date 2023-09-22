@@ -24,10 +24,15 @@ export default function useFilter () {
     filter.value.isPriceAdjusted !== defaultFilter.isPriceAdjusted
   ))
 
+  const isFilterYearRangeChanged = computed(() => (
+    filter.value.yearRange.join() !== defaultFilter.yearRange.join()
+  ))
+
   const isSomeFilterChanged = computed(() => [
     isFilterStorageSizeChanged.value,
     isFilterLinesChanged.value,
     isFilterIsPriceAdjustedChanged.value,
+    isFilterYearRangeChanged.value,
   ].some(Boolean))
 
   function resetFilter () {
@@ -46,16 +51,22 @@ export default function useFilter () {
     filter.value.isPriceAdjusted = defaultFilter.isPriceAdjusted
   }
 
+  function resetYearRange () {
+    filter.value.yearRange = [...defaultFilter.yearRange]
+  }
+
   return {
     filter,
     isFilterStorageSizeChanged,
     isFilterLinesChanged,
     isFilterIsPriceAdjustedChanged,
+    isFilterYearRangeChanged,
     isSomeFilterChanged,
 
     resetFilter,
     resetFilterStorageSize,
     resetFilterLines,
     resetFilterIsPriceAdjusted,
+    resetYearRange,
   }
 }
