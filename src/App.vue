@@ -60,7 +60,6 @@ const chartBind = computed(() => ({
   priceAbbreviation: displayOptions.value.isPriceAbbreviation,
   showTaiwanMinimumWageList: displayOptions.value.isTaiwanMinimumWageListShown,
   onReset: resetFilter,
-  onDataUrlChanged: (url: string) => { downloadUrl.value = url },
 }))
 </script>
 
@@ -72,7 +71,10 @@ const chartBind = computed(() => ({
       <div class="-mx-4 min-w-full sm:mx-0 sm:flex-1 lg:min-w-0">
         <div class="flex w-full flex-col items-start space-y-8 overflow-x-auto lg:sticky lg:top-8 lg:px-4">
           <div class="h-[24rem] w-full min-w-[36rem] sm:h-[32rem]">
-            <Chart v-bind="chartBind" />
+            <Chart
+              v-bind="chartBind"
+              @dataUrlChanged="(url) => { downloadUrl = url }"
+            />
             <ModelFullscreen v-model="isFullscreenChartShown">
               <Chart v-bind="chartBind" />
             </ModelFullscreen>
