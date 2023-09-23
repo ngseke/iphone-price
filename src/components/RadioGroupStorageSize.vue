@@ -12,7 +12,7 @@ const emit = defineEmits<{
   'update:modelValue': [value: StorageSize]
 }>()
 
-const options: StorageSize[] = [64, 128, 256, 512, 1024]
+const options: StorageSize[] = [32, 64, 128, 256, 512, 1024]
 
 const vModel = useVModel(props, 'modelValue', emit)
 </script>
