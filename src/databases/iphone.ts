@@ -13,6 +13,7 @@ import { iphoneXList } from './iphoneX'
 import { iphone8List } from './iphone8'
 import { iphoneSe3List } from './iphoneSe3'
 import { iphoneSe2List } from './iphoneSe2'
+import { iphone7List } from './iphone7'
 
 export const iphoneList: Iphone[] = [
   ...iphone15List,
@@ -26,6 +27,7 @@ export const iphoneList: Iphone[] = [
   ...iphoneXrList,
   ...iphoneXList,
   ...iphone8List,
+  ...iphone7List,
 ]
   .sort((a, b) => +dayjs(a.releasedAt) - +dayjs(b.releasedAt))
 
