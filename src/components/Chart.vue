@@ -37,7 +37,7 @@ const props = defineProps<{
 
 const emit = defineEmits<{
   reset: []
-  dataUrlChanged: [url: string]
+  dataUrlChanged: [url: string | null]
 }>()
 
 const isDark = useDark()
@@ -220,6 +220,9 @@ function handleFinished () {
   const url = chartRef.value?.getDataURL({ type: 'png' })
   if (url) emit('dataUrlChanged', url)
 }
+watch(isEmpty, () => {
+  emit('dataUrlChanged', null)
+})
 </script>
 
 <template>
