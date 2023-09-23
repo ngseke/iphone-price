@@ -4,18 +4,27 @@ import TheFooter from './components/TheFooter.vue'
 import IconButtonDarkMode from './components/IconButtonDarkMode.vue'
 import DataSource from './components/DataSource.vue'
 import ChartAndFilters from './components/ChartAndFilters.vue'
+import { ref } from 'vue'
+
+const mainRaf = ref<HTMLElement | null>(null)
+function scrollToMain () {
+  mainRaf.value?.scrollIntoView({ behavior: 'smooth' })
+}
 </script>
 
 <template>
-  <TheHero />
+  <TheHero @clickViewChart="scrollToMain" />
 
-  <div class="container min-h-screen space-y-16 px-4 py-6">
+  <main
+    ref="mainRaf"
+    class="container min-h-screen space-y-16 px-4 py-6"
+  >
     <ChartAndFilters />
 
     <div class="mx-auto max-w-2xl space-y-4">
       <DataSource />
     </div>
-  </div>
+  </main>
 
   <TheFooter />
 
