@@ -12,7 +12,11 @@ const emit = defineEmits<{
   'update:modelValue': [value: IphoneLine[]]
 }>()
 
-const options: IphoneLine[] = ['entry-level', 'regular', 'premium']
+const options: IphoneLine[] = [
+  'premium',
+  'regular',
+  'entry-level',
+]
 
 const vModel = useVModel(props, 'modelValue', emit)
 </script>
