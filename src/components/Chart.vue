@@ -15,6 +15,7 @@ import { formatPrice, formatPriceAbbreviation } from '../modules/price'
 import CardNoResult from './CardNoResult.vue'
 import { nanoid } from 'nanoid'
 import { type TaiwanMinimumWage } from '../databases/taiwanMinimumWage'
+import { useChartTooltip } from '../composables/useChartTooltip'
 
 use([
   CanvasRenderer,
@@ -79,8 +80,8 @@ const label = computed<LineSeriesOption['label']>(() => {
         : formatPrice(price)
 
       return [
-      `{name|${formattedModelName}}`,
-      isPriceHidden ? null : `{price|${formattedPrice}}`,
+        `{name|${formattedModelName}}`,
+        isPriceHidden ? null : `{price|${formattedPrice}}`,
       ]
         .filter(Boolean)
         .join(isModelNameAbbreviation ? '' : '\n')
@@ -130,8 +131,14 @@ const taiwanMinimumWageSeries = computed<LineSeriesOption>(() => ({
   symbolSize: 8,
   label: taiwanMinimumWageLabel.value,
   color: isDark.value ? colors.zinc[400] : colors.zinc[700],
+  encode: {
+    x: 'date',
+    y: 'value',
+    itemName: 'name',
+  },
   data: props.taiwanMinimumWageList.map((item) => ({
-    name: '',
+    name: '台灣基本工資（月薪）',
+    date: +dayjs(item.implementedAt, 'YYYY-MM-DD'),
     value: [
       +dayjs(item.implementedAt, 'YYYY-MM-DD'),
       item.monthlySalary.twd,
@@ -144,9 +151,12 @@ watch(() => props.iphoneDataset, () => {
   seriesIdPrefix.value = nanoid()
 }, { immediate: true })
 
+const { tooltip } = useChartTooltip()
+
 const option = computed<EChartsOption>(() => ({
   darkMode: isDark.value,
   dataset: props.iphoneDataset,
+  tooltip: tooltip.value,
   series: [
     ...props.iphoneDataset.map((_, index) => ({
       type: 'line',
@@ -154,7 +164,11 @@ const option = computed<EChartsOption>(() => ({
       symbol: 'circle',
       symbolSize: 6,
       smooth: true,
-      encode: { x: 'date', y: 'value' },
+      encode: {
+        x: 'date',
+        y: 'value',
+        itemName: 'name',
+      },
       datasetIndex: index,
       // HACK: force chart to replay animation
       id: `${seriesIdPrefix.value}${index}`,
@@ -227,12 +241,13 @@ watch(isEmpty, () => {
 
 <template>
   <CardNoResult v-if="isEmpty" @reset="$emit('reset')" />
-  <VueECharts
-    v-else
-    ref="chartRef"
-    autoresize
-    class="h-full w-full"
-    :option="option"
-    @finished="handleFinished"
-  />
+  <div v-else class="h-full w-full overflow-hidden">
+    <VueECharts
+      ref="chartRef"
+      autoresize
+      class="h-full w-full"
+      :option="option"
+      @finished="handleFinished"
+    />
+  </div>
 </template>

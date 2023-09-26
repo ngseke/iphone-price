@@ -1,8 +1,8 @@
 import { type IphoneLine, type Iphone } from '../types/Iphone'
 import dayjs from 'dayjs'
 import { type StorageSize } from '../types/StorageSize'
-import { formatStorageSize } from './storageSize'
 import { type DatasetComponentOption } from 'echarts'
+import { formatIphoneModel } from './iphoneModel'
 
 export type ChartDatasetGroupBy = Array<keyof Iphone>
 
@@ -33,12 +33,17 @@ export function generateIphoneDataset (
       const group = options.groupBy
         .map(key => iphone[key])
         .join(',')
+      const groupName = options.groupBy
+        .filter(key => key !== 'storage')
+        .map(key => iphone[key])
+        .join(',')
 
       groups[group] ??= {
         source: [],
+        name: groupName,
       }; (groups[group].source as unknown[]).push({
         ...iphone,
-        name: `${iphone.model},${formatStorageSize(iphone.storage)}`,
+        name: formatIphoneModel(iphone.model),
         date: +dayjs(iphone.releasedAt, 'YYYY-MM'),
         value: iphone.price.twd,
       })
