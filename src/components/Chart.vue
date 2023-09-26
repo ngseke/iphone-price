@@ -13,7 +13,6 @@ import { useDark } from '../composables/useDark'
 import colors from 'tailwindcss/colors'
 import { formatPrice, formatPriceAbbreviation } from '../modules/price'
 import CardNoResult from './CardNoResult.vue'
-import { nanoid } from 'nanoid'
 import { type TaiwanMinimumWage } from '../databases/taiwanMinimumWage'
 import { useChartTooltip } from '../composables/useChartTooltip'
 
@@ -147,11 +146,6 @@ const taiwanMinimumWageSeries = computed<LineSeriesOption>(() => ({
   })),
 }))
 
-const seriesIdPrefix = ref('')
-watch(() => props.iphoneDataset, () => {
-  seriesIdPrefix.value = nanoid()
-}, { immediate: true })
-
 const { tooltip } = useChartTooltip()
 
 const option = computed<EChartsOption>(() => ({
@@ -159,7 +153,7 @@ const option = computed<EChartsOption>(() => ({
   dataset: props.iphoneDataset,
   tooltip: tooltip.value,
   series: [
-    ...props.iphoneDataset.map((_, index) => ({
+    ...props.iphoneDataset.map((dataset, index) => ({
       type: 'line',
       label: label.value,
       symbol: 'circle',
@@ -172,7 +166,7 @@ const option = computed<EChartsOption>(() => ({
       },
       datasetIndex: index,
       // HACK: force chart to replay animation
-      id: `${seriesIdPrefix.value}${index}`,
+      id: dataset.name,
       emphasis: { focus: 'series' },
     } as const)),
     ...(props.showTaiwanMinimumWageList
@@ -180,6 +174,7 @@ const option = computed<EChartsOption>(() => ({
       : []),
   ],
   animationDuration: 200,
+  animationDurationUpdate: 350,
   textStyle: {
     fontFamily: ['Rubik', '"Noto Sans TC"'].join(','),
   },
