@@ -23,7 +23,7 @@ defineEmits<{
           </span>
           <h1 class="flex flex-col text-3xl font-extrabold sm:text-5xl sm:leading-tight">
             <span>台灣 iPhone 價格</span>
-            <span class="text-4xl sm:text-6xl sm:leading-[1.275]">
+            <span>
               <TextVerticalScrolling
                 v-for="(char, index) in '歷史趨勢'"
                 :key="index"
