@@ -4,5 +4,10 @@ export function formatPrice (price: number) {
 }
 
 export function formatPriceAbbreviation (price: number) {
-  return `${price / 1000}K`
+  const base = 100
+  /**
+   * price after removing all digits below 100
+   */
+  const truncatedPrice = Math.trunc(price / base) * base
+  return `${truncatedPrice / 1000}K`
 }
