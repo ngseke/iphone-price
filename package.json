@@ -5,9 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build",
+    "build": "vite build",
     "preview": "vite preview",
-    "lint": "npx eslint . --ext .ts,.js,.cjs,.vue",
+    "lint": "vue-tsc && npx eslint . --ext .ts,.js,.cjs,.vue",
     "lint-fix": "npx eslint --fix . --ext .ts,.js,.cjs,.vue"
   },
   "dependencies": {
