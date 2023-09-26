@@ -131,6 +131,7 @@ const taiwanMinimumWageSeries = computed<LineSeriesOption>(() => ({
   symbolSize: 8,
   label: taiwanMinimumWageLabel.value,
   color: isDark.value ? colors.zinc[400] : colors.zinc[700],
+  emphasis: { focus: 'series' },
   encode: {
     x: 'date',
     y: 'value',
@@ -172,6 +173,7 @@ const option = computed<EChartsOption>(() => ({
       datasetIndex: index,
       // HACK: force chart to replay animation
       id: `${seriesIdPrefix.value}${index}`,
+      emphasis: { focus: 'series' },
     } as const)),
     ...(props.showTaiwanMinimumWageList
       ? [taiwanMinimumWageSeries.value]
