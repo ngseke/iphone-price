@@ -57,7 +57,7 @@ export function useChartTooltip () {
                   <span>
                     ${markerElement} ${name}
                   </span>
-                  <span class="font-bold text-primary">
+                  <span class="font-bold">
                     ${formattedPrice}
                   </span>
                 </li>
