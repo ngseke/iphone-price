@@ -6,7 +6,7 @@ import { use } from 'echarts/core'
 import { CanvasRenderer } from 'echarts/renderers'
 import { LineChart } from 'echarts/charts'
 import VueECharts from 'vue-echarts'
-import { DatasetComponent, TooltipComponent, GridComponent } from 'echarts/components'
+import { DatasetComponent, TooltipComponent, GridComponent, MarkLineComponent } from 'echarts/components'
 import { type Iphone } from '../types/Iphone'
 import { formatIphoneModel, formatIphoneModelAbbreviation } from '../modules/iphoneModel'
 import { useDark } from '../composables/useDark'
@@ -22,6 +22,7 @@ use([
   DatasetComponent,
   TooltipComponent,
   GridComponent,
+  MarkLineComponent,
 ])
 
 const props = defineProps<{
@@ -163,7 +164,7 @@ const option = computed<EChartsOption>(() => ({
   dataset: props.iphoneDataset,
   tooltip: tooltip.value,
   series: [
-    ...props.iphoneDataset.map((dataset, index) => ({
+    ...props.iphoneDataset.map<LineSeriesOption>((dataset, index) => ({
       type: 'line',
       label: label.value,
       symbol: 'circle',
@@ -177,7 +178,7 @@ const option = computed<EChartsOption>(() => ({
       datasetIndex: index,
       id: dataset.name,
       emphasis: { focus: 'series' },
-    } as const)),
+    })),
     ...(props.showTaiwanMinimumWageList
       ? [taiwanMinimumWageSeries.value]
       : []),
