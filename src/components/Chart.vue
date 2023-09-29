@@ -175,7 +175,6 @@ const option = computed<EChartsOption>(() => ({
         itemName: 'name',
       },
       datasetIndex: index,
-      // HACK: force chart to replay animation
       id: dataset.name,
       emphasis: { focus: 'series' },
     } as const)),
