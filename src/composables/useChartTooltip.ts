@@ -1,7 +1,7 @@
 import { computed } from 'vue'
-import dayjs from 'dayjs'
 import { type TooltipComponentFormatterCallbackParams, type TooltipComponentOption } from 'echarts'
 import { formatPrice } from '../modules/price'
+import { formatDateChinese } from '../modules/date'
 
 function extractData (param: TooltipComponentFormatterCallbackParams) {
   if (
@@ -37,7 +37,7 @@ export function useChartTooltip () {
       if (!Array.isArray(params)) return ''
 
       const { date } = extractData(params[0])
-      const formattedDate = dayjs(date, 'YYYY-MM').format('YYYY年MM月')
+      const formattedDate = formatDateChinese(date)
 
       return `
         <div class="flex flex-col gap-2">
