@@ -1,7 +1,6 @@
 import { type IphoneLine, type Iphone } from '../types/Iphone'
 import dayjs from 'dayjs'
 import { type StorageSize } from '../types/StorageSize'
-import { type DatasetComponentOption } from 'echarts'
 import { formatIphoneModel } from './iphoneModel'
 
 export type ChartDatasetGroupBy = Array<keyof Iphone>
@@ -14,11 +13,22 @@ export interface GenerateDatasetOptions {
   yearRange: [number, number]
 }
 
+export type IphoneDatasetSource = Iphone & {
+  name: string
+  date: number
+  value: number
+}
+
+export interface IphoneDataset {
+  name: string
+  source: IphoneDatasetSource[]
+}
+
 export function generateIphoneDataset (
   list: Iphone[],
   options: GenerateDatasetOptions
 ) {
-  const groups: Record<string, DatasetComponentOption> = {}
+  const groups: Record<string, IphoneDataset> = {}
 
   list
     .filter(iphone => !options.storage || iphone.storage === options.storage)
@@ -41,7 +51,8 @@ export function generateIphoneDataset (
       groups[group] ??= {
         source: [],
         name: groupName,
-      }; (groups[group].source as unknown[]).push({
+      }
+      ;(groups[group].source).push({
         ...iphone,
         name: formatIphoneModel(iphone.model),
         date: +dayjs(iphone.releasedAt, 'YYYY-MM'),

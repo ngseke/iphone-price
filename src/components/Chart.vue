@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
+import { computed, nextTick, ref, watch } from 'vue'
 import dayjs from 'dayjs'
 import { type LineSeriesOption, type EChartsOption, type DatasetComponentOption } from 'echarts'
 import { use } from 'echarts/core'
@@ -15,6 +15,7 @@ import { formatPrice, formatPriceAbbreviation } from '../modules/price'
 import CardNoResult from './CardNoResult.vue'
 import { type TaiwanMinimumWage } from '../databases/taiwanMinimumWage'
 import { useChartTooltip } from '../composables/useChartTooltip'
+import { whenever } from '@vueuse/core'
 
 use([
   CanvasRenderer,
@@ -26,6 +27,8 @@ use([
 ])
 
 const props = defineProps<{
+  selectedSeriesName?: string | null
+
   iphoneDataset: DatasetComponentOption[]
   taiwanMinimumWageList: TaiwanMinimumWage[]
 
@@ -39,6 +42,7 @@ const props = defineProps<{
 const emit = defineEmits<{
   reset: []
   dataUrlChanged: [url: string | null]
+  'update:selectedSeriesName': [index: string | null]
 }>()
 
 const isDark = useDark()
@@ -134,6 +138,7 @@ const taiwanMinimumWageLabel = computed<LineSeriesOption['label']>(() => {
   }
 })
 
+const taiwanMinimumWageSeriesName = '台灣基本工資（月薪）'
 const taiwanMinimumWageSeries = computed<LineSeriesOption>(() => ({
   type: 'line',
   smooth: true,
@@ -147,8 +152,9 @@ const taiwanMinimumWageSeries = computed<LineSeriesOption>(() => ({
     y: 'value',
     itemName: 'name',
   },
+  name: taiwanMinimumWageSeriesName,
   data: props.taiwanMinimumWageList.map((item) => ({
-    name: '台灣基本工資（月薪）',
+    name: taiwanMinimumWageSeriesName,
     date: +dayjs(item.implementedAt, 'YYYY-MM-DD'),
     value: [
       +dayjs(item.implementedAt, 'YYYY-MM-DD'),
@@ -176,8 +182,12 @@ const option = computed<EChartsOption>(() => ({
         itemName: 'name',
       },
       datasetIndex: index,
+      name: dataset.name,
       id: dataset.name,
-      emphasis: { focus: 'series' },
+      emphasis: {
+        focus: 'series',
+      },
+      triggerLineEvent: true,
     })),
     ...(props.showTaiwanMinimumWageList
       ? [taiwanMinimumWageSeries.value]
@@ -244,6 +254,28 @@ function handleFinished () {
 watch(isEmpty, () => {
   emit('dataUrlChanged', null)
 })
+
+function handleClick (event: Parameters<NonNullable<InstanceType< typeof VueECharts>['onClick']>>[0]) {
+  if (event.seriesName === taiwanMinimumWageSeriesName) return
+
+  emit('update:selectedSeriesName', event.seriesName ?? null)
+}
+
+async function handleMouseOut () {
+  await nextTick()
+  if (props.selectedSeriesName != null) {
+    chartRef.value?.dispatchAction({
+      type: 'highlight',
+      seriesName: props.selectedSeriesName,
+    })
+  }
+}
+
+whenever(() => !props.selectedSeriesName, () => {
+  chartRef.value?.dispatchAction({
+    type: 'downplay',
+  })
+})
 </script>
 
 <template>
@@ -254,7 +286,10 @@ watch(isEmpty, () => {
       autoresize
       class="h-full w-full"
       :option="option"
+      @click="handleClick"
       @finished="handleFinished"
+      @mouseout="handleMouseOut"
+      @zr:mouseout="handleMouseOut"
     />
   </div>
 </template>
