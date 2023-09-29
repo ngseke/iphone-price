@@ -20,9 +20,11 @@ const vModel = useVModel(props, 'modelValue', emit)
 <template>
   <div class="flex flex-wrap gap-x-3">
     <template v-for="item in options" :key="item">
-      <Radio v-model="vModel" :value="item">
-        {{ formatStorageSize(item) }}
-      </Radio>
+      <Radio
+        v-model="vModel"
+        :label="formatStorageSize(item)"
+        :value="item"
+      />
     </template>
   </div>
 </template>

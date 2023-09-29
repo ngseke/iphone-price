@@ -6,6 +6,7 @@ import Label from './Label.vue'
 const props = defineProps<{
   modelValue: unknown
   value: unknown
+  label?: string
 }>()
 
 const emit = defineEmits<{
@@ -22,7 +23,7 @@ const isChecked = computed(() =>
 
 <template>
   <div class="form-control">
-    <Label>
+    <Label :active="isChecked" :label="label">
       <input
         v-model="vModel"
         class="radio radio-sm"
@@ -30,12 +31,6 @@ const isChecked = computed(() =>
         type="radio"
         :value="value"
       >
-      <span
-        class="label-text"
-        :class="{ 'text-primary': isChecked }"
-      >
-        <slot />
-      </span>
     </Label>
   </div>
 </template>

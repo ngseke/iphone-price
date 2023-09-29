@@ -7,6 +7,7 @@ const props = defineProps<{
   modelValue: unknown[] | boolean
   value?: unknown
   disabled?: boolean
+  label?: string
 }>()
 
 const emit = defineEmits<{
@@ -25,7 +26,7 @@ const isChecked = computed(() => {
 
 <template>
   <div class="form-control">
-    <Label :disabled="disabled">
+    <Label :active="isChecked" :disabled="disabled" :label="label">
       <input
         v-model="vModel"
         class="checkbox checkbox-sm"
@@ -34,15 +35,6 @@ const isChecked = computed(() => {
         type="checkbox"
         :value="value"
       >
-      <span
-        class="label-text"
-        :class="{
-          'text-primary': isChecked,
-          'opacity-50': disabled,
-        }"
-      >
-        <slot />
-      </span>
     </Label>
   </div>
 </template>

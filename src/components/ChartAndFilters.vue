@@ -140,26 +140,28 @@ const chartBind = computed(() => ({
         <LayoutFormGroup>
           <template #title>標籤</template>
           <div class="flex flex-col flex-wrap gap-x-4">
-            <Switch v-model="displayOptions.isModelNameAbbreviation">
-              簡化產品名稱
-            </Switch>
-            <Switch v-model="displayOptions.isPriceHidden">
-              隱藏價格
-            </Switch>
+            <Switch
+              v-model="displayOptions.isModelNameAbbreviation"
+              label="簡化產品名稱"
+            />
+            <Switch
+              v-model="displayOptions.isPriceHidden"
+              label="隱藏價格"
+            />
             <Switch
               v-model="displayOptions.isPriceAbbreviation"
               :disabled="displayOptions.isPriceHidden"
-            >
-              簡化價格
-            </Switch>
+              label="簡化價格"
+            />
           </div>
         </LayoutFormGroup>
         <LayoutFormGroup>
           <template #title>其他指標</template>
           <div class="flex flex-wrap gap-x-4">
-            <Switch v-model="displayOptions.isTaiwanMinimumWageListShown">
-              顯示台灣基本工資（月薪）
-            </Switch>
+            <Switch
+              v-model="displayOptions.isTaiwanMinimumWageListShown"
+              label="顯示台灣基本工資（月薪）"
+            />
           </div>
         </LayoutFormGroup>
       </LayoutFormSectionGroup>
