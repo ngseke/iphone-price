@@ -141,6 +141,7 @@ const taiwanMinimumWageLabel = computed<LineSeriesOption['label']>(() => {
 const taiwanMinimumWageSeriesName = '台灣基本工資（月薪）'
 const taiwanMinimumWageSeries = computed<LineSeriesOption>(() => ({
   type: 'line',
+  silent: true,
   smooth: true,
   symbol: 'roundRect',
   symbolSize: 8,
@@ -186,6 +187,7 @@ const option = computed<EChartsOption>(() => ({
       id: dataset.name,
       emphasis: {
         focus: 'series',
+        scale: 1.3,
       },
       triggerLineEvent: true,
     })),
