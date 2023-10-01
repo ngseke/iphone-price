@@ -40,17 +40,18 @@ export function generateIphoneDataset (
     .forEach((iphone) => {
       const group = options.groupBy
         .map(key => iphone[key])
-        .join(',')
+        .join()
       const groupName = options.groupBy
         .filter(key => key !== 'storage')
         .map(key => iphone[key])
-        .join(',')
+        .join()
 
       groups[group] ??= {
         source: [],
         name: groupName,
       }
-      ;(groups[group].source).push({
+
+      groups[group].source.push({
         ...iphone,
         name: formatIphoneModel(iphone.model),
         date: +dayjs(iphone.releasedAt, 'YYYY-MM'),
