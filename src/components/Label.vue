@@ -16,7 +16,7 @@ defineProps<{
   >
     <slot />
     <span
-      class="label-text transition duration-100"
+      class="label-text transition-colors duration-100"
       :class="{
         'text-primary': active,
         'opacity-50': disabled,
