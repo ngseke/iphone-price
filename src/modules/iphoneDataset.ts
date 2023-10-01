@@ -1,4 +1,4 @@
-import { type IphoneLine, type Iphone } from '../types/Iphone'
+import { type IphoneLine, type Iphone, type IphoneModel } from '../types/Iphone'
 import dayjs from 'dayjs'
 import { type StorageSize } from '../types/StorageSize'
 import { formatIphoneModel } from './iphoneModel'
@@ -60,4 +60,9 @@ export function generateIphoneDataset (
     })
 
   return Object.values(groups)
+}
+
+export function formatDatasetName (name: string) {
+  if (name.startsWith('iphone')) return formatIphoneModel(name as IphoneModel)
+  return name
 }

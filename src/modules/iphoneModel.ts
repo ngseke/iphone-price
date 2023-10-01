@@ -1,7 +1,7 @@
 import { type IphoneModel } from '../types/Iphone'
 
 export function formatIphoneModel (model: IphoneModel) {
-  let output: string = model
+  let output: string = String(model)
   const rules = [
     ['-', ' '],
     ['iphone', 'iPhone'],
@@ -19,7 +19,7 @@ export function formatIphoneModel (model: IphoneModel) {
 }
 
 export function formatIphoneModelAbbreviation (model: IphoneModel) {
-  let output: string = model
+  let output: string = String(model)
   const rules = [
     ['-', ' '],
     ['iphone ', ''],

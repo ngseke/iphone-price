@@ -15,6 +15,8 @@ import ButtonBack from './ButtonBack.vue'
 import FormGroupFilter from './FormGroupFilter.vue'
 import FormGroupDisplayOptions from './FormGroupDisplayOptions.vue'
 import MenuChart from './MenuChart.vue'
+import Select from './Select.vue'
+import { formatDatasetName } from '../modules/iphoneDataset'
 
 const { chartType } = useChartType()
 
@@ -40,6 +42,7 @@ const {
   iphoneDataset,
   selectedDatasetName,
   selectedDataset,
+  iphoneDatasetNames,
 } = useIphoneDataset({
   options: computed(() => ({
     storage: filter.value.storage,
@@ -63,6 +66,12 @@ const chartBind = computed(() => ({
   onReset: resetFilter,
 }))
 
+const iphoneDatasetNameItems = computed(() => (
+  iphoneDatasetNames.value.map((name) => ({
+    value: name,
+    title: formatDatasetName(name),
+  }))
+))
 </script>
 
 <template>
@@ -123,9 +132,14 @@ const chartBind = computed(() => ({
           />
         </div>
         <div v-else class="flex w-full flex-col gap-y-4">
-          <div>
+          <div class="flex">
             <ButtonBack @click="selectedDatasetName = null" />
           </div>
+          <Select
+            v-model="selectedDatasetName"
+            :items="iphoneDatasetNameItems"
+            label="查看系列"
+          />
           <Table :source="selectedDataset?.source" />
         </div>
       </Transition>

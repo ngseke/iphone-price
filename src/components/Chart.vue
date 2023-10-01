@@ -15,7 +15,6 @@ import { formatPrice, formatPriceAbbreviation } from '../modules/price'
 import CardNoResult from './CardNoResult.vue'
 import { type TaiwanMinimumWage } from '../databases/taiwanMinimumWage'
 import { useChartTooltip } from '../composables/useChartTooltip'
-import { whenever } from '@vueuse/core'
 
 use([
   CanvasRenderer,
@@ -263,8 +262,7 @@ function handleClick (event: Parameters<NonNullable<InstanceType< typeof VueECha
   emit('update:selectedSeriesName', event.seriesName ?? null)
 }
 
-async function handleMouseOut () {
-  await nextTick()
+function highlight () {
   if (props.selectedSeriesName != null) {
     chartRef.value?.dispatchAction({
       type: 'highlight',
@@ -273,10 +271,19 @@ async function handleMouseOut () {
   }
 }
 
-whenever(() => !props.selectedSeriesName, () => {
-  chartRef.value?.dispatchAction({
-    type: 'downplay',
-  })
+async function handleMouseOut () {
+  await nextTick()
+  highlight()
+}
+
+watch(() => props.selectedSeriesName, () => {
+  if (!props.selectedSeriesName) {
+    chartRef.value?.dispatchAction({
+      type: 'downplay',
+    })
+  } else {
+    highlight()
+  }
 })
 </script>
 

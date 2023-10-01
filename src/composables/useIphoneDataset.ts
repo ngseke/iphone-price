@@ -15,8 +15,13 @@ export default function useIphoneDataset ({ options }: {
       .find(dataset => dataset.name === selectedDatasetName.value)
   ))
 
+  const iphoneDatasetNames = computed(() => (
+    iphoneDataset.value.map(dataset => dataset.name)
+  ))
+
   return {
     iphoneDataset,
+    iphoneDatasetNames,
     selectedDatasetName,
     selectedDataset,
   }
