@@ -19,12 +19,20 @@ const { isFullscreenChartShown } = useVModels(props, emit)
 <template>
   <ul class="menu rounded-box menu-horizontal bg-base-200 font-medium">
     <li>
-      <button type="button" @click="isFullscreenChartShown = true">
+      <button
+        title="展開圖表"
+        type="button"
+        @click="isFullscreenChartShown = true"
+      >
         <FontAwesomeIcon :icon="faExpand" />
       </button>
     </li>
     <li :class="{ 'disabled': !downloadUrl }">
-      <a download="chart.png" :href="downloadUrl ?? 'javascript:void(0)'">
+      <a
+        download="chart.png"
+        :href="downloadUrl ?? 'javascript:void(0)'"
+        title="下載圖表"
+      >
         <FontAwesomeIcon :icon="faDownload" />
       </a>
     </li>
