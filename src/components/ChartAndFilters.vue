@@ -1,8 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import Chart from './Chart.vue'
-import LayoutFormGroup from './LayoutFormGroup.vue'
-import Switch from './Switch.vue'
 import useFilter from '../composables/useFilter'
 import TabChartType from './TabChartType.vue'
 import useDisplayOptions from '../composables/useDisplayOptions'
@@ -17,6 +15,7 @@ import useIphoneDataset from '../composables/useIphoneDataset'
 import Table from './Table.vue'
 import ButtonBack from './ButtonBack.vue'
 import FormGroupFilter from './FormGroupFilter.vue'
+import FormGroupDisplayOptions from './FormGroupDisplayOptions.vue'
 
 const { chartType } = useChartType()
 
@@ -108,6 +107,7 @@ const chartBind = computed(() => ({
             <template #title>圖表類型</template>
             <TabChartType v-model="chartType" />
           </LayoutFormSectionGroup>
+
           <FormGroupFilter
             v-model:lines="filter.lines"
             v-model:storage="filter.storage"
@@ -122,39 +122,14 @@ const chartBind = computed(() => ({
             @resetYearRange="resetFilterYearRange"
           />
 
-          <LayoutFormSectionGroup
+          <FormGroupDisplayOptions
+            v-model:isModelNameAbbreviation="displayOptions.isModelNameAbbreviation"
+            v-model:isPriceAbbreviation="displayOptions.isPriceAbbreviation"
+            v-model:isPriceHidden="displayOptions.isPriceHidden"
+            v-model:isTaiwanMinimumWageListShown="displayOptions.isTaiwanMinimumWageListShown"
             :showReset="isSomeDisplayOptionsChanged"
             @reset="resetDisplayOptions"
-          >
-            <template #title>顯示方式</template>
-            <LayoutFormGroup>
-              <template #title>標籤</template>
-              <div class="flex flex-col flex-wrap gap-x-4">
-                <Switch
-                  v-model="displayOptions.isModelNameAbbreviation"
-                  label="簡化產品名稱"
-                />
-                <Switch
-                  v-model="displayOptions.isPriceHidden"
-                  label="隱藏價格"
-                />
-                <Switch
-                  v-model="displayOptions.isPriceAbbreviation"
-                  :disabled="displayOptions.isPriceHidden"
-                  label="簡化價格"
-                />
-              </div>
-            </LayoutFormGroup>
-            <LayoutFormGroup>
-              <template #title>其他指標</template>
-              <div class="flex flex-wrap gap-x-4">
-                <Switch
-                  v-model="displayOptions.isTaiwanMinimumWageListShown"
-                  label="顯示台灣基本工資（月薪）"
-                />
-              </div>
-            </LayoutFormGroup>
-          </LayoutFormSectionGroup>
+          />
         </div>
         <div v-else class="flex w-full flex-col gap-y-4">
           <div>
