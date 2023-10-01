@@ -51,7 +51,7 @@ export default function useFilter () {
     filter.value.isPriceAdjusted = defaultFilter.isPriceAdjusted
   }
 
-  function resetYearRange () {
+  function resetFilterYearRange () {
     filter.value.yearRange = [...defaultFilter.yearRange]
   }
 
@@ -67,6 +67,6 @@ export default function useFilter () {
     resetFilterStorageSize,
     resetFilterLines,
     resetFilterIsPriceAdjusted,
-    resetYearRange,
+    resetFilterYearRange,
   }
 }

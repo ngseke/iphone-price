@@ -2,8 +2,6 @@
 import { computed, ref } from 'vue'
 import Chart from './Chart.vue'
 import LayoutFormGroup from './LayoutFormGroup.vue'
-import RadioGroupStorageSize from './RadioGroupStorageSize.vue'
-import CheckboxGroupIphoneLine from './CheckboxGroupIphoneLine.vue'
 import Switch from './Switch.vue'
 import useFilter from '../composables/useFilter'
 import TabChartType from './TabChartType.vue'
@@ -14,12 +12,11 @@ import { taiwanMinimumWageList } from '../databases/taiwanMinimumWage'
 import ModelFullscreen from './ModelFullscreen.vue'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faExpand, faDownload } from '@fortawesome/free-solid-svg-icons'
-import RangeSlider from './RangeSlider.vue'
-import { defaultFilter } from '../modules/filter'
 import LayoutFormSectionGroup from './LayoutFormSectionGroup.vue'
 import useIphoneDataset from '../composables/useIphoneDataset'
 import Table from './Table.vue'
 import ButtonBack from './ButtonBack.vue'
+import FormGroupFilter from './FormGroupFilter.vue'
 
 const { chartType } = useChartType()
 
@@ -32,7 +29,7 @@ const {
   resetFilter,
   resetFilterStorageSize,
   resetFilterLines,
-  resetYearRange,
+  resetFilterYearRange,
 } = useFilter()
 
 const {
@@ -67,6 +64,7 @@ const chartBind = computed(() => ({
   showTaiwanMinimumWageList: displayOptions.value.isTaiwanMinimumWageListShown,
   onReset: resetFilter,
 }))
+
 </script>
 
 <template>
@@ -110,40 +108,19 @@ const chartBind = computed(() => ({
             <template #title>圖表類型</template>
             <TabChartType v-model="chartType" />
           </LayoutFormSectionGroup>
-
-          <LayoutFormSectionGroup
+          <FormGroupFilter
+            v-model:lines="filter.lines"
+            v-model:storage="filter.storage"
+            v-model:yearRange="filter.yearRange"
+            :showLinesReset="isFilterLinesChanged"
             :showReset="isSomeFilterChanged"
+            :showStorageSizeReset="isFilterStorageSizeChanged"
+            :showYearRangeReset="isFilterYearRangeChanged"
             @reset="resetFilter"
-          >
-            <template #title>篩選條件</template>
-            <LayoutFormGroup
-              :showReset="isFilterStorageSizeChanged"
-              @reset="resetFilterStorageSize"
-            >
-              <template #title>儲存空間</template>
-              <RadioGroupStorageSize v-model="filter.storage" />
-            </LayoutFormGroup>
-
-            <LayoutFormGroup
-              :showReset="isFilterLinesChanged"
-              @reset="resetFilterLines"
-            >
-              <template #title>產品線</template>
-              <CheckboxGroupIphoneLine v-model="filter.lines" />
-            </LayoutFormGroup>
-
-            <LayoutFormGroup
-              :showReset="isFilterYearRangeChanged"
-              @reset="resetYearRange"
-            >
-              <template #title>發售年份</template>
-              <RangeSlider
-                v-model="filter.yearRange"
-                :max="defaultFilter.yearRange[1]"
-                :min="defaultFilter.yearRange[0]"
-              />
-            </LayoutFormGroup>
-          </LayoutFormSectionGroup>
+            @resetLines="resetFilterLines"
+            @resetStorageSize="resetFilterStorageSize"
+            @resetYearRange="resetFilterYearRange"
+          />
 
           <LayoutFormSectionGroup
             :showReset="isSomeDisplayOptionsChanged"
