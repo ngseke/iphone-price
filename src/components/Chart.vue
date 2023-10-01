@@ -213,7 +213,7 @@ const option = computed<EChartsOption>(() => ({
   ],
   grid: {
     containLabel: true,
-    top: '5%',
+    top: '8%',
     right: '4%',
     bottom: '0%',
     left: '4%',
@@ -231,8 +231,7 @@ const option = computed<EChartsOption>(() => ({
   },
   yAxis: {
     type: 'value',
-    min: (value) => value.min - 2000,
-    max: (value) => value.max + 2000,
+    min: 'dataMin',
     axisLabel: {
       formatter: formatPriceAbbreviation,
     },
