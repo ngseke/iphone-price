@@ -34,6 +34,7 @@ const props = defineProps<{
   modelNameAbbreviation: boolean
   priceAbbreviation: boolean
   hidePrice: boolean
+  hideTooltip: boolean
 
   showTaiwanMinimumWageList: boolean
 }>()
@@ -167,7 +168,7 @@ const { tooltip } = useChartTooltip()
 const option = computed<EChartsOption>(() => ({
   darkMode: isDark.value,
   dataset: props.iphoneDataset,
-  tooltip: tooltip.value,
+  tooltip: props.hideTooltip ? undefined : tooltip.value,
   series: [
     ...props.iphoneDataset.map<LineSeriesOption>((dataset, index) => ({
       type: 'line',

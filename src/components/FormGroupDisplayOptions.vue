@@ -8,6 +8,9 @@ const props = defineProps<{
   isModelNameAbbreviation: boolean
   isPriceAbbreviation: boolean
   isPriceHidden: boolean
+
+  isTooltipHidden: boolean
+
   isTaiwanMinimumWageListShown: boolean
 
   showReset: boolean
@@ -17,6 +20,9 @@ const emit = defineEmits<{
   'update:isModelNameAbbreviation': [value: boolean]
   'update:isPriceAbbreviation': [value: boolean]
   'update:isPriceHidden': [value: boolean]
+
+  'update:isTooltipHidden': [value: boolean]
+
   'update:isTaiwanMinimumWageListShown': [value: boolean]
 
   reset: []
@@ -26,6 +32,7 @@ const {
   isModelNameAbbreviation,
   isPriceAbbreviation,
   isPriceHidden,
+  isTooltipHidden,
   isTaiwanMinimumWageListShown,
 } = useVModels(props, emit)
 </script>
@@ -54,6 +61,17 @@ const {
         />
       </div>
     </LayoutFormGroup>
+
+    <LayoutFormGroup>
+      <template #title>提示框</template>
+      <div class="flex flex-col flex-wrap gap-x-4">
+        <Switch
+          v-model="isTooltipHidden"
+          label="隱藏懸浮提示框"
+        />
+      </div>
+    </LayoutFormGroup>
+
     <LayoutFormGroup>
       <template #title>其他指標</template>
       <div class="flex flex-wrap gap-x-4">

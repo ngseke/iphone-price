@@ -62,6 +62,7 @@ const chartBind = computed(() => ({
   priceAbbreviation: displayOptions.value.isPriceAbbreviation,
   hidePrice: displayOptions.value.isPriceHidden,
   showTaiwanMinimumWageList: displayOptions.value.isTaiwanMinimumWageListShown,
+  hideTooltip: displayOptions.value.isTooltipHidden,
   onReset: resetFilter,
 }))
 
@@ -145,6 +146,7 @@ async function download () {
             v-model:isPriceAbbreviation="displayOptions.isPriceAbbreviation"
             v-model:isPriceHidden="displayOptions.isPriceHidden"
             v-model:isTaiwanMinimumWageListShown="displayOptions.isTaiwanMinimumWageListShown"
+            v-model:isTooltipHidden="displayOptions.isTooltipHidden"
             :showReset="isSomeDisplayOptionsChanged"
             @reset="resetDisplayOptions"
           />
