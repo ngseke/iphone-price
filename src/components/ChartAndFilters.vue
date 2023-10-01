@@ -8,14 +8,13 @@ import { chartTypeOptions } from '../modules/chartType'
 import useChartType from '../composables/useChartType'
 import { taiwanMinimumWageList } from '../databases/taiwanMinimumWage'
 import ModelFullscreen from './ModelFullscreen.vue'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faExpand, faDownload } from '@fortawesome/free-solid-svg-icons'
 import LayoutFormSectionGroup from './LayoutFormSectionGroup.vue'
 import useIphoneDataset from '../composables/useIphoneDataset'
 import Table from './Table.vue'
 import ButtonBack from './ButtonBack.vue'
 import FormGroupFilter from './FormGroupFilter.vue'
 import FormGroupDisplayOptions from './FormGroupDisplayOptions.vue'
+import MenuChart from './MenuChart.vue'
 
 const { chartType } = useChartType()
 
@@ -80,18 +79,10 @@ const chartBind = computed(() => ({
             <Chart v-bind="chartBind" />
           </ModelFullscreen>
         </div>
-        <ul class="menu rounded-box menu-horizontal bg-base-200 font-medium">
-          <li>
-            <button type="button" @click="isFullscreenChartShown = true">
-              <FontAwesomeIcon :icon="faExpand" />
-            </button>
-          </li>
-          <li :class="{ 'disabled': !downloadUrl }">
-            <a download="chart.png" :href="downloadUrl ?? 'javascript:void(0)'">
-              <FontAwesomeIcon :icon="faDownload" />
-            </a>
-          </li>
-        </ul>
+        <MenuChart
+          v-model:isFullscreenChartShown="isFullscreenChartShown"
+          :downloadUrl="downloadUrl"
+        />
       </div>
     </div>
 
