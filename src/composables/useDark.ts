@@ -5,6 +5,7 @@ const isDark = baseUseDark({
   attribute: 'data-theme',
   valueLight: 'lemonade',
   valueDark: 'forest',
+  disableTransition: false,
 })
 
 export function useDark () {
