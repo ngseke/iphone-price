@@ -1,6 +1,8 @@
-import { type ChartDatasetGroupBy } from './iphoneDataset'
+import { type Iphone } from '../types/Iphone'
 
 export type ChartTypeOptionValue = 'generation' | 'priceAdjustment'
+
+export type ChartDatasetGroupBy = Array<keyof Iphone>
 
 export interface ChartTypeOption {
   name: string

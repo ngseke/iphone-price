@@ -3,8 +3,6 @@ import dayjs from 'dayjs'
 import { type StorageSize } from '../types/StorageSize'
 import { formatIphoneModel } from './iphoneModel'
 
-export type ChartDatasetGroupBy = Array<keyof Iphone>
-
 export interface GenerateDatasetOptions {
   storage?: StorageSize
   lines?: IphoneLine[]
