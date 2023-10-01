@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, nextTick, ref } from 'vue'
 import Chart from './Chart.vue'
 import useFilter from '../composables/useFilter'
 import TabChartType from './TabChartType.vue'
@@ -54,7 +54,6 @@ const {
 })
 
 const isFullscreenChartShown = ref(false)
-const downloadUrl = ref<string | null>(null)
 
 const chartBind = computed(() => ({
   iphoneDataset: iphoneDataset.value,
@@ -72,6 +71,18 @@ const iphoneDatasetNameItems = computed(() => (
     title: formatDatasetName(name),
   }))
 ))
+
+const chartRef = ref<InstanceType<typeof Chart> | null>(null)
+const downloadLinkRef = ref<HTMLAnchorElement | null>(null)
+const downloadUrl = ref<string | null>(null)
+
+async function download () {
+  const url = chartRef.value?.getDownloadUrl()
+  if (!url) return
+  downloadUrl.value = url
+  await nextTick()
+  downloadLinkRef.value?.click()
+}
 </script>
 
 <template>
@@ -80,9 +91,9 @@ const iphoneDatasetNameItems = computed(() => (
       <div class="flex w-full flex-col items-start space-y-8 overflow-x-auto lg:sticky lg:top-8 lg:px-4">
         <div class="h-[24rem] w-full min-w-[36rem] sm:h-[32rem]">
           <Chart
+            ref="chartRef"
             v-bind="chartBind"
             v-model:selectedSeriesName="selectedDatasetName"
-            @dataUrlChanged="(url) => { downloadUrl = url }"
           />
           <ModelFullscreen v-model="isFullscreenChartShown">
             <Chart v-bind="chartBind" />
@@ -91,6 +102,13 @@ const iphoneDatasetNameItems = computed(() => (
         <MenuChart
           v-model:isFullscreenChartShown="isFullscreenChartShown"
           :downloadUrl="downloadUrl"
+          @clickDownload="download"
+        />
+        <a
+          ref="downloadLinkRef"
+          class="hidden"
+          download="chart.png"
+          :href="downloadUrl ?? ''"
         />
       </div>
     </div>

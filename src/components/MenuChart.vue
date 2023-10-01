@@ -5,15 +5,14 @@ import { useVModels } from '@vueuse/core'
 
 const props = defineProps<{
   isFullscreenChartShown: boolean
-  downloadUrl: string | null
 }>()
 
 const emit = defineEmits<{
   'update:isFullscreenChartShown': [value: boolean]
+  clickDownload: []
 }>()
 
 const { isFullscreenChartShown } = useVModels(props, emit)
-
 </script>
 
 <template>
@@ -27,14 +26,13 @@ const { isFullscreenChartShown } = useVModels(props, emit)
         <FontAwesomeIcon :icon="faExpand" />
       </button>
     </li>
-    <li :class="{ 'disabled': !downloadUrl }">
-      <a
-        download="chart.png"
-        :href="downloadUrl ?? 'javascript:void(0)'"
+    <li @click="$emit('clickDownload')">
+      <button
         title="下載圖表"
+        type="button"
       >
         <FontAwesomeIcon :icon="faDownload" />
-      </a>
+      </button>
     </li>
   </ul>
 </template>

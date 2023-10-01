@@ -40,7 +40,6 @@ const props = defineProps<{
 
 const emit = defineEmits<{
   reset: []
-  dataUrlChanged: [url: string | null]
   'update:selectedSeriesName': [index: string | null]
 }>()
 
@@ -248,14 +247,6 @@ const isEmpty = computed(() => !props.iphoneDataset.length)
 
 const chartRef = ref<InstanceType<typeof VueECharts> | null>(null)
 
-function handleFinished () {
-  const url = chartRef.value?.getDataURL({ type: 'png' })
-  if (url) emit('dataUrlChanged', url)
-}
-watch(isEmpty, () => {
-  emit('dataUrlChanged', null)
-})
-
 function handleClick (event: Parameters<NonNullable<InstanceType< typeof VueECharts>['onClick']>>[0]) {
   if (event.seriesName === taiwanMinimumWageSeriesName) return
 
@@ -285,6 +276,12 @@ watch(() => props.selectedSeriesName, () => {
     highlight()
   }
 })
+
+function getDownloadUrl () {
+  return chartRef.value?.getDataURL({ type: 'png' })
+}
+
+defineExpose({ getDownloadUrl })
 </script>
 
 <template>
@@ -296,7 +293,6 @@ watch(() => props.selectedSeriesName, () => {
       class="h-full w-full"
       :option="option"
       @click="handleClick"
-      @finished="handleFinished"
       @mouseout="handleMouseOut"
       @zr:mouseout="handleMouseOut"
     />
