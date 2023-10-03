@@ -6,7 +6,6 @@ import TabChartType from './TabChartType.vue'
 import useDisplayOptions from '../composables/useDisplayOptions'
 import { chartTypeOptions } from '../modules/chartType'
 import useChartType from '../composables/useChartType'
-import { taiwanMinimumWageList } from '../databases/taiwanMinimumWage'
 import ModelFullscreen from './ModelFullscreen.vue'
 import LayoutFormSectionGroup from './LayoutFormSectionGroup.vue'
 import useIphoneDataset from '../composables/useIphoneDataset'
@@ -17,6 +16,7 @@ import FormGroupDisplayOptions from './FormGroupDisplayOptions.vue'
 import MenuChart from './MenuChart.vue'
 import Select from './Select.vue'
 import { formatDatasetName } from '../modules/iphoneDataset'
+import useTaiwanMinimumWageList from '../composables/useTaiwanMinimumWageList'
 
 const { chartType } = useChartType()
 
@@ -53,11 +53,17 @@ const {
   })),
 })
 
+const { taiwanMinimumWageList } = useTaiwanMinimumWageList({
+  options: computed(() => ({
+    yearRange: filter.value.yearRange,
+  })),
+})
+
 const isFullscreenChartShown = ref(false)
 
 const chartBind = computed(() => ({
   iphoneDataset: iphoneDataset.value,
-  taiwanMinimumWageList,
+  taiwanMinimumWageList: taiwanMinimumWageList.value,
   modelNameAbbreviation: displayOptions.value.isModelNameAbbreviation,
   priceAbbreviation: displayOptions.value.isPriceAbbreviation,
   hidePrice: displayOptions.value.isPriceHidden,

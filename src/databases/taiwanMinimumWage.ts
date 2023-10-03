@@ -1,6 +1,4 @@
-import dayjs from 'dayjs'
 import { type Price } from '../types/Currency'
-import { earliestReleasedAt } from './iphone'
 
 export interface TaiwanMinimumWage {
   implementedAt: `${number}-${number}-${number}`
@@ -57,7 +55,3 @@ export const taiwanMinimumWageList: TaiwanMinimumWage[] = [
     monthlySalary: { twd: 27_470 },
   },
 ]
-  .filter((item) => (
-    dayjs(item.implementedAt, 'YYYY-MM-DD').year() >=
-    dayjs(earliestReleasedAt, 'YYYY-MM').year()
-  )) as TaiwanMinimumWage[]
