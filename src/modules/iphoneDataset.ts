@@ -1,7 +1,8 @@
-import { type IphoneLine, type Iphone, type IphoneModel } from '../types/Iphone'
+import { type IphoneLine, type Iphone, type IphoneModel, type IphoneSuffix } from '../types/Iphone'
 import dayjs from 'dayjs'
 import { type StorageSize } from '../types/StorageSize'
 import { formatIphoneModel } from './iphoneModel'
+import { iphoneLines } from './iphoneLine'
 
 export interface GenerateDatasetOptions {
   storage?: StorageSize
@@ -64,5 +65,23 @@ export function generateIphoneDataset (
 
 export function formatDatasetName (name: string) {
   if (name.startsWith('iphone')) return formatIphoneModel(name as IphoneModel)
-  return name
+
+  try {
+    const chunks = name.split(',')
+      .map((chunk, index) => {
+        if (!index) return iphoneLines[chunk as IphoneLine].name
+        const suffixMap: Record<IphoneSuffix, string> = {
+          base: '',
+          plus: 'Plus',
+          pro: 'Pro',
+          'pro-max': 'Pro Max',
+          mini: 'mini',
+        }
+        return suffixMap[chunk as IphoneSuffix]
+      })
+
+    return `${chunks[0]} ${chunks[1] ? `(${chunks[1]})` : ''}`
+  } catch (e) {
+    return name
+  }
 }
