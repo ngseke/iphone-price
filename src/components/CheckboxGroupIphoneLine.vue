@@ -29,9 +29,15 @@ const vModel = useVModel(props, 'modelValue', emit)
         :label="iphoneLines[item].name"
         :value="item"
       />
-      <p class="pl-9 text-xs text-base-content/80">
-        {{ iphoneLines[item].description }}
-      </p>
+      <ul class="pl-9 ">
+        <li
+          v-for="tag in iphoneLines[item].tags"
+          :key="tag"
+          class="badge badge-sm mr-[2px]"
+        >
+          {{ tag }}
+        </li>
+      </ul>
     </div>
   </div>
 </template>

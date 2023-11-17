@@ -1,6 +1,6 @@
 import dayjs from 'dayjs'
 
-import { type Iphone } from '../types/Iphone'
+import { type IphoneLine, type Iphone } from '../types/Iphone'
 
 import { iphone15List } from './iphone15'
 import { iphone14List } from './iphone14'
@@ -35,3 +35,7 @@ export const iphoneList: Iphone[] = [
 
 export const earliestReleasedAt = iphoneList.at(0)?.releasedAt
 export const latestReleasedAt = iphoneList.at(-1)?.releasedAt
+
+export function getFilteredIphoneListByLine (line: IphoneLine) {
+  return iphoneList.filter(iphone => iphone.line === line)
+}
