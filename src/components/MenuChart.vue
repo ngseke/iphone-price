@@ -16,7 +16,7 @@ const { isFullscreenChartShown } = useVModels(props, emit)
 </script>
 
 <template>
-  <ul class="menu rounded-box menu-horizontal bg-base-200 font-medium">
+  <ul class="menu rounded-box menu-horizontal mx-4 bg-base-200 font-medium">
     <li>
       <button
         title="展開圖表"
