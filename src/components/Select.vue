@@ -30,21 +30,19 @@ const options = computed(() => (
 
 <template>
   <div class="form-control w-full">
-    <div class="form-control w-full">
-      <label v-if="label" class="label">
-        <span class="label-text font-bold">
-          {{ label }}
-        </span>
-      </label>
-      <select v-model="vModel" class="select select-bordered">
-        <option
-          v-for="{ title, value } in options"
-          :key="String(value)"
-          :value="value"
-        >
-          {{ title }}
-        </option>
-      </select>
-    </div>
+    <label v-if="label" class="label">
+      <span class="label-text font-bold">
+        {{ label }}
+      </span>
+    </label>
+    <select v-model="vModel" class="select select-bordered">
+      <option
+        v-for="{ title, value } in options"
+        :key="String(value)"
+        :value="value"
+      >
+        {{ title }}
+      </option>
+    </select>
   </div>
 </template>
