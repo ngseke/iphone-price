@@ -24,11 +24,7 @@
     "src/**/*.ts",
     "src/**/*.d.ts",
     "src/**/*.tsx",
-    "src/**/*.vue",
-    "vite.config.ts",
-    "tailwind.config.ts",
-    "postcss.config.js",
-    ".eslintrc.cjs"
+    "src/**/*.vue"
   ],
   "exclude": [
     "dist/**/*.*"
