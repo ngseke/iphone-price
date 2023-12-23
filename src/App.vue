@@ -1,10 +1,13 @@
 <script setup lang="ts">
+import { defineAsyncComponent, ref } from 'vue'
 import TheHero from './components/TheHero.vue'
 import TheFooter from './components/TheFooter.vue'
 import IconButtonDarkMode from './components/IconButtonDarkMode.vue'
 import DataSource from './components/DataSource.vue'
-import ChartAndFilters from './components/ChartAndFilters.vue'
-import { ref } from 'vue'
+
+const ChartAndFilters = defineAsyncComponent(async () =>
+  await import('./components/ChartAndFilters.vue')
+)
 
 const mainRaf = ref<HTMLElement | null>(null)
 function scrollToMain () {
