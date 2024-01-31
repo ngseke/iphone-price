@@ -23,7 +23,7 @@ export default {
     daisyui,
   ],
   daisyui: {
-    themes: true,
+    themes: ['lemonade', 'forest'],
     logs: false,
   },
 } satisfies Config

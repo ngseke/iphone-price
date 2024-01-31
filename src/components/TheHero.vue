@@ -5,16 +5,29 @@ import { faArrowTrendUp, faChartLine } from '@fortawesome/free-solid-svg-icons'
 import { latestReleasedAt } from '../databases/iphone'
 import StatGroupLatestPrice from './StatGroupLatestPrice.vue'
 import TextVerticalScrolling from './TextVerticalScrolling.vue'
+import { computed } from 'vue'
+import { useDark } from '../composables/useDark'
 
 const lastUpdatedAtYear = dayjs(latestReleasedAt, 'YYYY-MM').year()
 
 defineEmits<{
   'clickViewChart': []
 }>()
+
+const isDark = useDark()
+
+const className = computed(() => (
+  isDark.value
+    ? 'bg-[linear-gradient(rgba(16,16,16,1)_1px,transparent_1px),linear-gradient(90deg,rgba(16,16,16,1)_1px,transparent_1px)]'
+    : 'bg-[linear-gradient(rgba(230,230,230,1)_1px,transparent_1px),linear-gradient(90deg,rgba(230,230,230,1)_1px,transparent_1px)] '
+))
 </script>
 
 <template>
-  <div class="hero bg-base-200 py-8 sm:min-h-screen sm:py-0">
+  <div
+    class="hero bg-base-200 bg-[length:1rem_1rem] py-8 sm:min-h-screen sm:py-0"
+    :class="className"
+  >
     <div class="hero-content w-full max-w-4xl flex-wrap justify-center">
       <div class="flex-1 space-y-8">
         <div class="flex flex-col items-start space-y-2">
