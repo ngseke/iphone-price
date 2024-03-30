@@ -90,6 +90,8 @@ async function download () {
   await nextTick()
   downloadLinkRef.value?.click()
 }
+
+const shouldShowTable = computed(() => Boolean(selectedDataset.value))
 </script>
 
 <template>
@@ -122,53 +124,59 @@ async function download () {
 
     <div class="relative w-full lg:w-1/3">
       <Transition
-        :enterFromClass="`${!selectedDatasetName ? '-translate-x-5' : 'translate-x-5'} opacity-0`"
+        :enterFromClass="`${!shouldShowTable ? '-translate-x-5' : 'translate-x-5'} opacity-0`"
         enterActiveClass="transition duration-250"
-        :leaveToClass="`${!selectedDatasetName ? 'translate-x-5' : '-translate-x-5'} opacity-0`"
+        :leaveToClass="`${!shouldShowTable ? 'translate-x-5' : '-translate-x-5'} opacity-0`"
         leaveActiveClass="transition duration-250 absolute"
       >
-        <div v-if="!selectedDatasetName" class="flex flex-col gap-y-4">
-          <LayoutFormSectionGroup>
-            <template #title>圖表類型</template>
-            <TabChartType v-model="chartType" />
-          </LayoutFormSectionGroup>
-
-          <FormGroupFilter
-            v-model:lines="filter.lines"
-            v-model:storage="filter.storage"
-            v-model:yearRange="filter.yearRange"
-            :showLinesReset="isFilterLinesChanged"
-            :showReset="isSomeFilterChanged"
-            :showStorageSizeReset="isFilterStorageSizeChanged"
-            :showYearRangeReset="isFilterYearRangeChanged"
-            @reset="resetFilter"
-            @resetLines="resetFilterLines"
-            @resetStorageSize="resetFilterStorageSize"
-            @resetYearRange="resetFilterYearRange"
-          />
-
-          <FormGroupDisplayOptions
-            v-model:isModelNameAbbreviation="displayOptions.isModelNameAbbreviation"
-            v-model:isPriceAbbreviation="displayOptions.isPriceAbbreviation"
-            v-model:isPriceHidden="displayOptions.isPriceHidden"
-            v-model:isTaiwanMinimumWageListShown="displayOptions.isTaiwanMinimumWageListShown"
-            v-model:isTooltipHidden="displayOptions.isTooltipHidden"
-            :showReset="isSomeDisplayOptionsChanged"
-            @reset="resetDisplayOptions"
-          />
-        </div>
-        <div v-else class="flex w-full flex-col gap-y-4">
-          <div class="flex">
-            <ButtonBack @click="selectedDatasetName = null" />
+        <div v-if="shouldShowTable" class="inset-0 z-50 bg-base-100 sm:absolute">
+          <div class="sticky top-0 flex flex-col gap-y-4 py-6">
+            <div class="flex">
+              <ButtonBack @click="selectedDatasetName = null" />
+            </div>
+            <Select
+              v-model="selectedDatasetName"
+              :items="iphoneDatasetNameItems"
+              label="查看系列"
+            />
+            <Table :source="selectedDataset?.source" />
           </div>
-          <Select
-            v-model="selectedDatasetName"
-            :items="iphoneDatasetNameItems"
-            label="查看系列"
-          />
-          <Table :source="selectedDataset?.source" />
         </div>
       </Transition>
+
+      <div
+        class="flex-col gap-y-4 transition duration-150"
+        :class="shouldShowTable ? 'hidden sm:flex sm:invisible' : 'flex'"
+      >
+        <LayoutFormSectionGroup>
+          <template #title>圖表類型</template>
+          <TabChartType v-model="chartType" />
+        </LayoutFormSectionGroup>
+
+        <FormGroupFilter
+          v-model:lines="filter.lines"
+          v-model:storage="filter.storage"
+          v-model:yearRange="filter.yearRange"
+          :showLinesReset="isFilterLinesChanged"
+          :showReset="isSomeFilterChanged"
+          :showStorageSizeReset="isFilterStorageSizeChanged"
+          :showYearRangeReset="isFilterYearRangeChanged"
+          @reset="resetFilter"
+          @resetLines="resetFilterLines"
+          @resetStorageSize="resetFilterStorageSize"
+          @resetYearRange="resetFilterYearRange"
+        />
+
+        <FormGroupDisplayOptions
+          v-model:isModelNameAbbreviation="displayOptions.isModelNameAbbreviation"
+          v-model:isPriceAbbreviation="displayOptions.isPriceAbbreviation"
+          v-model:isPriceHidden="displayOptions.isPriceHidden"
+          v-model:isTaiwanMinimumWageListShown="displayOptions.isTaiwanMinimumWageListShown"
+          v-model:isTooltipHidden="displayOptions.isTooltipHidden"
+          :showReset="isSomeDisplayOptionsChanged"
+          @reset="resetDisplayOptions"
+        />
+      </div>
     </div>
   </div>
 </template>
