@@ -1,14 +1,10 @@
 <script setup lang="ts">
-import dayjs from 'dayjs'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faArrowTrendUp, faChartLine } from '@fortawesome/free-solid-svg-icons'
-import { latestReleasedAt } from '../databases/iphone'
 import StatGroupLatestPrice from './StatGroupLatestPrice.vue'
 import TextVerticalScrolling from './TextVerticalScrolling.vue'
 import { computed } from 'vue'
 import { useDark } from '../composables/useDark'
-
-const lastUpdatedAtYear = dayjs(latestReleasedAt, 'YYYY-MM').year()
 
 defineEmits<{
   'clickViewChart': []
@@ -31,9 +27,6 @@ const className = computed(() => (
     <div class="hero-content w-full max-w-4xl flex-wrap justify-center">
       <div class="flex-1 space-y-8">
         <div class="flex flex-col items-start space-y-2">
-          <span class="badge badge-accent font-bold sm:badge-lg">
-            {{ lastUpdatedAtYear }} 年
-          </span>
           <h1 class="flex flex-col text-3xl font-extrabold sm:text-5xl sm:leading-tight">
             <span>台灣 iPhone 價格</span>
             <span>
