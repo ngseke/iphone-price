@@ -108,11 +108,14 @@ const shouldShowTable = computed(() => Boolean(selectedDataset.value))
             <Chart v-bind="chartBind" />
           </ModelFullscreen>
         </div>
-        <MenuChart
-          v-model:isFullscreenChartShown="isFullscreenChartShown"
-          :downloadUrl="downloadUrl"
-          @clickDownload="download"
-        />
+        <div class="flex w-full items-center justify-between">
+          <MenuChart
+            v-model:isFullscreenChartShown="isFullscreenChartShown"
+            :downloadUrl="downloadUrl"
+            @clickDownload="download"
+          />
+          <span class="text-xs opacity-70">*價格以新台幣計算</span>
+        </div>
         <a
           ref="downloadLinkRef"
           class="hidden"
