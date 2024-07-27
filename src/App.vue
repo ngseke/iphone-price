@@ -31,7 +31,7 @@ function scrollToMain () {
 
   <TheFooter />
 
-  <div class="fixed bottom-4 right-4 z-20">
+  <div class="fixed bottom-4 right-4 z-[100]">
     <IconButtonDarkMode />
   </div>
 </template>
