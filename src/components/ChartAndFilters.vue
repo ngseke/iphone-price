@@ -114,7 +114,7 @@ const shouldShowTable = computed(() => Boolean(selectedDataset.value))
             :downloadUrl="downloadUrl"
             @clickDownload="download"
           />
-          <span class="text-xs opacity-70">*價格以新台幣計算</span>
+          <span class="text-xs opacity-70">單位：新台幣</span>
         </div>
         <a
           ref="downloadLinkRef"
