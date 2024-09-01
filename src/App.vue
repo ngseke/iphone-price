@@ -5,8 +5,8 @@ import TheFooter from './components/TheFooter.vue'
 import IconButtonDarkMode from './components/IconButtonDarkMode.vue'
 import DataSource from './components/DataSource.vue'
 
-const ChartAndFilters = defineAsyncComponent(async () =>
-  await import('./components/ChartAndFilters.vue')
+const SectionChart = defineAsyncComponent(async () =>
+  await import('./components/SectionChart.vue')
 )
 
 const mainRaf = ref<HTMLElement | null>(null)
@@ -22,7 +22,7 @@ function scrollToMain () {
     ref="mainRaf"
     class="container min-h-screen space-y-16 px-4 py-6"
   >
-    <ChartAndFilters />
+    <SectionChart />
 
     <div class="mx-auto max-w-2xl space-y-4">
       <DataSource />
