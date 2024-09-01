@@ -9,6 +9,10 @@ const SectionChart = defineAsyncComponent(async () =>
   await import('./components/SectionChart.vue')
 )
 
+const SectionTable = defineAsyncComponent(async () =>
+  await import('./components/SectionTable.vue')
+)
+
 const mainRaf = ref<HTMLElement | null>(null)
 function scrollToMain () {
   mainRaf.value?.scrollIntoView({ behavior: 'smooth' })
@@ -20,9 +24,10 @@ function scrollToMain () {
 
   <main
     ref="mainRaf"
-    class="container min-h-screen space-y-16 px-4 py-6"
+    class="container min-h-screen space-y-20 px-4 py-6"
   >
     <SectionChart />
+    <SectionTable />
 
     <div class="mx-auto max-w-2xl space-y-4">
       <DataSource />
