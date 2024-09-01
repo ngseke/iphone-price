@@ -1,6 +1,6 @@
 import dayjs from 'dayjs'
 
-import { type IphoneLine, type Iphone } from '../types/Iphone'
+import { type IphoneLine, type Iphone, type IphoneModel } from '../types/Iphone'
 
 import { iphone15List } from './iphone15'
 import { iphone14List } from './iphone14'
@@ -15,6 +15,8 @@ import { iphoneSe3List } from './iphoneSe3'
 import { iphoneSe2List } from './iphoneSe2'
 import { iphone7List } from './iphone7'
 import { iphone6sList } from './iphone6s'
+import { type StorageSize } from '../types/StorageSize'
+import { groupBy } from 'lodash-es'
 
 export const iphoneList: Iphone[] = [
   ...iphone15List,
@@ -38,4 +40,12 @@ export const latestReleasedAt = iphoneList.at(-1)?.releasedAt
 
 export function getFilteredIphoneListByLine (line: IphoneLine) {
   return iphoneList.filter(iphone => iphone.line === line)
+}
+
+const fullAdjustedList = groupBy(
+  iphoneList?.filter(iphone => !iphone.isInitialRelease),
+  (iphone) => [iphone.model, iphone.storage].join(',')
+)
+export function findAdjustedList (storage: StorageSize, model: IphoneModel) {
+  return fullAdjustedList[[model, storage].join(',')]
 }

@@ -1,4 +1,7 @@
-export function formatPrice (price: number) {
+import { type Nullish } from '../types/Nullish'
+
+export function formatPrice (price: Nullish<number>) {
+  if (price == null) return null
   const { format } = new Intl.NumberFormat('en-US')
   return format(price)
 }

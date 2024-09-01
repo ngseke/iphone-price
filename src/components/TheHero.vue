@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faArrowTrendUp, faChartLine } from '@fortawesome/free-solid-svg-icons'
+import { faArrowTrendUp, faChartLine, faTable } from '@fortawesome/free-solid-svg-icons'
 import StatGroupLatestPrice from './StatGroupLatestPrice.vue'
 import TextVerticalScrolling from './TextVerticalScrolling.vue'
 import { computed } from 'vue'
@@ -8,6 +8,7 @@ import { useDark } from '../composables/useDark'
 
 defineEmits<{
   'clickViewChart': []
+  'clickViewTable': []
 }>()
 
 const isDark = useDark()
@@ -49,14 +50,22 @@ const className = computed(() => (
         <div class="relative -translate-y-12 select-none text-[7rem] before:absolute before:left-0 before:top-0 before:translate-x-4 before:translate-y-8 before:text-[10rem] before:content-['📱'] after:content-['📈'] " />
       </div>
 
-      <div class="mt-4 w-full">
+      <div class="mt-4 flex w-full gap-4">
         <button
-          class="btn btn-primary btn-outline btn-wide"
+          class="btn btn-primary"
           type="button"
           @click="$emit('clickViewChart')"
         >
           <FontAwesomeIcon :icon="faChartLine" />
           查看圖表
+        </button>
+        <button
+          class="btn btn-primary"
+          type="button"
+          @click="$emit('clickViewTable')"
+        >
+          <FontAwesomeIcon :icon="faTable" />
+          查看表格
         </button>
       </div>
     </div>

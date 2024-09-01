@@ -39,9 +39,7 @@ const formattedPrice = formatPrice(Math.abs(props.value ?? 0))
     <FontAwesomeIcon
       v-if="icon?.icon"
       class="mr-1"
-
       :icon="icon?.icon"
-      title="Magic is included!"
     />
     {{ formattedPrice }}
   </span>

@@ -95,8 +95,8 @@ const shouldShowTable = computed(() => Boolean(selectedDataset.value))
 </script>
 
 <template>
-  <div class="flex flex-wrap gap-y-8">
-    <div class="-mx-4 min-w-full sm:mx-0 sm:flex-1 lg:min-w-0">
+  <section class="flex flex-wrap gap-y-8">
+    <div class="min-w-full sm:mx-0 sm:flex-1 lg:min-w-0">
       <div class="flex w-full flex-col items-start space-y-8 overflow-x-auto lg:sticky lg:top-8 lg:px-4">
         <div class="h-[24rem] w-full min-w-[36rem] sm:h-[32rem]">
           <Chart
@@ -181,5 +181,5 @@ const shouldShowTable = computed(() => Boolean(selectedDataset.value))
         />
       </div>
     </div>
-  </div>
+  </section>
 </template>
