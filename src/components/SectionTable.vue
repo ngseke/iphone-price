@@ -4,13 +4,7 @@ import { iphoneList } from '../databases/iphone'
 import dayjs from 'dayjs'
 import { formatDateChinese } from '../modules/date'
 import { computed, ref } from 'vue'
-import { uniq } from 'lodash-es'
-import { type Iphone, type IphoneModel } from '../types/Iphone'
-import { type StorageSize } from '../types/StorageSize'
-import { formatPrice } from '../modules/price'
-import { formatStorageSize } from '../modules/storageSize'
-import { formatIphoneModel } from '../modules/iphoneModel'
-import AdjustedPrice from './AdjustedPrice.vue'
+import TablePriceByDate from './TablePriceByDate.vue'
 
 const groups = groupBy(
   iphoneList.filter(iphone => iphone.isInitialRelease),
@@ -20,27 +14,18 @@ const groups = groupBy(
 const releaseDates = Object.keys(groups)
   .sort((a, b) => +dayjs(b) - +dayjs(a))
 
-const selectedDate = ref(releaseDates[0])
-const selectedGroup = computed(() => groups[selectedDate.value])
-
-const columns = computed(() => (
-  uniq(selectedGroup.value.map(iphone => iphone.storage))
-    .sort((a, b) => a - b)
+const selectedDate = ref<string | null>(releaseDates[0])
+const selectedGroup = computed(() => (
+  selectedDate.value ? groups[selectedDate?.value] : null
 ))
 
-const rows = computed(() => {
-  const map: Partial<Record<IphoneModel, Partial<Record<StorageSize, Iphone>>>> = {}
-  selectedGroup.value?.forEach(iphone => {
-    map[iphone.model] ??= {}
-    ;(map[iphone.model] as Record<StorageSize, Iphone>)[iphone.storage] = iphone
-  })
-  return Object.values(map)
-})
+const displayed = computed(() => {
+  if (selectedGroup.value) {
+    return [{ date: selectedDate.value, list: selectedGroup.value }]
+  }
 
-function findAdjustedList (storage: StorageSize, model: IphoneModel) {
-  return iphoneList
-    .filter(iphone => !iphone.isInitialRelease && iphone.storage === storage && iphone.model === model)
-}
+  return releaseDates.map((date) => ({ date, list: groups[date] }))
+})
 </script>
 
 <template>
@@ -56,6 +41,15 @@ function findAdjustedList (storage: StorageSize, model: IphoneModel) {
             發售年月
           </h3>
           <ul class="menu rounded-box bg-base-200">
+            <li v-if="false">
+              <button
+                :class="{ active: !selectedDate }"
+                type="button"
+                @click="selectedDate = null"
+              >
+                顯示全部
+              </button>
+            </li>
             <li v-for="date in releaseDates" :key="date">
               <button
                 :class="{ active: selectedDate === date }"
@@ -69,50 +63,13 @@ function findAdjustedList (storage: StorageSize, model: IphoneModel) {
         </div>
       </div>
 
-      <div class="min-w-full sm:mx-0 sm:flex-1 lg:min-w-0">
-        <div class="flex w-full flex-col items-start space-y-8 lg:sticky lg:top-8 lg:px-8">
-          <h3 class="text-xl font-medium">
-            {{ formatDateChinese(selectedDate) }}
-          </h3>
-          <div class="w-full min-w-0">
-            <div class="overflow-x-auto overflow-y-hidden ">
-              <table class="table mb-4">
-                <thead>
-                  <tr>
-                    <th>型號</th>
-                    <th v-for="column in columns" :key="column">
-                      {{ formatStorageSize(column) }}
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr v-for="(row, key) in rows" :key="key" class="hover">
-                    <td class="font-bold">{{ formatIphoneModel(Object.values(row)[0]?.model) }}</td>
-                    <td v-for="column in columns" :key="column" class="align-top">
-                      <div class="flex flex-col items-start">
-                        <span class="font-rubik text-lg font-bold">
-                          {{ formatPrice(row[column]?.price.twd) }}
-                        </span>
-
-                        <AdjustedPrice
-                          v-for="(iphone, index) in findAdjustedList(column, Object.values(row)[0]?.model)"
-                          :key="index"
-                          :original="
-                            findAdjustedList(column, Object.values(row)[0]?.model)[index - 1]?.price.twd ??
-                              row[column]?.price.twd
-                          "
-                          :releasedAt="iphone.releasedAt"
-                          :value="iphone?.price.twd"
-                        />
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-              <span class="text-xs opacity-70">單位：新台幣</span>
-            </div>
-          </div>
-        </div>
+      <div class="flex min-w-full flex-col gap-8 sm:mx-0 sm:flex-1 lg:min-w-0  lg:px-8">
+        <TablePriceByDate
+          v-for="({ date, list }, index) in displayed"
+          :key="index"
+          :date="date"
+          :list="list"
+        />
       </div>
     </div>
   </section>
