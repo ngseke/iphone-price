@@ -50,13 +50,14 @@ const displayed = computed(() => {
                 顯示全部
               </button>
             </li>
-            <li v-for="date in releaseDates" :key="date">
+            <li v-for="(date, index) in releaseDates" :key="date">
               <button
                 :class="{ active: selectedDate === date }"
                 type="button"
                 @click="selectedDate = date"
               >
                 {{ formatDateChinese(date) }}
+                <div v-if="!index" class="badge badge-primary badge-sm font-bold">New</div>
               </button>
             </li>
           </ul>
