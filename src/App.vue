@@ -13,21 +13,22 @@ const SectionTable = defineAsyncComponent(async () =>
   await import('./components/SectionTable.vue')
 )
 
-const mainRaf = ref<HTMLElement | null>(null)
-function scrollToMain () {
-  mainRaf.value?.scrollIntoView({ behavior: 'smooth' })
+const chartRef = ref<InstanceType<typeof SectionChart> | null>(null)
+const tableRef = ref<InstanceType<typeof SectionTable> | null>(null)
+function scrollToChart () {
+  chartRef.value?.$el?.scrollIntoView({ behavior: 'smooth' })
+}
+function scrollToTable () {
+  tableRef.value?.$el?.scrollIntoView({ behavior: 'smooth' })
 }
 </script>
 
 <template>
-  <TheHero @clickViewChart="scrollToMain" />
+  <TheHero @clickViewChart="scrollToChart" @clickViewTable="scrollToTable" />
 
-  <main
-    ref="mainRaf"
-    class="container min-h-screen space-y-20 px-4 py-6"
-  >
-    <SectionChart />
-    <SectionTable />
+  <main class="container min-h-screen space-y-20 px-4 py-6">
+    <SectionChart ref="chartRef" />
+    <SectionTable ref="tableRef" />
 
     <div class="mx-auto max-w-2xl space-y-4">
       <DataSource />
