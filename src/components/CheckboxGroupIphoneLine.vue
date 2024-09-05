@@ -33,7 +33,7 @@ const vModel = useVModel(props, 'modelValue', emit)
         <li
           v-for="tag in iphoneLines[item].tags"
           :key="tag"
-          class="badge badge-sm mr-[2px]"
+          class="badge badge-ghost badge-xs mr-[2px]"
         >
           {{ tag }}
         </li>

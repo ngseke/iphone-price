@@ -3,9 +3,9 @@ import { faArrowTrendDown, faArrowTrendUp } from '@fortawesome/free-solid-svg-ic
 import { type Nullish } from '../types/Nullish'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { computed, ref } from 'vue'
-import { useDark } from '@vueuse/core'
 import { formatPrice } from '../modules/price'
 import { formatDateChinese } from '../modules/date'
+import { useDark } from '../composables/useDark'
 
 const props = defineProps<{
   value: Nullish<number>

@@ -25,15 +25,15 @@ export default {
   ],
   daisyui: {
     themes: [
-      'lemonade',
-      'forest',
       {
         forest: {
-          ...theme['[data-theme=forest]'],
-          '--b1': '0 0 8%',
+          ...theme.forest,
+          '--b1': '18% 0 0',
+          '--b2': '8.05% 0 0',
         },
       },
     ],
     logs: false,
   },
 } satisfies Config
+console.log(theme.forest)
