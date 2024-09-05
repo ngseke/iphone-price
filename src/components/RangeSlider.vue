@@ -90,13 +90,14 @@ const ticks = computed(() => {
         @change="handleChange"
         @input="handleInput($event, 1)"
       >
-      <div class="rounded-box relative h-2 w-full overflow-hidden bg-base-content/10">
+      <div class="relative h-2 w-full overflow-hidden rounded-box bg-base-content/10">
         <div
           class="absolute h-full bg-primary"
           :style="highlightStyle"
         />
       </div>
     </div>
+
     <div class="flex w-full select-none justify-between">
       <span
         v-for="(tick, index) in ticks"
@@ -126,7 +127,7 @@ const ticks = computed(() => {
 
 <style scoped lang="scss">
 input.range {
-  @apply absolute left-0 h-0 overflow-visible;
+  @apply absolute left-0 w-full h-full;
   @apply pointer-events-none;
 
   &::-webkit-slider-runnable-track {
@@ -139,6 +140,7 @@ input.range {
   &::-webkit-slider-thumb {
     @apply pointer-events-auto;
     @apply z-10;
+    @apply bg-primary;
     box-shadow:
       0 0 0 3px hsl(var(--range-shdw)) inset,
       var(--focus-shadow, 0 0);
@@ -146,6 +148,7 @@ input.range {
 
   &::-moz-range-thumb {
     @apply pointer-events-auto;
+    @apply bg-primary;
     box-shadow:
       0 0 0 3px hsl(var(--range-shdw)) inset,
       var(--focus-shadow, 0 0);
