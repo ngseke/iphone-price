@@ -2,7 +2,6 @@
 import { defineAsyncComponent, ref } from 'vue'
 import TheHero from './components/TheHero.vue'
 import TheFooter from './components/TheFooter.vue'
-import IconButtonDarkMode from './components/IconButtonDarkMode.vue'
 import DataSource from './components/DataSource.vue'
 
 const SectionChart = defineAsyncComponent(async () =>
@@ -36,8 +35,4 @@ function scrollToTable () {
   </main>
 
   <TheFooter />
-
-  <div class="fixed bottom-4 right-4 z-[100]">
-    <IconButtonDarkMode />
-  </div>
 </template>
