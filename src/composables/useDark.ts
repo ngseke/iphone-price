@@ -1,13 +1,5 @@
-import { useDark as baseUseDark } from '@vueuse/core'
-
-const isDark = baseUseDark({
-  selector: 'html',
-  attribute: 'data-theme',
-  valueLight: 'lemonade',
-  valueDark: 'forest',
-  disableTransition: false,
-})
+import { computed } from 'vue'
 
 export function useDark () {
-  return isDark
+  return computed(() => true)
 }
