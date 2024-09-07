@@ -36,4 +36,3 @@ export default {
     logs: false,
   },
 } satisfies Config
-console.log(theme.forest)
