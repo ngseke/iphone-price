@@ -55,6 +55,31 @@ export const iphone14List: Iphone[] = [
   },
 
   {
+    model: 'iphone-14',
+    storage: 128,
+    line: 'regular',
+    suffix: 'base',
+    releasedAt: '2024-09',
+    price: { twd: 21_900 },
+  },
+  {
+    model: 'iphone-14',
+    storage: 256,
+    line: 'regular',
+    suffix: 'base',
+    releasedAt: '2024-09',
+    price: { twd: 25_400 },
+  },
+  {
+    model: 'iphone-14',
+    storage: 512,
+    line: 'regular',
+    suffix: 'base',
+    releasedAt: '2024-09',
+    price: { twd: 32_400 },
+  },
+
+  {
     model: 'iphone-14-plus',
     storage: 128,
     line: 'regular',
@@ -105,6 +130,31 @@ export const iphone14List: Iphone[] = [
     suffix: 'plus',
     releasedAt: '2023-09',
     price: { twd: 40_400 },
+  },
+
+  {
+    model: 'iphone-14-plus',
+    storage: 128,
+    line: 'regular',
+    suffix: 'plus',
+    releasedAt: '2024-09',
+    price: { twd: 25_900 },
+  },
+  {
+    model: 'iphone-14-plus',
+    storage: 256,
+    line: 'regular',
+    suffix: 'plus',
+    releasedAt: '2024-09',
+    price: { twd: 29_400 },
+  },
+  {
+    model: 'iphone-14-plus',
+    storage: 512,
+    line: 'regular',
+    suffix: 'plus',
+    releasedAt: '2024-09',
+    price: { twd: 36_400 },
   },
 
   {

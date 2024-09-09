@@ -2,6 +2,7 @@ import dayjs from 'dayjs'
 
 import { type IphoneLine, type Iphone, type IphoneModel } from '../types/Iphone'
 
+import { iphone16List } from './iphone16'
 import { iphone15List } from './iphone15'
 import { iphone14List } from './iphone14'
 import { iphone13List } from './iphone13'
@@ -19,6 +20,7 @@ import { type StorageSize } from '../types/StorageSize'
 import { groupBy } from 'lodash-es'
 
 export const iphoneList: Iphone[] = [
+  ...iphone16List,
   ...iphone15List,
   ...iphone14List,
   ...iphoneSe3List,

@@ -2,12 +2,12 @@
 import { computed } from 'vue'
 import StatPrice from './StatPrice.vue'
 import { type IphoneModel, type Iphone } from '../types/Iphone'
-import { iphone15List } from '../databases/iphone15'
+import { iphone16List } from '../databases/iphone16'
 
 const list = computed(() => {
   const models: Partial<Record<IphoneModel, Iphone>> = {}
 
-  iphone15List.forEach((iphone) => {
+  iphone16List.forEach((iphone) => {
     if (!models[iphone.model]) {
       models[iphone.model] = iphone
     }
