@@ -2,6 +2,7 @@ import { type Price } from './Currency'
 import { type StorageSize } from './StorageSize'
 
 export type IphoneModel =
+  | 'iphone-16e'
   | 'iphone-16-pro'
   | 'iphone-16-pro-max'
   | 'iphone-16'

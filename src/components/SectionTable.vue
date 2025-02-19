@@ -41,7 +41,7 @@ const displayed = computed(() => {
             發售年月
           </h3>
           <ul class="menu rounded-box bg-base-200">
-            <li v-if="false">
+            <li>
               <button
                 :class="{ active: !selectedDate }"
                 type="button"
@@ -64,13 +64,14 @@ const displayed = computed(() => {
         </div>
       </div>
 
-      <div class="flex min-w-full flex-col gap-8 sm:mx-0 sm:flex-1 lg:min-w-0  lg:px-8">
+      <div class="flex min-w-full flex-col sm:mx-0 sm:flex-1 lg:min-w-0 lg:px-8">
         <TablePriceByDate
           v-for="({ date, list }, index) in displayed"
           :key="index"
           :date="date"
           :list="list"
         />
+        <span class="text-xs opacity-70">單位：新台幣</span>
       </div>
     </div>
   </section>

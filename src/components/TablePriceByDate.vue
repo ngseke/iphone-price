@@ -72,7 +72,6 @@ const rows = computed(() => {
           </tbody>
         </table>
       </div>
-      <span class="text-xs opacity-70">單位：新台幣</span>
     </div>
   </div>
 </template>
