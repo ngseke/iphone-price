@@ -1,5 +1,10 @@
 import { type Iphone } from '../types/Iphone'
 
+const iphone16Url = 'https://support.apple.com/121029'
+const iphone16PlusUrl = 'https://support.apple.com/121030'
+const iphone16ProUrl = 'https://support.apple.com/121031'
+const iphone16ProMaxUrl = 'https://support.apple.com/121032'
+
 export const iphone16List: Iphone[] = [
   {
     model: 'iphone-16',
@@ -9,6 +14,7 @@ export const iphone16List: Iphone[] = [
     releasedAt: '2024-09',
     price: { twd: 29_900 },
     isInitialRelease: true,
+    url: iphone16Url,
   },
   {
     model: 'iphone-16',
@@ -18,6 +24,7 @@ export const iphone16List: Iphone[] = [
     releasedAt: '2024-09',
     price: { twd: 33_400 },
     isInitialRelease: true,
+    url: iphone16Url,
   },
   {
     model: 'iphone-16',
@@ -27,6 +34,7 @@ export const iphone16List: Iphone[] = [
     releasedAt: '2024-09',
     price: { twd: 40_400 },
     isInitialRelease: true,
+    url: iphone16Url,
   },
 
   {
@@ -37,6 +45,7 @@ export const iphone16List: Iphone[] = [
     releasedAt: '2024-09',
     price: { twd: 32_900 },
     isInitialRelease: true,
+    url: iphone16PlusUrl,
   },
   {
     model: 'iphone-16-plus',
@@ -46,6 +55,7 @@ export const iphone16List: Iphone[] = [
     releasedAt: '2024-09',
     price: { twd: 36_400 },
     isInitialRelease: true,
+    url: iphone16PlusUrl,
   },
   {
     model: 'iphone-16-plus',
@@ -55,6 +65,7 @@ export const iphone16List: Iphone[] = [
     releasedAt: '2024-09',
     price: { twd: 43_400 },
     isInitialRelease: true,
+    url: iphone16PlusUrl,
   },
 
   {
@@ -65,6 +76,7 @@ export const iphone16List: Iphone[] = [
     releasedAt: '2024-09',
     price: { twd: 36_900 },
     isInitialRelease: true,
+    url: iphone16ProUrl,
   },
   {
     model: 'iphone-16-pro',
@@ -74,6 +86,7 @@ export const iphone16List: Iphone[] = [
     releasedAt: '2024-09',
     price: { twd: 40_400 },
     isInitialRelease: true,
+    url: iphone16ProUrl,
   },
   {
     model: 'iphone-16-pro',
@@ -83,6 +96,7 @@ export const iphone16List: Iphone[] = [
     releasedAt: '2024-09',
     price: { twd: 47_400 },
     isInitialRelease: true,
+    url: iphone16ProUrl,
   },
   {
     model: 'iphone-16-pro',
@@ -92,6 +106,7 @@ export const iphone16List: Iphone[] = [
     releasedAt: '2024-09',
     price: { twd: 54_400 },
     isInitialRelease: true,
+    url: iphone16ProUrl,
   },
 
   {
@@ -102,6 +117,7 @@ export const iphone16List: Iphone[] = [
     releasedAt: '2024-09',
     price: { twd: 44_900 },
     isInitialRelease: true,
+    url: iphone16ProMaxUrl,
   },
   {
     model: 'iphone-16-pro-max',
@@ -111,6 +127,7 @@ export const iphone16List: Iphone[] = [
     releasedAt: '2024-09',
     price: { twd: 51_900 },
     isInitialRelease: true,
+    url: iphone16ProMaxUrl,
   },
   {
     model: 'iphone-16-pro-max',
@@ -120,5 +137,6 @@ export const iphone16List: Iphone[] = [
     releasedAt: '2024-09',
     price: { twd: 58_900 },
     isInitialRelease: true,
+    url: iphone16ProMaxUrl,
   },
 ]

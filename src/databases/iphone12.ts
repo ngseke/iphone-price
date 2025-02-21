@@ -1,5 +1,10 @@
 import { type Iphone } from '../types/Iphone'
 
+const iphone12Url = 'https://support.apple.com/111876'
+const iphone12MiniUrl = 'https://support.apple.com/111876'
+const iphone12ProUrl = 'https://support.apple.com/111875'
+const iphone12ProMaxUrl = 'https://support.apple.com/111874'
+
 export const iphone12List: Iphone[] = [
   {
     model: 'iphone-12',
@@ -9,6 +14,7 @@ export const iphone12List: Iphone[] = [
     releasedAt: '2020-10',
     price: { twd: 26_900 },
     isInitialRelease: true,
+    url: iphone12Url,
   },
   {
     model: 'iphone-12',
@@ -18,6 +24,7 @@ export const iphone12List: Iphone[] = [
     releasedAt: '2020-10',
     price: { twd: 28_500 },
     isInitialRelease: true,
+    url: iphone12Url,
   },
   {
     model: 'iphone-12',
@@ -27,6 +34,7 @@ export const iphone12List: Iphone[] = [
     releasedAt: '2020-10',
     price: { twd: 32_000 },
     isInitialRelease: true,
+    url: iphone12Url,
   },
 
   {
@@ -36,6 +44,7 @@ export const iphone12List: Iphone[] = [
     suffix: 'base',
     releasedAt: '2021-09',
     price: { twd: 22_900 },
+    url: iphone12Url,
   },
   {
     model: 'iphone-12',
@@ -44,6 +53,7 @@ export const iphone12List: Iphone[] = [
     suffix: 'base',
     releasedAt: '2021-09',
     price: { twd: 24_500 },
+    url: iphone12Url,
   },
   {
     model: 'iphone-12',
@@ -52,6 +62,7 @@ export const iphone12List: Iphone[] = [
     suffix: 'base',
     releasedAt: '2021-09',
     price: { twd: 28_000 },
+    url: iphone12Url,
   },
 
   {
@@ -61,6 +72,7 @@ export const iphone12List: Iphone[] = [
     suffix: 'base',
     releasedAt: '2022-09',
     price: { twd: 20_900 },
+    url: iphone12Url,
   },
   {
     model: 'iphone-12',
@@ -69,6 +81,7 @@ export const iphone12List: Iphone[] = [
     suffix: 'base',
     releasedAt: '2022-09',
     price: { twd: 22_500 },
+    url: iphone12Url,
   },
   {
     model: 'iphone-12',
@@ -77,6 +90,7 @@ export const iphone12List: Iphone[] = [
     suffix: 'base',
     releasedAt: '2022-09',
     price: { twd: 26_000 },
+    url: iphone12Url,
   },
 
   {
@@ -87,6 +101,7 @@ export const iphone12List: Iphone[] = [
     releasedAt: '2020-10',
     price: { twd: 23_900 },
     isInitialRelease: true,
+    url: iphone12MiniUrl,
   },
   {
     model: 'iphone-12-mini',
@@ -96,6 +111,7 @@ export const iphone12List: Iphone[] = [
     releasedAt: '2020-10',
     price: { twd: 25_500 },
     isInitialRelease: true,
+    url: iphone12MiniUrl,
   },
   {
     model: 'iphone-12-mini',
@@ -105,6 +121,7 @@ export const iphone12List: Iphone[] = [
     releasedAt: '2020-10',
     price: { twd: 29_000 },
     isInitialRelease: true,
+    url: iphone12MiniUrl,
   },
 
   {
@@ -114,6 +131,7 @@ export const iphone12List: Iphone[] = [
     suffix: 'mini',
     releasedAt: '2021-09',
     price: { twd: 19_900 },
+    url: iphone12MiniUrl,
   },
   {
     model: 'iphone-12-mini',
@@ -122,6 +140,7 @@ export const iphone12List: Iphone[] = [
     suffix: 'mini',
     releasedAt: '2021-09',
     price: { twd: 21_500 },
+    url: iphone12MiniUrl,
   },
   {
     model: 'iphone-12-mini',
@@ -130,6 +149,7 @@ export const iphone12List: Iphone[] = [
     suffix: 'mini',
     releasedAt: '2021-09',
     price: { twd: 25_000 },
+    url: iphone12MiniUrl,
   },
 
   {
@@ -140,6 +160,7 @@ export const iphone12List: Iphone[] = [
     releasedAt: '2020-10',
     price: { twd: 33_900 },
     isInitialRelease: true,
+    url: iphone12ProUrl,
   },
   {
     model: 'iphone-12-pro',
@@ -149,6 +170,7 @@ export const iphone12List: Iphone[] = [
     releasedAt: '2020-10',
     price: { twd: 37_400 },
     isInitialRelease: true,
+    url: iphone12ProUrl,
   },
   {
     model: 'iphone-12-pro',
@@ -158,6 +180,7 @@ export const iphone12List: Iphone[] = [
     releasedAt: '2020-10',
     price: { twd: 44_400 },
     isInitialRelease: true,
+    url: iphone12ProUrl,
   },
 
   {
@@ -168,6 +191,7 @@ export const iphone12List: Iphone[] = [
     releasedAt: '2020-10',
     price: { twd: 37_900 },
     isInitialRelease: true,
+    url: iphone12ProMaxUrl,
   },
   {
     model: 'iphone-12-pro-max',
@@ -177,6 +201,7 @@ export const iphone12List: Iphone[] = [
     releasedAt: '2020-10',
     price: { twd: 41_400 },
     isInitialRelease: true,
+    url: iphone12ProMaxUrl,
   },
   {
     model: 'iphone-12-pro-max',
@@ -186,5 +211,6 @@ export const iphone12List: Iphone[] = [
     releasedAt: '2020-10',
     price: { twd: 48_400 },
     isInitialRelease: true,
+    url: iphone12ProMaxUrl,
   },
 ]

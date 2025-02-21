@@ -19,6 +19,8 @@ import { iphone6sList } from './iphone6s'
 import { type StorageSize } from '../types/StorageSize'
 import { groupBy } from 'lodash-es'
 import { iphone16e } from './iphone16e'
+import { iphoneSeList } from './iphoneSe'
+import { iphone6List } from './iphone6'
 
 export const iphoneList: Iphone[] = [
   ...iphone16e,
@@ -36,6 +38,8 @@ export const iphoneList: Iphone[] = [
   ...iphone8List,
   ...iphone7List,
   ...iphone6sList,
+  ...iphoneSeList,
+  ...iphone6List,
 ]
   .sort((a, b) => +dayjs(a.releasedAt) - +dayjs(b.releasedAt))
 

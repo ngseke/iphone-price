@@ -1,5 +1,8 @@
 import { type Iphone } from '../types/Iphone'
 
+const iphone7Url = 'https://support.apple.com/111943'
+const iphone7PlusUrl = 'https://support.apple.com/111953'
+
 export const iphone7List: Iphone[] = [
   {
     model: 'iphone-7',
@@ -9,6 +12,7 @@ export const iphone7List: Iphone[] = [
     releasedAt: '2016-09',
     price: { twd: 24_500 },
     isInitialRelease: true,
+    url: iphone7Url,
   },
   {
     model: 'iphone-7',
@@ -18,6 +22,7 @@ export const iphone7List: Iphone[] = [
     releasedAt: '2016-09',
     price: { twd: 28_500 },
     isInitialRelease: true,
+    url: iphone7Url,
   },
   {
     model: 'iphone-7',
@@ -27,6 +32,7 @@ export const iphone7List: Iphone[] = [
     releasedAt: '2016-09',
     price: { twd: 32_500 },
     isInitialRelease: true,
+    url: iphone7Url,
   },
 
   {
@@ -36,6 +42,7 @@ export const iphone7List: Iphone[] = [
     suffix: 'base',
     releasedAt: '2017-09',
     price: { twd: 19_900 },
+    url: iphone7Url,
   },
   {
     model: 'iphone-7',
@@ -44,6 +51,7 @@ export const iphone7List: Iphone[] = [
     suffix: 'base',
     releasedAt: '2017-09',
     price: { twd: 23_500 },
+    url: iphone7Url,
   },
 
   {
@@ -53,6 +61,7 @@ export const iphone7List: Iphone[] = [
     suffix: 'base',
     releasedAt: '2018-09',
     price: { twd: 15_900 },
+    url: iphone7Url,
   },
   {
     model: 'iphone-7',
@@ -61,6 +70,7 @@ export const iphone7List: Iphone[] = [
     suffix: 'base',
     releasedAt: '2018-09',
     price: { twd: 19_900 },
+    url: iphone7Url,
   },
 
   {
@@ -71,6 +81,7 @@ export const iphone7List: Iphone[] = [
     releasedAt: '2016-09',
     price: { twd: 28_900 },
     isInitialRelease: true,
+    url: iphone7PlusUrl,
   },
   {
     model: 'iphone-7-plus',
@@ -80,6 +91,7 @@ export const iphone7List: Iphone[] = [
     releasedAt: '2016-09',
     price: { twd: 32_900 },
     isInitialRelease: true,
+    url: iphone7PlusUrl,
   },
   {
     model: 'iphone-7-plus',
@@ -89,6 +101,7 @@ export const iphone7List: Iphone[] = [
     releasedAt: '2016-09',
     price: { twd: 36_900 },
     isInitialRelease: true,
+    url: iphone7PlusUrl,
   },
 
   {
@@ -98,6 +111,7 @@ export const iphone7List: Iphone[] = [
     suffix: 'plus',
     releasedAt: '2017-09',
     price: { twd: 24_500 },
+    url: iphone7PlusUrl,
   },
   {
     model: 'iphone-7-plus',
@@ -106,6 +120,7 @@ export const iphone7List: Iphone[] = [
     suffix: 'plus',
     releasedAt: '2017-09',
     price: { twd: 28_100 },
+    url: iphone7PlusUrl,
   },
 
   {
@@ -115,6 +130,7 @@ export const iphone7List: Iphone[] = [
     suffix: 'plus',
     releasedAt: '2018-09',
     price: { twd: 20_500 },
+    url: iphone7PlusUrl,
   },
   {
     model: 'iphone-7-plus',
@@ -123,5 +139,6 @@ export const iphone7List: Iphone[] = [
     suffix: 'plus',
     releasedAt: '2018-09',
     price: { twd: 24_500 },
+    url: iphone7PlusUrl,
   },
 ]

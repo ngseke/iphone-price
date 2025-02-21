@@ -1,5 +1,9 @@
 import { type Iphone } from '../types/Iphone'
 
+const iphone11Url = 'https://support.apple.com/111865'
+const iphone11ProUrl = 'https://support.apple.com/111879'
+const iphone11ProMaxUrl = 'https://support.apple.com/111878'
+
 export const iphone11List: Iphone[] = [
   {
     model: 'iphone-11',
@@ -9,6 +13,7 @@ export const iphone11List: Iphone[] = [
     releasedAt: '2019-09',
     price: { twd: 24_900 },
     isInitialRelease: true,
+    url: iphone11Url,
   },
   {
     model: 'iphone-11',
@@ -18,6 +23,7 @@ export const iphone11List: Iphone[] = [
     releasedAt: '2019-09',
     price: { twd: 26_900 },
     isInitialRelease: true,
+    url: iphone11Url,
   },
   {
     model: 'iphone-11',
@@ -27,6 +33,7 @@ export const iphone11List: Iphone[] = [
     releasedAt: '2019-09',
     price: { twd: 30_400 },
     isInitialRelease: true,
+    url: iphone11Url,
   },
 
   {
@@ -36,6 +43,7 @@ export const iphone11List: Iphone[] = [
     suffix: 'base',
     releasedAt: '2020-10',
     price: { twd: 19_900 },
+    url: iphone11Url,
   },
   {
     model: 'iphone-11',
@@ -44,6 +52,7 @@ export const iphone11List: Iphone[] = [
     suffix: 'base',
     releasedAt: '2020-10',
     price: { twd: 21_500 },
+    url: iphone11Url,
   },
   {
     model: 'iphone-11',
@@ -52,6 +61,7 @@ export const iphone11List: Iphone[] = [
     suffix: 'base',
     releasedAt: '2020-10',
     price: { twd: 25_000 },
+    url: iphone11Url,
   },
 
   {
@@ -61,6 +71,7 @@ export const iphone11List: Iphone[] = [
     suffix: 'base',
     releasedAt: '2021-09',
     price: { twd: 16_500 },
+    url: iphone11Url,
   },
   {
     model: 'iphone-11',
@@ -69,6 +80,7 @@ export const iphone11List: Iphone[] = [
     suffix: 'base',
     releasedAt: '2021-09',
     price: { twd: 18_100 },
+    url: iphone11Url,
   },
 
   {
@@ -79,6 +91,7 @@ export const iphone11List: Iphone[] = [
     releasedAt: '2019-09',
     price: { twd: 35_900 },
     isInitialRelease: true,
+    url: iphone11ProUrl,
   },
   {
     model: 'iphone-11-pro',
@@ -88,6 +101,7 @@ export const iphone11List: Iphone[] = [
     releasedAt: '2019-09',
     price: { twd: 41_400 },
     isInitialRelease: true,
+    url: iphone11ProUrl,
   },
   {
     model: 'iphone-11-pro',
@@ -97,6 +111,7 @@ export const iphone11List: Iphone[] = [
     releasedAt: '2019-09',
     price: { twd: 48_400 },
     isInitialRelease: true,
+    url: iphone11ProUrl,
   },
 
   {
@@ -107,6 +122,7 @@ export const iphone11List: Iphone[] = [
     releasedAt: '2019-09',
     price: { twd: 39_900 },
     isInitialRelease: true,
+    url: iphone11ProMaxUrl,
   },
   {
     model: 'iphone-11-pro-max',
@@ -116,6 +132,7 @@ export const iphone11List: Iphone[] = [
     releasedAt: '2019-09',
     price: { twd: 45_400 },
     isInitialRelease: true,
+    url: iphone11ProMaxUrl,
   },
   {
     model: 'iphone-11-pro-max',
@@ -125,5 +142,6 @@ export const iphone11List: Iphone[] = [
     releasedAt: '2019-09',
     price: { twd: 52_400 },
     isInitialRelease: true,
+    url: iphone11ProMaxUrl,
   },
 ]

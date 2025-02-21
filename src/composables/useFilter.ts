@@ -2,7 +2,7 @@ import { computed } from 'vue'
 import { useStorage } from '@vueuse/core'
 import { type Filter, defaultFilter } from '../modules/filter'
 
-const storageId = 'iphonePriceFilter2024'
+const storageId = 'iphonePriceFilter202502'
 
 export default function useFilter () {
   const filter = useStorage<Filter>(

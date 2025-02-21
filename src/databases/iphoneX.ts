@@ -1,5 +1,7 @@
 import { type Iphone } from '../types/Iphone'
 
+const url = 'https://support.apple.com/111864'
+
 export const iphoneXList: Iphone[] = [
   {
     model: 'iphone-X',
@@ -9,6 +11,7 @@ export const iphoneXList: Iphone[] = [
     releasedAt: '2017-09',
     price: { twd: 35_900 },
     isInitialRelease: true,
+    url,
   },
   {
     model: 'iphone-X',
@@ -18,5 +21,6 @@ export const iphoneXList: Iphone[] = [
     releasedAt: '2017-09',
     price: { twd: 41_500 },
     isInitialRelease: true,
+    url,
   },
 ]

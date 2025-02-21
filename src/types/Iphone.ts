@@ -54,4 +54,5 @@ export interface Iphone {
   releasedAt: `${number}-${number}` | `${number}-${number}-${number}`
   price: Price
   isInitialRelease?: true
+  url?: string
 }

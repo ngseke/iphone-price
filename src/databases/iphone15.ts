@@ -1,5 +1,10 @@
 import { type Iphone } from '../types/Iphone'
 
+const iphone15Url = 'https://support.apple.com/111831'
+const iphone15PlusUrl = 'https://support.apple.com/111830'
+const iphone15ProUrl = 'https://support.apple.com/111829'
+const iphone15ProMaxUrl = 'https://support.apple.com/111828'
+
 export const iphone15List: Iphone[] = [
   {
     model: 'iphone-15',
@@ -9,6 +14,7 @@ export const iphone15List: Iphone[] = [
     releasedAt: '2023-09',
     price: { twd: 29_900 },
     isInitialRelease: true,
+    url: iphone15Url,
   },
   {
     model: 'iphone-15',
@@ -18,6 +24,7 @@ export const iphone15List: Iphone[] = [
     releasedAt: '2023-09',
     price: { twd: 33_400 },
     isInitialRelease: true,
+    url: iphone15Url,
   },
   {
     model: 'iphone-15',
@@ -27,6 +34,7 @@ export const iphone15List: Iphone[] = [
     releasedAt: '2023-09',
     price: { twd: 40_400 },
     isInitialRelease: true,
+    url: iphone15Url,
   },
 
   {
@@ -37,6 +45,7 @@ export const iphone15List: Iphone[] = [
     releasedAt: '2023-09',
     price: { twd: 32_900 },
     isInitialRelease: true,
+    url: iphone15PlusUrl,
   },
   {
     model: 'iphone-15-plus',
@@ -46,6 +55,7 @@ export const iphone15List: Iphone[] = [
     releasedAt: '2023-09',
     price: { twd: 36_400 },
     isInitialRelease: true,
+    url: iphone15PlusUrl,
   },
   {
     model: 'iphone-15-plus',
@@ -55,6 +65,7 @@ export const iphone15List: Iphone[] = [
     releasedAt: '2023-09',
     price: { twd: 43_400 },
     isInitialRelease: true,
+    url: iphone15PlusUrl,
   },
 
   {
@@ -65,6 +76,7 @@ export const iphone15List: Iphone[] = [
     releasedAt: '2023-09',
     price: { twd: 36_900 },
     isInitialRelease: true,
+    url: iphone15ProUrl,
   },
   {
     model: 'iphone-15-pro',
@@ -74,6 +86,7 @@ export const iphone15List: Iphone[] = [
     releasedAt: '2023-09',
     price: { twd: 40_400 },
     isInitialRelease: true,
+    url: iphone15ProUrl,
   },
   {
     model: 'iphone-15-pro',
@@ -83,6 +96,7 @@ export const iphone15List: Iphone[] = [
     releasedAt: '2023-09',
     price: { twd: 47_400 },
     isInitialRelease: true,
+    url: iphone15ProUrl,
   },
   {
     model: 'iphone-15-pro',
@@ -92,6 +106,7 @@ export const iphone15List: Iphone[] = [
     releasedAt: '2023-09',
     price: { twd: 54_400 },
     isInitialRelease: true,
+    url: iphone15ProUrl,
   },
 
   {
@@ -102,6 +117,7 @@ export const iphone15List: Iphone[] = [
     releasedAt: '2023-09',
     price: { twd: 44_900 },
     isInitialRelease: true,
+    url: iphone15ProMaxUrl,
   },
   {
     model: 'iphone-15-pro-max',
@@ -111,6 +127,7 @@ export const iphone15List: Iphone[] = [
     releasedAt: '2023-09',
     price: { twd: 51_900 },
     isInitialRelease: true,
+    url: iphone15ProMaxUrl,
   },
   {
     model: 'iphone-15-pro-max',
@@ -120,6 +137,7 @@ export const iphone15List: Iphone[] = [
     releasedAt: '2023-09',
     price: { twd: 58_900 },
     isInitialRelease: true,
+    url: iphone15ProMaxUrl,
   },
 
   {
@@ -129,6 +147,7 @@ export const iphone15List: Iphone[] = [
     suffix: 'base',
     releasedAt: '2024-09',
     price: { twd: 25_900 },
+    url: iphone15Url,
   },
   {
     model: 'iphone-15',
@@ -137,6 +156,7 @@ export const iphone15List: Iphone[] = [
     suffix: 'base',
     releasedAt: '2024-09',
     price: { twd: 29_400 },
+    url: iphone15Url,
   },
   {
     model: 'iphone-15',
@@ -145,6 +165,7 @@ export const iphone15List: Iphone[] = [
     suffix: 'base',
     releasedAt: '2024-09',
     price: { twd: 36_400 },
+    url: iphone15Url,
   },
 
   {
@@ -154,6 +175,7 @@ export const iphone15List: Iphone[] = [
     suffix: 'plus',
     releasedAt: '2024-09',
     price: { twd: 29_900 },
+    url: iphone15PlusUrl,
   },
   {
     model: 'iphone-15-plus',
@@ -162,6 +184,7 @@ export const iphone15List: Iphone[] = [
     suffix: 'plus',
     releasedAt: '2024-09',
     price: { twd: 33_400 },
+    url: iphone15PlusUrl,
   },
   {
     model: 'iphone-15-plus',
@@ -170,5 +193,6 @@ export const iphone15List: Iphone[] = [
     suffix: 'plus',
     releasedAt: '2024-09',
     price: { twd: 40_400 },
+    url: iphone15PlusUrl,
   },
 ]

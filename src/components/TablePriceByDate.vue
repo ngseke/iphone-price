@@ -49,7 +49,15 @@ const rows = computed(() => {
           </thead>
           <tbody>
             <tr v-for="(row, key) in rows" :key="key" class="hover">
-              <td class="font-bold">{{ formatIphoneModel(Object.values(row)[0]?.model) }}</td>
+              <td class="font-bold">
+                <a
+                  class="underline decoration-neutral-500 hover:decoration-neutral-400"
+                  :href="Object.values(row)[0].url"
+                  target="_blank"
+                >
+                  {{ formatIphoneModel(Object.values(row)[0]?.model) }}
+                </a>
+              </td>
               <td v-for="column in columns" :key="column" class="align-top">
                 <div class="flex flex-col items-start">
                   <span class="font-rubik text-lg font-bold">

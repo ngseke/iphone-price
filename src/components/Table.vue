@@ -60,7 +60,9 @@ const columns: Column[] = [
         <tr v-for="(row) in sourceWithDifference" :key="row.model">
           <template v-for="column in columns" :key="column.field">
             <td v-if="column.field === 'model'" class="w-0">
-              {{ formatIphoneModelAbbreviation(row[column.field]) }}
+              <a class="underline decoration-neutral-500 hover:decoration-neutral-400" :href="row.url" target="_blank">
+                {{ formatIphoneModelAbbreviation(row[column.field]) }}
+              </a>
             </td>
             <td v-else-if="column.field === 'date'" class="w-0">
               {{ formatDateChinese(row[column.field]) }}

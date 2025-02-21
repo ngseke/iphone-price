@@ -1,5 +1,10 @@
 import { type Iphone } from '../types/Iphone'
 
+const iphone13Url = 'https://support.apple.com/111872'
+const iphone13MiniUrl = 'https://support.apple.com/111873'
+const iphone13ProUrl = 'https://support.apple.com/111871'
+const iphone13ProMaxUrl = 'https://support.apple.com/111870'
+
 export const iphone13List: Iphone[] = [
   {
     model: 'iphone-13',
@@ -9,6 +14,7 @@ export const iphone13List: Iphone[] = [
     releasedAt: '2021-09',
     price: { twd: 25_900 },
     isInitialRelease: true,
+    url: iphone13Url,
   },
   {
     model: 'iphone-13',
@@ -18,6 +24,7 @@ export const iphone13List: Iphone[] = [
     releasedAt: '2021-09',
     price: { twd: 29_400 },
     isInitialRelease: true,
+    url: iphone13Url,
   },
   {
     model: 'iphone-13',
@@ -27,6 +34,7 @@ export const iphone13List: Iphone[] = [
     releasedAt: '2021-09',
     price: { twd: 36_400 },
     isInitialRelease: true,
+    url: iphone13Url,
   },
 
   {
@@ -36,6 +44,7 @@ export const iphone13List: Iphone[] = [
     suffix: 'base',
     releasedAt: '2022-09',
     price: { twd: 24_900 },
+    url: iphone13Url,
   },
   {
     model: 'iphone-13',
@@ -44,6 +53,7 @@ export const iphone13List: Iphone[] = [
     suffix: 'base',
     releasedAt: '2022-09',
     price: { twd: 28_400 },
+    url: iphone13Url,
   },
   {
     model: 'iphone-13',
@@ -52,6 +62,7 @@ export const iphone13List: Iphone[] = [
     suffix: 'base',
     releasedAt: '2022-09',
     price: { twd: 35_400 },
+    url: iphone13Url,
   },
 
   {
@@ -61,6 +72,7 @@ export const iphone13List: Iphone[] = [
     suffix: 'base',
     releasedAt: '2023-09',
     price: { twd: 21_900 },
+    url: iphone13Url,
   },
   {
     model: 'iphone-13',
@@ -69,6 +81,7 @@ export const iphone13List: Iphone[] = [
     suffix: 'base',
     releasedAt: '2023-09',
     price: { twd: 25_400 },
+    url: iphone13Url,
   },
   {
     model: 'iphone-13',
@@ -77,6 +90,7 @@ export const iphone13List: Iphone[] = [
     suffix: 'base',
     releasedAt: '2023-09',
     price: { twd: 32_400 },
+    url: iphone13Url,
   },
 
   {
@@ -87,6 +101,7 @@ export const iphone13List: Iphone[] = [
     releasedAt: '2021-09',
     price: { twd: 22_900 },
     isInitialRelease: true,
+    url: iphone13MiniUrl,
   },
   {
     model: 'iphone-13-mini',
@@ -96,6 +111,7 @@ export const iphone13List: Iphone[] = [
     releasedAt: '2021-09',
     price: { twd: 26_400 },
     isInitialRelease: true,
+    url: iphone13MiniUrl,
   },
   {
     model: 'iphone-13-mini',
@@ -105,6 +121,7 @@ export const iphone13List: Iphone[] = [
     releasedAt: '2021-09',
     price: { twd: 33_400 },
     isInitialRelease: true,
+    url: iphone13MiniUrl,
   },
 
   {
@@ -114,6 +131,7 @@ export const iphone13List: Iphone[] = [
     suffix: 'mini',
     releasedAt: '2022-09',
     price: { twd: 20_900 },
+    url: iphone13MiniUrl,
   },
   {
     model: 'iphone-13-mini',
@@ -122,6 +140,7 @@ export const iphone13List: Iphone[] = [
     suffix: 'mini',
     releasedAt: '2022-09',
     price: { twd: 24_400 },
+    url: iphone13MiniUrl,
   },
   {
     model: 'iphone-13-mini',
@@ -130,6 +149,7 @@ export const iphone13List: Iphone[] = [
     suffix: 'mini',
     releasedAt: '2022-09',
     price: { twd: 31_400 },
+    url: iphone13MiniUrl,
   },
 
   {
@@ -140,6 +160,7 @@ export const iphone13List: Iphone[] = [
     releasedAt: '2021-09',
     price: { twd: 32_900 },
     isInitialRelease: true,
+    url: iphone13ProUrl,
   },
   {
     model: 'iphone-13-pro',
@@ -149,6 +170,7 @@ export const iphone13List: Iphone[] = [
     releasedAt: '2021-09',
     price: { twd: 36_400 },
     isInitialRelease: true,
+    url: iphone13ProUrl,
   },
   {
     model: 'iphone-13-pro',
@@ -158,6 +180,7 @@ export const iphone13List: Iphone[] = [
     releasedAt: '2021-09',
     price: { twd: 43_400 },
     isInitialRelease: true,
+    url: iphone13ProUrl,
   },
   {
     model: 'iphone-13-pro',
@@ -167,6 +190,7 @@ export const iphone13List: Iphone[] = [
     releasedAt: '2021-09',
     price: { twd: 50_400 },
     isInitialRelease: true,
+    url: iphone13ProUrl,
   },
 
   {
@@ -177,6 +201,7 @@ export const iphone13List: Iphone[] = [
     releasedAt: '2021-09',
     price: { twd: 36_900 },
     isInitialRelease: true,
+    url: iphone13ProMaxUrl,
   },
   {
     model: 'iphone-13-pro-max',
@@ -186,6 +211,7 @@ export const iphone13List: Iphone[] = [
     releasedAt: '2021-09',
     price: { twd: 40_400 },
     isInitialRelease: true,
+    url: iphone13ProMaxUrl,
   },
   {
     model: 'iphone-13-pro-max',
@@ -195,6 +221,7 @@ export const iphone13List: Iphone[] = [
     releasedAt: '2021-09',
     price: { twd: 47_400 },
     isInitialRelease: true,
+    url: iphone13ProMaxUrl,
   },
   {
     model: 'iphone-13-pro-max',
@@ -204,5 +231,6 @@ export const iphone13List: Iphone[] = [
     releasedAt: '2021-09',
     price: { twd: 54_400 },
     isInitialRelease: true,
+    url: iphone13ProMaxUrl,
   },
 ]
