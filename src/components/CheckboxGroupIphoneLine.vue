@@ -22,22 +22,13 @@ const vModel = useVModel(props, 'modelValue', emit)
 </script>
 
 <template>
-  <div class="flex flex-col flex-wrap items-start gap-y-2">
+  <div class="flex flex-wrap items-start gap-x-3">
     <div v-for="item in options" :key="item">
       <Checkbox
         v-model="vModel"
         :label="iphoneLines[item].name"
         :value="item"
       />
-      <ul class="pl-9 ">
-        <li
-          v-for="tag in iphoneLines[item].tags"
-          :key="tag"
-          class="badge badge-ghost badge-xs mr-[2px]"
-        >
-          {{ tag }}
-        </li>
-      </ul>
     </div>
   </div>
 </template>

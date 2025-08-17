@@ -30,7 +30,7 @@ const displayed = computed(() => {
 
 <template>
   <section class="mx-auto flex max-w-5xl flex-col gap-y-8">
-    <h2 class="text-3xl font-bold">
+    <h2 id="section-table" class="text-4xl font-bold">
       歷年首發機型
     </h2>
 

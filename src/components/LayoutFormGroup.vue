@@ -15,7 +15,7 @@ defineEmits<{
 <template>
   <div class="flex flex-col space-y-2">
     <div class="flex items-center gap-2">
-      <h3 v-if="$slots.title" class="text-xl font-medium">
+      <h3 v-if="$slots.title" class="text-xl font-medium text-base-content/80">
         <slot name="title" />
       </h3>
       <IconButtonReset v-if="showReset" @click="$emit('reset')" />
