@@ -90,11 +90,19 @@ const ticks = computed(() => {
         @change="handleChange"
         @input="handleInput($event, 1)"
       >
-      <div class="relative h-2 w-full overflow-hidden rounded-box bg-base-content/10">
+      <div class="relative flex h-2 w-full items-center justify-between overflow-hidden rounded-box bg-base-content/10">
         <div
           class="absolute h-full bg-primary"
           :style="highlightStyle"
         />
+
+        <span
+          v-for="tick in ticks"
+          :key="tick"
+          class="flex w-6 justify-center"
+        >
+          <span class="block h-0.5 w-0.5 rounded-full bg-base-content/30" />
+        </span>
       </div>
     </div>
 
@@ -117,7 +125,7 @@ const ticks = computed(() => {
           </span>
           <span
             v-else
-            class="after:inline-block after:h-2 after:w-[2px] after:rounded-full after:bg-base-content/80 after:content-['']"
+            class="after:inline-block after:h-2 after:w-[2px] after:rounded-full after:bg-base-content/50 after:content-['']"
           />
         </Transition>
       </span>
