@@ -14,13 +14,13 @@ const links = [
   { name: 'Issues', url: `${githubUrl}/issues` },
 ]
 
-const formattedBuiltAt = dayjs(BUILT_AT).format('LLL')
+const formattedBuiltAt = dayjs(BUILT_AT).format('YYYY/MM/DD')
 const commitHash = COMMIT_HASH
 const commitUrl = `${githubUrl}/tree/${commitHash}`
 </script>
 
 <template>
-  <footer class="footer footer-center rounded bg-base-200 p-8 text-base-content">
+  <footer class="footer footer-center gap-6 rounded bg-base-200 p-8 text-base-content">
     <nav class="grid grid-flow-col gap-4">
       <Link
         class="link"
@@ -38,13 +38,11 @@ const commitUrl = `${githubUrl}/tree/${commitHash}`
       </Link>
     </nav>
     <aside>
-      <p class="text-xs text-base-content/80">
-        上次更新：{{ formattedBuiltAt }}
-        (<Link class="link" :href="commitUrl">{{ commitHash }}</Link>)
-      </p>
-      <p class="text-xs font-medium">
+      <p class="font-mono text-xs font-medium">
         Made with <span title="IPA">🍺</span> by
-        <Link class="link" href="https://ngseke.me/">ngseke</Link>
+        <Link class="link" href="https://ngseke.me/">ngseke</Link>.
+        Last update: {{ formattedBuiltAt }}
+        (<Link class="link" :href="commitUrl">{{ commitHash }}</Link>)
       </p>
     </aside>
   </footer>
