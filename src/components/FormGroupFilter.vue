@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import LayoutFormGroup from './LayoutFormGroup.vue'
-import RadioGroupStorageSize from './RadioGroupStorageSize.vue'
 import CheckboxGroupIphoneLine from './CheckboxGroupIphoneLine.vue'
 import RangeSlider from './RangeSlider.vue'
 import { type Filter, defaultFilter } from '../modules/filter'
@@ -8,6 +7,7 @@ import LayoutFormSectionGroup from './LayoutFormSectionGroup.vue'
 import { useVModels } from '@vueuse/core'
 import { type StorageSize } from '../types/StorageSize'
 import { type IphoneLine } from '../types/Iphone'
+import SliderStorageSize from './SliderStorageSize.vue'
 
 const props = defineProps<{
   storage: StorageSize
@@ -45,7 +45,7 @@ const { storage, lines, yearRange } = useVModels(props, emit)
       @reset="$emit('resetStorageSize')"
     >
       <template #title>儲存空間</template>
-      <RadioGroupStorageSize v-model="storage" />
+      <SliderStorageSize v-model="storage" />
     </LayoutFormGroup>
 
     <LayoutFormGroup
