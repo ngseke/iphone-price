@@ -43,6 +43,10 @@ const className = computed(() => (
             </span>
           </h1>
         </div>
+
+        <p class="text-center text-base-content/70">
+          透過圖表比較 <b>iPhone 17</b> 與歷代產品的價格變化
+        </p>
       </div>
 
       <div class="mt-8 flex w-full justify-center gap-4">
