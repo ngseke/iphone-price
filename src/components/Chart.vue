@@ -286,7 +286,7 @@ defineExpose({ getDownloadUrl })
 
 <template>
   <CardNoResult v-if="isEmpty" @reset="$emit('reset')" />
-  <div v-else class="h-full w-full overflow-hidden">
+  <div v-else class="h-full w-full min-w-[800px] overflow-hidden sm:min-w-0">
     <VueECharts
       ref="chartRef"
       autoresize
