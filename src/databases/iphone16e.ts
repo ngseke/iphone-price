@@ -2,7 +2,7 @@ import { type Iphone } from '../types/Iphone'
 
 const url = 'https://www.apple.com/tw/iphone-16e/specs/'
 
-export const iphone16e: Iphone[] = [
+export const iphone16eList: Iphone[] = [
   {
     model: 'iphone-16e',
     storage: 128,
