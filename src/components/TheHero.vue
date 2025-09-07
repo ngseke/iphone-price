@@ -26,18 +26,27 @@ const className = computed(() => (
   >
     <div class="hero-content w-full max-w-4xl flex-wrap justify-center pt-28">
       <div class="flex-1 space-y-8">
-        <div class="flex flex-col items-center space-y-2">
-          <h1 class="flex flex-col items-center text-3xl font-extrabold sm:text-6xl sm:leading-tight">
-            <span>台灣 iPhone 價格</span>
-            <span>
-              <TextVerticalScrolling
-                v-for="(char, index) in '歷史趨勢'"
-                :key="index"
-                :char="char"
-                :index="index"
-              />
+        <div class="flex flex-col items-center gap-3">
+          <button
+            class="rounded-full border border-primary bg-primary/10 px-4 py-1 text-sm font-medium duration-300 hover:brightness-125"
+            type="button"
+            @click="$emit('clickViewChart')"
+          >
+            更新 iPhone 17 價格
+          </button>
+
+          <h1 class="items-center text-3xl font-extrabold sm:text-6xl sm:leading-tight">
+            台灣 iPhone 價格
+            <br>
+            <TextVerticalScrolling
+              v-for="(char, index) in '歷史趨勢'"
+              :key="index"
+              :char="char"
+              :index="index"
+            />
+            <span class="relative mb-1 ml-2 inline-block rounded-full align-middle leading-[0] after:absolute after:inset-0 after:scale-y-75 after:bg-primary/50 after:blur-xl sm:mb-3 sm:ml-3">
               <FontAwesomeIcon
-                class="pl-2 text-2xl text-primary sm:text-4xl"
+                class="text-2xl text-primary sm:text-5xl"
                 :icon="faArrowTrendUp"
               />
             </span>
@@ -45,7 +54,7 @@ const className = computed(() => (
         </div>
 
         <p class="text-center text-base-content/70">
-          透過圖表比較 <b>iPhone 17</b> 與歷代產品的價格變化
+          透過圖表比較歷代 <b>iPhone</b> 的價格變化
         </p>
       </div>
 
@@ -59,7 +68,7 @@ const className = computed(() => (
           查看圖表
         </button>
         <button
-          class="btn btn-primary"
+          class="btn btn-outline"
           type="button"
           @click="$emit('clickViewTable')"
         >
@@ -69,7 +78,7 @@ const className = computed(() => (
       </div>
 
       <div class="mt-8">
-        <button class="hidden p-6 text-4xl sm:block" type="button" @click="$emit('clickViewChart')">
+        <button class="hidden p-6 text-4xl duration-300 hover:brightness-125 sm:block" type="button" @click="$emit('clickViewChart')">
           <FontAwesomeIcon class="animate-bounce opacity-90" :icon="faChevronDown" />
         </button>
       </div>

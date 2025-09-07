@@ -19,29 +19,27 @@ const units = classNames.length + 1
 
 <template>
   <span
-    class="inline-flex overflow-hidden"
+    class="relative inline-flex overflow-hidden"
     :style="{
       '--char': `'${char}'`,
     }"
   >
-    <span class="relative">
-      <span class="opacity-0 after:content-[var(--char)]" />
+    <span class="opacity-0 after:content-[var(--char)]" />
+    <span
+      class="scroll absolute left-0 top-0 flex flex-col"
+      :style="{
+        animationDuration: '7s',
+        animationDelay: `${index * 70}ms`,
+        animationIterationCount: 'infinite',
+      }"
+    >
       <span
-        class="scroll absolute left-0 top-0 flex flex-col"
-        :style="{
-          animationDuration: '7s',
-          animationDelay: `${index * 70}ms`,
-          animationIterationCount: 'infinite',
-        }"
-      >
-        <span
-          v-for="(className, index) in classNames"
-          :key="index"
-          class="after:content-[var(--char)]"
-          :class="className"
-        />
-        <span>{{ char }}</span>
-      </span>
+        v-for="(className, index) in classNames"
+        :key="index"
+        class="select-none after:content-[var(--char)]"
+        :class="className"
+      />
+      <span>{{ char }}</span>
     </span>
   </span>
 </template>
