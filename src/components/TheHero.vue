@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faArrowTrendUp, faChartLine, faTable } from '@fortawesome/free-solid-svg-icons'
-import StatGroupLatestPrice from './StatGroupLatestPrice.vue'
+import { faArrowTrendUp, faChartLine, faChevronDown, faTable } from '@fortawesome/free-solid-svg-icons'
 import TextVerticalScrolling from './TextVerticalScrolling.vue'
 import { computed } from 'vue'
 import { useDark } from '../composables/useDark'
@@ -22,13 +21,13 @@ const className = computed(() => (
 
 <template>
   <div
-    class="hero bg-base-200 bg-[length:1rem_1rem] py-8 sm:min-h-screen sm:py-0"
+    class="hero relative bg-base-200 bg-[length:1rem_1rem] py-8 sm:min-h-screen sm:py-0"
     :class="className"
   >
-    <div class="hero-content w-full max-w-4xl flex-wrap justify-center">
+    <div class="hero-content w-full max-w-4xl flex-wrap justify-center pt-28">
       <div class="flex-1 space-y-8">
-        <div class="flex flex-col items-start space-y-2">
-          <h1 class="flex flex-col text-3xl font-extrabold sm:text-5xl sm:leading-tight">
+        <div class="flex flex-col items-center space-y-2">
+          <h1 class="flex flex-col items-center text-3xl font-extrabold sm:text-6xl sm:leading-tight">
             <span>台灣 iPhone 價格</span>
             <span>
               <TextVerticalScrolling
@@ -44,13 +43,9 @@ const className = computed(() => (
             </span>
           </h1>
         </div>
-        <StatGroupLatestPrice />
-      </div>
-      <div class="hidden flex-none lg:block">
-        <div class="relative -translate-y-12 select-none text-[7rem] before:absolute before:left-0 before:top-0 before:translate-x-4 before:translate-y-8 before:text-[10rem] before:content-['📱'] after:content-['📈'] " />
       </div>
 
-      <div class="mt-4 flex w-full gap-4">
+      <div class="mt-8 flex w-full justify-center gap-4">
         <button
           class="btn btn-primary"
           type="button"
@@ -66,6 +61,12 @@ const className = computed(() => (
         >
           <FontAwesomeIcon :icon="faTable" />
           查看表格
+        </button>
+      </div>
+
+      <div class="mt-8">
+        <button class="hidden p-6 text-4xl sm:block" type="button" @click="$emit('clickViewChart')">
+          <FontAwesomeIcon class="animate-bounce opacity-90" :icon="faChevronDown" />
         </button>
       </div>
     </div>
