@@ -10,7 +10,7 @@ const emit = defineEmits<{
   'update:modelValue': [value: StorageSize]
 }>()
 
-const options: StorageSize[] = [16, 32, 64, 128, 256, 512, 1024]
+const options: StorageSize[] = [16, 32, 64, 128, 256, 512, 1024, 2048]
 
 function handleInput (index: number) {
   emit('update:modelValue', options[index])
