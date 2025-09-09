@@ -139,4 +139,32 @@ export const iphone16List: Iphone[] = [
     isInitialRelease: true,
     url: iphone16ProMaxUrl,
   },
+
+  {
+    model: 'iphone-16',
+    storage: 128,
+    line: 'regular',
+    suffix: 'base',
+    releasedAt: '2025-09',
+    price: { twd: 25_900 },
+    url: iphone16Url,
+  },
+  {
+    model: 'iphone-16-plus',
+    storage: 128,
+    line: 'regular',
+    suffix: 'plus',
+    releasedAt: '2025-09',
+    price: { twd: 29_900 },
+    url: iphone16PlusUrl,
+  },
+  {
+    model: 'iphone-16-plus',
+    storage: 256,
+    line: 'regular',
+    suffix: 'plus',
+    releasedAt: '2025-09',
+    price: { twd: 33_400 },
+    url: iphone16PlusUrl,
+  },
 ]
