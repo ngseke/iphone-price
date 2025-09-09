@@ -76,6 +76,7 @@ export function formatDatasetName (name: string) {
           pro: 'Pro',
           'pro-max': 'Pro Max',
           mini: 'mini',
+          air: 'Air',
         }
         return suffixMap[chunk as IphoneSuffix]
       })

@@ -18,12 +18,14 @@ import { iphone7List } from './iphone7'
 import { iphone6sList } from './iphone6s'
 import { type StorageSize } from '../types/StorageSize'
 import { groupBy } from 'lodash-es'
-import { iphone16e } from './iphone16e'
+import { iphone16eList } from './iphone16e'
 import { iphoneSeList } from './iphoneSe'
 import { iphone6List } from './iphone6'
+import { iphone17List } from './iphone17'
 
 export const iphoneList: Iphone[] = [
-  ...iphone16e,
+  ...iphone17List,
+  ...iphone16eList,
   ...iphone16List,
   ...iphone15List,
   ...iphone14List,

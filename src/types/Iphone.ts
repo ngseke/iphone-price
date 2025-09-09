@@ -2,6 +2,10 @@ import { type Price } from './Currency'
 import { type StorageSize } from './StorageSize'
 
 export type IphoneModel =
+  | 'iphone-17-pro'
+  | 'iphone-17-pro-max'
+  | 'iphone-17'
+  | 'iphone-17-air'
   | 'iphone-16e'
   | 'iphone-16-pro'
   | 'iphone-16-pro-max'
@@ -44,7 +48,7 @@ export type IphoneModel =
 
 export type IphoneLine = 'entry-level' | 'regular' | 'premium'
 
-export type IphoneSuffix = 'base' | 'plus' | 'pro' | 'pro-max' | 'mini'
+export type IphoneSuffix = 'base' | 'plus' | 'pro' | 'pro-max' | 'mini' | 'air'
 
 export interface Iphone {
   model: IphoneModel
