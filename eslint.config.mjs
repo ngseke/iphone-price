@@ -5,6 +5,7 @@ import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended'
 import tailwind from 'eslint-plugin-tailwindcss'
 import js from '@eslint/js'
 import ts from 'typescript-eslint'
+import reactPlugin from 'eslint-plugin-react'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)
@@ -27,6 +28,13 @@ const eslintConfig = [
   js.configs.recommended,
   ...ts.configs.recommended,
   ...tailwind.configs['flat/recommended'],
+  reactPlugin.configs.flat.recommended,
+  reactPlugin.configs.flat['jsx-runtime'],
+  {
+    rules: {
+      'react/self-closing-comp': 'error',
+    },
+  },
   eslintPluginPrettierRecommended,
 ]
 
