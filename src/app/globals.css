@@ -1,0 +1,9 @@
+@config "../../tailwind.config.js";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  @apply text-[#cbc9ca] bg-[#121212];
+}

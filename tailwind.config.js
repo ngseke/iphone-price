@@ -1,8 +1,15 @@
 /** @type {import('tailwindcss').Config} */
 const config = {
-  content: ['./**/*.{html,js,jsx,ts,tsx}'],
+  content: ['./src/**/*.{html,js,jsx,ts,tsx}'],
   theme: {
-    extend: {},
+    colors: {
+      primary: '#1eb854',
+      'primary-content': '#000000',
+      secondary: '#1DB88E',
+      accent: '#1DB8AB',
+      neutral: '#19362D',
+      'base-100': '#171212',
+    },
   },
   plugins: [],
 }
