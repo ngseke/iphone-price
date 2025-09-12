@@ -26,8 +26,24 @@ const eslintConfig = [
     ],
   },
   js.configs.recommended,
-  ...ts.configs.recommended,
+  ...ts.configs.strictTypeChecked,
+  ...ts.configs.stylisticTypeChecked,
+  {
+    languageOptions: {
+      parserOptions: {
+        projectService: true,
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+  },
   ...tailwind.configs['flat/recommended'],
+  {
+    settings: {
+      tailwindcss: {
+        callees: ['classnames', 'cn'],
+      },
+    },
+  },
   reactPlugin.configs.flat.recommended,
   reactPlugin.configs.flat['jsx-runtime'],
   {
