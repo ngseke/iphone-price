@@ -1,14 +1,17 @@
 import type { Metadata } from 'next'
-import { Geist, Geist_Mono } from 'next/font/google'
+import { Noto_Sans_TC, Rubik } from 'next/font/google'
 import './globals.css'
+import { cn } from '../modules/cn'
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const notoSansTc = Noto_Sans_TC({
+  weight: ['400', '500', '600', '700', '800', '900'],
+  variable: '--font-noto-sans-tc',
   subsets: ['latin'],
 })
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+const rubik = Rubik({
+  weight: ['400', '500', '600', '700', '800', '900'],
+  variable: '--font-rubik',
   subsets: ['latin'],
 })
 
@@ -25,7 +28,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={cn(
+          'font-sans antialiased',
+          notoSansTc.variable,
+          rubik.variable,
+        )}
       >
         {children}
       </body>

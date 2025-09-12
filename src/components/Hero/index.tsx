@@ -1,22 +1,13 @@
 'use client'
 
-function TextVerticalScrolling({
-  char,
-  index,
-}: {
-  char: string
-  index: number
-}) {
-  return (
-    <span
-      aria-hidden
-      className="inline-block animate-[fade-in-up_500ms_ease-out_forwards] align-middle opacity-0 will-change-transform"
-      style={{ animationDelay: `${index * 60}ms` }}
-    >
-      {char}
-    </span>
-  )
-}
+import { Button } from '../Button'
+import TextVerticalScrolling from './TextVerticalScrolling'
+import {
+  IconChartDotsFilled,
+  IconChevronCompactDown,
+  IconTableRow,
+  IconTrendingUp,
+} from '@tabler/icons-react'
 
 export function Hero({
   onClickViewChart,
@@ -44,40 +35,42 @@ export function Hero({
               {'歷史趨勢'.split('').map((c, i) => (
                 <TextVerticalScrolling key={i} char={c} index={i} />
               ))}
-              <span className="relative mb-1 ml-2 inline-block rounded-full align-middle leading-[0] after:absolute after:inset-0 after:scale-y-75 after:bg-primary/50 after:blur-xl sm:mb-3 sm:ml-3" />
+              <span className="relative mb-1 ml-2 inline-block rounded-full align-middle leading-[0] after:absolute after:inset-0 after:scale-y-75 after:bg-primary/50 after:blur-xl sm:mb-3 sm:ml-3">
+                <IconTrendingUp
+                  className="text-primary sm:size-14"
+                  stroke={2.5}
+                />
+              </span>
             </h1>
           </div>
 
-          <p className="text-base-content/70 text-center">
+          <p className="text-center text-base-content/70">
             透過圖表比較歷代 <b>iPhone</b> 的價格變化
           </p>
         </div>
 
         <div className="mt-8 flex w-full justify-center gap-4">
-          <button
-            type="button"
-            onClick={onClickViewChart}
-            className="btn btn-primary"
-          >
+          <Button onClick={onClickViewChart}>
+            <IconChartDotsFilled size={20} />
             <span className="ml-2">查看圖表</span>
-          </button>
-          <button
-            type="button"
-            onClick={onClickViewTable}
-            className="btn btn-outline"
-          >
+          </Button>
+          <Button onClick={onClickViewTable} variant="outline">
+            <IconTableRow size={20} />
             <span className="ml-2">查看表格</span>
-          </button>
+          </Button>
         </div>
 
         <div className="mt-8">
           <button
             type="button"
             onClick={onClickViewChart}
-            className="hidden p-6 text-4xl duration-300 hover:brightness-125 sm:block"
+            className="hidden p-6 duration-300 hover:brightness-125 sm:block"
             aria-label="Scroll to chart"
           >
-            <div className="animate-bounce opacity-90" />
+            <IconChevronCompactDown
+              className="animate-bounce opacity-90"
+              size={50}
+            />
           </button>
         </div>
       </div>

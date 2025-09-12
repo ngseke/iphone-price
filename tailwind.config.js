@@ -3,6 +3,10 @@ const config = {
   content: ['./src/**/*.{html,js,jsx,ts,tsx}'],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['var(--font-noto-sans-tc)', 'sans-serif'],
+        rubik: ['var(--font-rubik)', 'sans-serif'],
+      },
       colors: {
         primary: '#1eb854',
         'primary-content': '#000000',
