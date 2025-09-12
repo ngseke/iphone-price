@@ -49,6 +49,7 @@ const eslintConfig = [
   {
     rules: {
       'react/self-closing-comp': 'error',
+      'object-shorthand': 'error',
     },
   },
   eslintPluginPrettierRecommended,
