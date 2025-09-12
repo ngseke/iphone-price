@@ -11,6 +11,8 @@
   "dependencies": {
     "@tabler/icons-react": "^3.34.1",
     "clsx": "^2.1.1",
+    "dayjs": "^1.11.18",
+    "lodash-es": "^4.17.21",
     "next": "15.5.3",
     "react": "19.1.0",
     "react-dom": "19.1.0",
@@ -22,6 +24,7 @@
     "@next/eslint-plugin-next": "^15.5.3",
     "@tailwindcss/postcss": "^4",
     "@types/eslint-plugin-tailwindcss": "^3.17.0",
+    "@types/lodash-es": "^4.17.12",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
