@@ -5,5 +5,5 @@
 @tailwind utilities;
 
 :root {
-  @apply text-[#cbc9ca] bg-[#121212];
+  @apply text-base-content bg-[#121212];
 }

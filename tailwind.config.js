@@ -2,6 +2,9 @@
 const config = {
   content: ['./src/**/*.{html,js,jsx,ts,tsx}'],
   theme: {
+    container: {
+      center: true,
+    },
     extend: {
       fontFamily: {
         sans: ['var(--font-noto-sans-tc)', 'sans-serif'],
