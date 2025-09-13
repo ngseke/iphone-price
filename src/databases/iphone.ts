@@ -55,6 +55,7 @@ const fullAdjustedList = groupBy(
   iphoneList.filter((iphone) => !iphone.isInitialRelease),
   (iphone) => [iphone.model, iphone.storage].join(','),
 )
+
 export function findAdjustedList(storage: StorageSize, model: IphoneModel) {
-  return fullAdjustedList[[model, storage].join(',')]
+  return fullAdjustedList[[model, storage].join(',')] ?? []
 }

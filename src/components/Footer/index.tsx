@@ -4,6 +4,7 @@ import Link from 'next/link'
 import dayjs from 'dayjs'
 import localizedFormat from 'dayjs/plugin/localizedFormat'
 import { IconBrandGithubFilled } from '@tabler/icons-react'
+import { StyledLink } from '../StyledLink'
 
 dayjs.extend(localizedFormat)
 
@@ -38,22 +39,22 @@ export default function Footer() {
         </Link>
 
         {links.map((link, i) => (
-          <Link key={i} href={link.url} className="underline">
+          <StyledLink key={i} href={link.url} className="underline">
             {link.name}
-          </Link>
+          </StyledLink>
         ))}
       </nav>
 
       <aside>
         <p className="font-mono text-xs font-medium">
           Made with <span title="IPA">🍺</span> by{' '}
-          <Link className="underline" href="https://ngseke.me/">
+          <StyledLink className="underline" href="https://ngseke.me/">
             ngseke
-          </Link>
+          </StyledLink>
           . Last update: {formattedBuiltAt} (
-          <Link className="underline" href={commitUrl}>
+          <StyledLink className="underline" href={commitUrl}>
             {commitHash}
-          </Link>
+          </StyledLink>
           )
         </p>
       </aside>

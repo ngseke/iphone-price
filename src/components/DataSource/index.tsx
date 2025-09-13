@@ -1,3 +1,5 @@
+import { StyledLink } from '../StyledLink'
+
 interface LinkItem {
   name: string
   url: string
@@ -26,14 +28,14 @@ export function DataSource() {
       <ol className="flex list-decimal flex-col gap-2 pl-5 text-sm">
         {list.map((item, index) => (
           <li key={index}>
-            <a
+            <StyledLink
               href={item.url}
               target="_blank"
               rel="noopener noreferrer"
               className="underline"
             >
               {item.name}
-            </a>
+            </StyledLink>
           </li>
         ))}
       </ol>
