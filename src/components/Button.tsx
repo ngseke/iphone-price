@@ -10,7 +10,7 @@ export function Button({
       type="button"
       {...props}
       className={cn(
-        'inline-flex h-12 min-h-12 shrink-0 cursor-pointer select-none flex-wrap items-center justify-center rounded-[2rem] border border-transparent bg-primary px-4 text-center text-sm font-semibold text-primary-content duration-200',
+        'inline-flex h-12 min-h-12 shrink-0 cursor-pointer select-none flex-wrap items-center justify-center gap-2 rounded-[2rem] border border-transparent bg-primary px-4 text-center text-sm font-semibold text-primary-content duration-200',
         {
           'hover:brightness-75': variant === 'primary',
           'border-base-content bg-transparent text-base-content hover:bg-base-content hover:text-primary-content':

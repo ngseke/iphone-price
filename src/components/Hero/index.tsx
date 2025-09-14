@@ -52,11 +52,11 @@ export function Hero({
         <div className="mt-8 flex w-full justify-center gap-4">
           <Button onClick={onClickViewChart}>
             <IconChartDotsFilled size={20} />
-            <span className="ml-2">查看圖表</span>
+            查看圖表
           </Button>
           <Button onClick={onClickViewTable} variant="outline">
             <IconTableRow size={20} />
-            <span className="ml-2">查看表格</span>
+            查看表格
           </Button>
         </div>
 
