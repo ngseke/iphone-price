@@ -129,7 +129,7 @@ export default function Chart(props: {
       formatter(params) {
         if (!Array.isArray(params.value)) return ''
 
-        const price = +params.value[1]
+        const price = Number(params.value[1])
         const formattedPrice = props.priceAbbreviation
           ? formatPriceAbbreviation(price)
           : formatPrice(price)

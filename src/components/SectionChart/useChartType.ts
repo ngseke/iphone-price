@@ -1,8 +1,6 @@
-import { chartTypeOptionValueSchema } from '../../modules/chartType'
-import { useQueryState } from '../../hooks/useQueryState'
-
-const storageId = 'iphonePriceChartType'
+import { ChartTypeOptionValue } from '../../modules/chartType'
+import { useState } from 'react'
 
 export function useChartType() {
-  return useQueryState(storageId, chartTypeOptionValueSchema, 'generation')
+  return useState<ChartTypeOptionValue>('generation')
 }

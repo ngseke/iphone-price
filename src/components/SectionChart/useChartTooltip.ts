@@ -10,7 +10,7 @@ function extractData(param: TooltipComponentFormatterCallbackParams) {
     Array.isArray(param) ||
     typeof param.value !== 'object' ||
     param.value instanceof Date ||
-    'selected' in param.value
+    (param.value && 'selected' in param.value)
   )
     throw new TypeError()
 
@@ -18,13 +18,13 @@ function extractData(param: TooltipComponentFormatterCallbackParams) {
   const dimensionNameX = param.dimensionNames?.[x] as 'value'
   const date = Array.isArray(param.value)
     ? param.value[x]
-    : param.value[dimensionNameX]
+    : param.value?.[dimensionNameX]
 
   const y = param.encode?.y[0] ?? 0
   const dimensionNameY = param.dimensionNames?.[y] as 'value'
   const value = Array.isArray(param.value)
     ? param.value[y]
-    : param.value[dimensionNameY]
+    : param.value?.[dimensionNameY]
 
   return {
     date: Number(date),
