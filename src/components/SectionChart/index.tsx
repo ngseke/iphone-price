@@ -17,6 +17,7 @@ import { Select } from '../Select'
 import { formatDatasetName } from '@/src/modules/iphoneDataset'
 import { FormGroupDisplayOptions } from './FormGroupDisplayOptions'
 import { useDisplayOptions } from './useDisplayOptions'
+import { DatasetTable } from './DatasetTable'
 
 const Chart = dynamic(() => import('./Chart'), { ssr: false })
 
@@ -117,7 +118,7 @@ export const SectionChart = forwardRef<HTMLElement>(
                   }))}
                   label="查看系列"
                 />
-                {/* <Table source={selectedDataset?.source} /> */}
+                <DatasetTable source={selectedDataset?.source} />
               </div>
             </div>
           )}

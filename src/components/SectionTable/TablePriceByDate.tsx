@@ -58,9 +58,9 @@ export default function IphonePriceTable({ date, list }: Props) {
 
       <div className="w-full min-w-0">
         <div className="overflow-x-auto overflow-y-hidden pb-6">
-          <table className="w-full text-left">
+          <table className="w-full text-left [&_tr]:border-b [&_tr]:border-base-content/10">
             <thead className="text-xs font-bold text-base-content/60">
-              <tr className="border-b border-base-content/10">
+              <tr>
                 <th className="px-4 py-3 align-middle">型號</th>
                 {columns.map((col) => (
                   <th key={col} className="px-4 py-3">
@@ -74,7 +74,7 @@ export default function IphonePriceTable({ date, list }: Props) {
               {rows.map((row) => (
                 <tr
                   key={row.model}
-                  className="border-b border-base-content/10 last:border-b-0 hover:bg-base-content/10"
+                  className="last:border-b-0 hover:bg-base-content/10"
                 >
                   <td className="px-4 py-3 align-top font-bold">
                     {row.firstUrl ? (
