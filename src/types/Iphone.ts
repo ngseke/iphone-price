@@ -1,3 +1,4 @@
+import z from 'zod'
 import { type Price } from './Currency'
 import { type StorageSize } from './StorageSize'
 
@@ -46,9 +47,18 @@ export type IphoneModel =
   | 'iphone-6'
   | 'iphone-SE'
 
-export type IphoneLine = 'entry-level' | 'regular' | 'premium'
+export const iphoneLineSchema = z.enum(['premium', 'regular', 'entry-level'])
+export type IphoneLine = z.infer<typeof iphoneLineSchema>
 
-export type IphoneSuffix = 'base' | 'plus' | 'pro' | 'pro-max' | 'mini' | 'air'
+export const iphoneSuffixSchema = z.enum([
+  'base',
+  'plus',
+  'pro',
+  'pro-max',
+  'mini',
+  'air',
+])
+export type IphoneSuffix = z.infer<typeof iphoneSuffixSchema>
 
 export interface Iphone {
   model: IphoneModel

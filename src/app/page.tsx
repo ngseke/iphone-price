@@ -5,6 +5,7 @@ import Footer from '../components/Footer'
 import { useRef } from 'react'
 import { DataSource } from '../components/DataSource'
 import { SectionTable } from '../components/SectionTable'
+import { SectionChart } from '../components/SectionChart'
 
 export default function Home() {
   const chartRef = useRef<HTMLElement | null>(null)
@@ -21,6 +22,7 @@ export default function Home() {
     <>
       <Hero onClickViewChart={scrollToChart} onClickViewTable={scrollToTable} />
       <main className="container min-h-screen space-y-20 px-4 py-6">
+        <SectionChart ref={chartRef} />
         <SectionTable ref={tableRef} />
         <div className="space-y-4">
           <DataSource />

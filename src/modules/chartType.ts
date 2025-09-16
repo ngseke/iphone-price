@@ -1,6 +1,11 @@
+import z from 'zod'
 import { type Iphone } from '../types/Iphone'
 
-export type ChartTypeOptionValue = 'generation' | 'priceAdjustment'
+export const chartTypeOptionValueSchema = z.enum([
+  'generation',
+  'priceAdjustment',
+])
+export type ChartTypeOptionValue = z.infer<typeof chartTypeOptionValueSchema>
 
 export type ChartDatasetGroupBy = (keyof Iphone)[]
 

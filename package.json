@@ -12,11 +12,15 @@
     "@tabler/icons-react": "^3.34.1",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.18",
+    "echarts": "^6.0.0",
+    "echarts-for-react": "^3.0.2",
     "lodash-es": "^4.17.21",
     "next": "15.5.3",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "tailwind-merge": "^3.3.1"
+    "react-hook-form": "^7.62.0",
+    "tailwind-merge": "^3.3.1",
+    "zod": "^4.1.8"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
