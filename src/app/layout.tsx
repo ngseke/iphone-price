@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Noto_Sans_TC, Rubik } from 'next/font/google'
 import './globals.css'
 import { cn } from '../modules/cn'
+import Script from 'next/script'
 
 const notoSansTc = Noto_Sans_TC({
   weight: ['400', '500', '600', '700', '800', '900'],
@@ -54,6 +55,25 @@ export default function RootLayout({
         )}
       >
         {children}
+
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-L5XC0FVT2W"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-L5XC0FVT2W');
+          `}
+        </Script>
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4196523767230587"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   )
