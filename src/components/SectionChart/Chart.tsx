@@ -2,11 +2,7 @@ import { TaiwanMinimumWage } from '@/src/databases/taiwanMinimumWage'
 import { use } from 'echarts/core'
 import { CanvasRenderer } from 'echarts/renderers'
 import { LineChart } from 'echarts/charts'
-import {
-  type LineSeriesOption,
-  type EChartsOption,
-  type DatasetComponentOption,
-} from 'echarts'
+import { type LineSeriesOption, type EChartsOption } from 'echarts'
 import {
   DatasetComponent,
   TooltipComponent,
@@ -14,7 +10,7 @@ import {
   MarkLineComponent,
 } from 'echarts/components'
 import ReactECharts from 'echarts-for-react'
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import { useCallback, useMemo, useRef, useState } from 'react'
 import colors from 'tailwindcss/colors'
 import {
   formatIphoneModelAbbreviation,
@@ -26,6 +22,7 @@ import dayjs from 'dayjs'
 import { Nullish } from '@/src/types/Nullish'
 import { useChartTooltip } from './useChartTooltip'
 import { CardNoResult } from './CardNoResult'
+import { IphoneDataset } from '@/src/modules/iphoneDataset'
 
 // eslint-disable-next-line react-hooks/rules-of-hooks
 use([
@@ -38,7 +35,8 @@ use([
 ])
 
 export default function Chart(props: {
-  iphoneDataset: DatasetComponentOption[]
+  iphoneDataset: IphoneDataset[]
+  selectedDataset: Nullish<IphoneDataset>
   taiwanMinimumWageList: TaiwanMinimumWage[]
 
   selectedSeriesName?: string | null
@@ -185,14 +183,20 @@ export default function Chart(props: {
 
   const { tooltip } = useChartTooltip()
 
+  const displayedDataset = useMemo(
+    () =>
+      props.selectedDataset ? [props.selectedDataset] : props.iphoneDataset,
+    [props.iphoneDataset, props.selectedDataset],
+  )
+
   const option = useMemo(
     () =>
       ({
         darkMode: isDark,
-        dataset: props.iphoneDataset,
+        dataset: displayedDataset,
         tooltip: props.hideTooltip ? undefined : tooltip,
         series: [
-          ...props.iphoneDataset.map<LineSeriesOption>((dataset, index) => ({
+          ...displayedDataset.map<LineSeriesOption>((dataset, index) => ({
             type: 'line',
             label,
             symbol: 'circle',
@@ -204,11 +208,12 @@ export default function Chart(props: {
             id: dataset.name,
             emphasis: { focus: 'series', scale: 1.5 },
             triggerLineEvent: true,
+            color: dataset.color,
           })),
           ...(props.showTaiwanMinimumWageList ? [taiwanMinimumWageSeries] : []),
         ],
-        animationDuration: 200,
-        animationDurationUpdate: 350,
+        animationDuration: 300,
+        animationDurationUpdate: 400,
         textStyle: { fontFamily: ['Rubik', '"Noto Sans TC"'].join(',') },
         color: [
           colors.rose[shade],
@@ -242,16 +247,20 @@ export default function Chart(props: {
         },
         yAxis: {
           type: 'value',
-          min: 'dataMin',
+          min:
+            (props.selectedDataset?.source.length ?? 0) > 1
+              ? ({ min }) => min * 0.99
+              : 'dataMin',
           axisLabel: { formatter: formatPriceAbbreviation },
           splitLine: { lineStyle: { color: isDark ? '#666' : '#ccc' } },
         },
       }) satisfies EChartsOption,
     [
+      displayedDataset,
       isDark,
       label,
       props.hideTooltip,
-      props.iphoneDataset,
+      props.selectedDataset,
       props.showTaiwanMinimumWageList,
       shade,
       taiwanMinimumWageSeries,
@@ -273,48 +282,17 @@ export default function Chart(props: {
     [props.onChangeSelectedSeriesName],
   )
 
-  const highlight = useCallback(() => {
-    const seriesName = selectedSeriesNameRef.current
-    const instance = chartRef.current?.getEchartsInstance()
-
-    if (!seriesName) {
-      const series = instance?.getOption().series as LineSeriesOption[]
-      instance?.dispatchAction({
-        type: 'highlight',
-        seriesName: series.map((series) => series.name),
-      })
-      instance?.dispatchAction({ type: 'downplay' })
-    } else {
-      instance?.dispatchAction({ type: 'highlight', seriesName })
-    }
-  }, [])
-
-  useEffect(() => {
-    highlight()
-  }, [highlight, props.selectedSeriesName])
-
-  const handleMouseOut = useCallback(() => {
-    void (async () => {
-      await new Promise((resolve) => setTimeout(resolve, 10))
-      highlight()
-    })()
-  }, [highlight])
-
   const onEvents = useMemo(
     () => ({
       click: handleClick,
-      mouseout: handleMouseOut,
     }),
-    [handleClick, handleMouseOut],
+    [handleClick],
   )
 
   if (isEmpty) return <CardNoResult onReset={props.onReset} />
 
   return (
-    <div
-      className="size-full min-w-[800px] overflow-hidden sm:min-w-0"
-      onMouseOut={handleMouseOut}
-    >
+    <div className="size-full min-w-[800px] overflow-hidden sm:min-w-0">
       <ReactECharts
         ref={(e) => {
           chartRef.current = e

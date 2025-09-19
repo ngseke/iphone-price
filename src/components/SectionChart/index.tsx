@@ -65,6 +65,7 @@ export const SectionChart = forwardRef<HTMLElement>(
 
     const chartProps: ComponentProps<typeof Chart> = {
       iphoneDataset,
+      selectedDataset,
       taiwanMinimumWageList,
       selectedSeriesName: selectedDatasetName,
       onChangeSelectedSeriesName: setSelectedDatasetName,

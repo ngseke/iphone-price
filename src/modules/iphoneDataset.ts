@@ -8,6 +8,8 @@ import dayjs from 'dayjs'
 import { type StorageSize } from '../types/StorageSize'
 import { formatIphoneModel } from './iphoneModel'
 import { iphoneLines } from './iphoneLine'
+import { Nullish } from '../types/Nullish'
+import colors from 'tailwindcss/colors'
 
 export interface GenerateDatasetOptions {
   storage?: StorageSize
@@ -26,6 +28,26 @@ export type IphoneDatasetSource = Iphone & {
 export interface IphoneDataset {
   name: string
   source: IphoneDatasetSource[]
+  color?: string
+}
+
+function generateColor(
+  suffix: Nullish<IphoneSuffix>,
+  line: Nullish<IphoneLine>,
+) {
+  if (!suffix) return
+  const shade = 700
+
+  if (line === 'entry-level') return colors.green[shade]
+
+  return {
+    base: colors.cyan[shade],
+    plus: colors.indigo[shade],
+    pro: colors.pink[shade],
+    'pro-max': colors.fuchsia[shade],
+    mini: colors.yellow[shade],
+    air: colors.blue[shade],
+  }[suffix]
 }
 
 export function generateIphoneDataset(
@@ -52,6 +74,7 @@ export function generateIphoneDataset(
       groups[group] ??= {
         source: [],
         name: groupName,
+        color: generateColor(iphone.suffix, iphone.line),
       }
 
       groups[group].source.push({
