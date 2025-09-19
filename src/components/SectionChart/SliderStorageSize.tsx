@@ -67,6 +67,8 @@ export function SliderStorageSize({
             <span
               className={cn('text-base-content/80 transition duration-100', {
                 'text-primary': index === currentIndex,
+                'text-base-content/30 italic':
+                  option < 256 && index !== currentIndex,
               })}
             >
               {formatStorageSize(option)}
