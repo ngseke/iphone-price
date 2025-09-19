@@ -6,7 +6,7 @@ export type IphoneModel =
   | 'iphone-17-pro'
   | 'iphone-17-pro-max'
   | 'iphone-17'
-  | 'iphone-17-air'
+  | 'iphone-air'
   | 'iphone-16e'
   | 'iphone-16-pro'
   | 'iphone-16-pro-max'

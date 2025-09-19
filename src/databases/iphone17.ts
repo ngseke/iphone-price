@@ -1,7 +1,7 @@
 import { type Iphone } from '../types/Iphone'
 
 const iphone17Url = 'https://www.apple.com/tw/iphone-17/specs/'
-const iphone17AirUrl = 'https://www.apple.com/tw/iphone-air/specs/'
+const iphoneAirUrl = 'https://www.apple.com/tw/iphone-air/specs/'
 const iphone17ProUrl = 'https://www.apple.com/tw/iphone-17-pro/specs/'
 const iphone17ProMaxUrl = 'https://www.apple.com/tw/iphone-17-pro/specs/'
 
@@ -28,34 +28,34 @@ export const iphone17List: Iphone[] = [
   },
 
   {
-    model: 'iphone-17-air',
+    model: 'iphone-air',
     storage: 256,
     line: 'premium',
     suffix: 'air',
     releasedAt: '2025-09',
     price: { twd: 36_900 },
     isInitialRelease: true,
-    url: iphone17AirUrl,
+    url: iphoneAirUrl,
   },
   {
-    model: 'iphone-17-air',
+    model: 'iphone-air',
     storage: 512,
     line: 'premium',
     suffix: 'air',
     releasedAt: '2025-09',
     price: { twd: 43_900 },
     isInitialRelease: true,
-    url: iphone17AirUrl,
+    url: iphoneAirUrl,
   },
   {
-    model: 'iphone-17-air',
+    model: 'iphone-air',
     storage: 1024,
     line: 'premium',
     suffix: 'air',
     releasedAt: '2025-09',
     price: { twd: 50_900 },
     isInitialRelease: true,
-    url: iphone17AirUrl,
+    url: iphoneAirUrl,
   },
 
   {
