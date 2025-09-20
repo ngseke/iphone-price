@@ -5,7 +5,7 @@ export function Tabs({ className, ...props }: ComponentProps<'div'>) {
   return (
     <div
       className={cn(
-        'grid items-center rounded-[1.9rem] bg-base-200 p-1 text-sm font-semibold',
+        'flex flex-wrap items-center rounded-[1.9rem] bg-base-200 p-1 text-sm font-semibold',
         className,
       )}
       {...props}
@@ -22,7 +22,7 @@ Tabs.Tab = function Tab({
     <button
       type="button"
       className={cn(
-        'row-start-1 inline-flex w-full select-none items-center rounded-[1.9rem] px-4 py-2',
+        'inline-flex flex-none select-none items-center rounded-[1.9rem] px-4 py-2',
         {
           'hover:bg-base-content/10': !active,
           'bg-primary text-primary-content font-bold': active,
@@ -41,7 +41,7 @@ Tabs.Divider = function Divider({
   return (
     <div
       className={cn(
-        'row-start-1 mx-2 inline-flex h-2/3 border-l border-base-content/30',
+        'float-none mx-2 inline-flex h-6 border-l border-base-content/30',
         className,
       )}
       {...props}

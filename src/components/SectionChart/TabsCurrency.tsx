@@ -1,49 +1,70 @@
 import { currencyOptions, CurrencyValue } from '@/src/modules/currency'
 import { Tabs } from '../Tabs'
 import { IconFlaskFilled } from '@tabler/icons-react'
-import { PropsWithChildren } from 'react'
+import { ReactNode } from 'react'
 
 interface Props {
   value?: CurrencyValue
   onChange?: (value: CurrencyValue) => void
 }
 
-const DEFAULT_TAB_VALUE: CurrencyValue = 'twd'
-const TAB_VALUES: CurrencyValue[] = ['usd']
-
-function Superscript({ children }: PropsWithChildren) {
-  return <sup className="ml-0.5 text-[10px] uppercase">{children}</sup>
+function Item({
+  name,
+  value,
+  flag,
+  isExperimental,
+}: {
+  name: ReactNode
+  value: ReactNode
+  flag: ReactNode
+  isExperimental?: boolean
+}) {
+  return (
+    <div className="flex items-center gap-2">
+      <span className="text-xl">{flag}</span>
+      <div className="flex flex-col">
+        {name}
+        <span className="text-[8px] uppercase leading-none">{value}</span>
+      </div>
+      {isExperimental && <IconFlaskFilled size={18} title="測試版" />}
+    </div>
+  )
 }
 
 export default function TabsCurrency({ value = 'twd', onChange }: Props) {
-  const tabs = TAB_VALUES.map((v) => ({ ...currencyOptions[v], value: v }))
+  const currencies: (CurrencyValue | { isDivider: true })[] = [
+    'twd',
+    { isDivider: true },
+    'usd',
+  ]
+
   const description = currencyOptions[value].description
 
   return (
     <div className="flex flex-col items-start gap-y-3">
       <Tabs>
-        <Tabs.Tab
-          key={DEFAULT_TAB_VALUE}
-          onClick={() => onChange?.(DEFAULT_TAB_VALUE)}
-          active={DEFAULT_TAB_VALUE === value}
-        >
-          {currencyOptions[DEFAULT_TAB_VALUE].name}
-          <Superscript>{DEFAULT_TAB_VALUE}</Superscript>
-        </Tabs.Tab>
-        <Tabs.Divider />
-        {tabs.map((tab) => (
-          <Tabs.Tab
-            key={tab.value}
-            onClick={() => onChange?.(tab.value)}
-            active={tab.value === value}
-          >
-            {tab.name}
-            <Superscript>{tab.value}</Superscript>
-            {tab.isExperimental && (
-              <IconFlaskFilled className="ml-2" size={18} title="測試版" />
-            )}
-          </Tabs.Tab>
-        ))}
+        {currencies.map((item, index) => {
+          if (typeof item === 'string') {
+            const currencyOption = currencyOptions[item]
+
+            return (
+              <Tabs.Tab
+                key={index}
+                onClick={() => onChange?.(item)}
+                active={value === item}
+              >
+                <Item
+                  name={currencyOption.name}
+                  value={item}
+                  flag={currencyOption.flag}
+                  isExperimental={currencyOption.isExperimental}
+                />
+              </Tabs.Tab>
+            )
+          }
+
+          return <Tabs.Divider key={index} />
+        })}
       </Tabs>
 
       <p className="text-sm text-base-content/80">{description}</p>
