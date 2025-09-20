@@ -7,6 +7,7 @@ import TablePriceByDate from './TablePriceByDate'
 import { cn } from '@/src/modules/cn'
 import { NewBadge } from './NewBadge'
 import { IconTableFilled } from '@tabler/icons-react'
+import { useCurrency } from '../SectionChart/useCurrency'
 
 function ListItem({
   active,
@@ -37,13 +38,17 @@ function ListItem({
 
 export const SectionTable = forwardRef<HTMLElement>(
   function SectionTable(_, ref) {
+    const { currency, formattedCurrency } = useCurrency()
+
     const groups = useMemo(
       () =>
         groupBy(
-          iphoneList.filter((x) => x.isInitialRelease),
+          iphoneList
+            .filter((x) => x.isInitialRelease)
+            .filter((iphone) => iphone.price[currency]),
           'releasedAt',
         ),
-      [],
+      [currency],
     )
 
     const releaseDates = useMemo(
@@ -113,10 +118,17 @@ export const SectionTable = forwardRef<HTMLElement>(
 
           <div className="flex min-w-full flex-col gap-4 sm:mx-0 sm:flex-1 lg:min-w-0 lg:px-8">
             {displayed.map(({ date, list }, index) => (
-              <TablePriceByDate key={index} date={date} list={list} />
+              <TablePriceByDate
+                key={index}
+                date={date}
+                list={list}
+                currency={currency}
+              />
             ))}
 
-            <span className="text-xs opacity-70">單位：新台幣</span>
+            <span className="text-xs opacity-70">
+              單位：{formattedCurrency}
+            </span>
           </div>
         </div>
       </section>

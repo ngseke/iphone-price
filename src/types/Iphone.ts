@@ -1,5 +1,5 @@
 import z from 'zod'
-import { type Price } from './Currency'
+import { type Price } from '../modules/currency'
 import { type StorageSize } from './StorageSize'
 
 export type IphoneModel =

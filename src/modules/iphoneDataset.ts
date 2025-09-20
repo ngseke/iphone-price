@@ -10,8 +10,10 @@ import { formatIphoneModel } from './iphoneModel'
 import { iphoneLines } from './iphoneLine'
 import { Nullish } from '../types/Nullish'
 import colors from 'tailwindcss/colors'
+import { CurrencyValue } from './currency'
 
 export interface GenerateDatasetOptions {
+  currency: CurrencyValue
   storage?: StorageSize
   lines?: IphoneLine[]
   groupBy: (keyof Iphone)[]
@@ -57,6 +59,7 @@ export function generateIphoneDataset(
   const groups: Record<string, IphoneDataset> = {}
 
   list
+    .filter((iphone) => iphone.price[options.currency])
     .filter((iphone) => !options.storage || iphone.storage === options.storage)
     .filter((iphone) => !options.lines || options.lines.includes(iphone.line))
     .filter((iphone) => {
@@ -81,7 +84,7 @@ export function generateIphoneDataset(
         ...iphone,
         name: formatIphoneModel(iphone.model),
         date: +dayjs(iphone.releasedAt, 'YYYY-MM'),
-        value: iphone.price.twd,
+        value: iphone.price[options.currency] ?? 0,
       })
     })
 

@@ -88,6 +88,7 @@ export default function Chart(props: {
       ({
         show: true,
         formatter(params) {
+          const price = (params.data as { value: number }).value
           const iphone = params.data as Iphone
 
           const { model } = iphone
@@ -95,7 +96,6 @@ export default function Chart(props: {
             ? formatIphoneModelAbbreviation(model)
             : formatIphoneModel(model)
 
-          const price = iphone.price.twd
           const formattedPrice = props.priceAbbreviation
             ? formatPriceAbbreviation(price)
             : formatPrice(price)

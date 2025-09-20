@@ -18,12 +18,16 @@ import { formatDatasetName } from '@/src/modules/iphoneDataset'
 import { FormGroupDisplayOptions } from './FormGroupDisplayOptions'
 import { useDisplayOptions } from './useDisplayOptions'
 import { DatasetTable } from './DatasetTable'
+import TabsCurrency from './TabsCurrency'
+import { useCurrency } from './useCurrency'
+import { FormGroup } from './FormGroup'
 
 const Chart = dynamic(() => import('./Chart'), { ssr: false })
 
 export const SectionChart = forwardRef<HTMLElement>(
   function SectionChart(_, ref) {
     const [chartType, setChartType] = useChartType()
+    const { currency, setCurrency, formattedCurrency } = useCurrency()
 
     const {
       form,
@@ -53,6 +57,7 @@ export const SectionChart = forwardRef<HTMLElement>(
       selectedDataset,
     } = useIphoneDataset({
       options: {
+        currency,
         storage: watch('storage'),
         lines: watch('lines'),
         groupBy: chartTypeOptions[chartType].groupBy,
@@ -110,7 +115,9 @@ export const SectionChart = forwardRef<HTMLElement>(
               <Chart {...chartProps} />
             </div>
             <div className="flex w-full items-center justify-between px-4">
-              <span className="text-xs opacity-70">單位：新台幣</span>
+              <span className="text-xs opacity-70">
+                單位：{formattedCurrency}
+              </span>
             </div>
           </div>
         </div>
@@ -119,16 +126,6 @@ export const SectionChart = forwardRef<HTMLElement>(
           {shouldShowTable && (
             <div className="inset-0 z-50 bg-base-100 sm:absolute">
               <div className="sticky top-0 flex flex-col gap-y-4 py-6">
-                {/* <div className="flex">
-                  <Button
-                    onClick={() => {
-                      setSelectedDatasetName(null)
-                    }}
-                  >
-                    <IconChevronLeft size={20} />
-                    返回
-                  </Button>
-                </div> */}
                 <Select
                   value={selectedDatasetName}
                   onChange={setSelectedDatasetName}
@@ -156,9 +153,15 @@ export const SectionChart = forwardRef<HTMLElement>(
               shouldShowTable ? 'hidden sm:invisible sm:flex' : 'flex',
             )}
           >
-            <FormSectionGroup title="圖表類型">
-              <TabsChartType value={chartType} onChange={setChartType} />
+            <FormSectionGroup title="資料集">
+              <FormGroup title="幣別">
+                <TabsCurrency value={currency} onChange={setCurrency} />
+              </FormGroup>
+              <FormGroup title="圖表類型">
+                <TabsChartType value={chartType} onChange={setChartType} />
+              </FormGroup>
             </FormSectionGroup>
+
             <FormGroupFilter
               control={control}
               showLinesReset={isFilterLinesChanged}
