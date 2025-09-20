@@ -5,7 +5,7 @@ export function Tabs({ className, ...props }: ComponentProps<'div'>) {
   return (
     <div
       className={cn(
-        'grid rounded-[1.9rem] bg-base-200 p-1 text-sm font-semibold',
+        'grid items-center rounded-[1.9rem] bg-base-200 p-1 text-sm font-semibold',
         className,
       )}
       {...props}
@@ -27,6 +27,21 @@ Tabs.Tab = function Tab({
           'hover:bg-base-content/10': !active,
           'bg-primary text-primary-content font-bold': active,
         },
+        className,
+      )}
+      {...props}
+    />
+  )
+}
+
+Tabs.Divider = function Divider({
+  className,
+  ...props
+}: ComponentProps<'div'> & { active?: boolean }) {
+  return (
+    <div
+      className={cn(
+        'row-start-1 mx-2 inline-flex h-2/3 border-l border-base-content/30',
         className,
       )}
       {...props}
