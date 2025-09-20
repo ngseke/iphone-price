@@ -5,7 +5,8 @@ export function formatPrice(price: Nullish<number>) {
   return new Intl.NumberFormat('en-US').format(price)
 }
 
-export function formatPriceAbbreviation(price: number) {
+export function formatPriceAbbreviation(price: Nullish<number>) {
+  if (!price) return ''
   const base = 100
   /**
    * price after removing all digits below 100

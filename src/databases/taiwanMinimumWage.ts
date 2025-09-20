@@ -1,4 +1,4 @@
-import { type Price } from '../types/Currency'
+import { type Price } from '../modules/currency'
 
 export interface TaiwanMinimumWage {
   implementedAt: `${number}-${number}-${number}`

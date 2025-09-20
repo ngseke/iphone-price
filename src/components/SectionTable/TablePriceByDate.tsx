@@ -10,11 +10,7 @@ import type { StorageSize } from '../../types/StorageSize'
 import type { Nullish } from '../../types/Nullish'
 import { findAdjustedList } from '../../databases/iphone'
 import { StyledLink } from '../StyledLink'
-
-interface Props {
-  date: Nullish<string>
-  list: Nullish<Iphone[]>
-}
+import { CurrencyValue } from '@/src/modules/currency'
 
 interface Row {
   model: IphoneModel
@@ -22,7 +18,15 @@ interface Row {
   firstUrl?: string
 }
 
-export default function IphonePriceTable({ date, list }: Props) {
+export default function IphonePriceTable({
+  date,
+  list,
+  currency,
+}: {
+  date: Nullish<string>
+  list: Nullish<Iphone[]>
+  currency: CurrencyValue
+}) {
   const columns = useMemo<StorageSize[]>(
     () =>
       uniq((list ?? []).map((iphone) => iphone.storage)).sort((a, b) => a - b),
@@ -88,25 +92,25 @@ export default function IphonePriceTable({ date, list }: Props) {
 
                   {columns.map((col) => {
                     const iphone = row.byStorage[col]
-                    const priceTwd = iphone?.price.twd
+                    const price = iphone?.price[currency]
                     const adjustedList = findAdjustedList(col, row.model)
 
                     return (
                       <td key={col} className="px-4 py-3 align-top">
                         <div className="flex flex-col items-start">
                           <span className="font-rubik text-lg font-bold">
-                            {formatPrice(priceTwd)}
+                            {formatPrice(price)}
                           </span>
 
                           {adjustedList.map((iphone, index) => {
                             const prev =
-                              adjustedList[index - 1]?.price.twd ?? priceTwd
+                              adjustedList[index - 1]?.price[currency] ?? price
                             return (
                               <AdjustedPrice
                                 key={index}
                                 original={prev}
                                 releasedAt={iphone.releasedAt}
-                                value={iphone.price.twd}
+                                value={iphone.price[currency]}
                               />
                             )
                           })}

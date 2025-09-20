@@ -9,11 +9,13 @@ export function FormGroupDisplayOptions({
   watch,
   showReset,
   onReset,
+  hideIsTaiwanMinimumWageListShownSwitch,
 }: {
   control: Control<DisplayOptions>
   watch: UseFormWatch<DisplayOptions>
   showReset: boolean
   onReset?: () => void
+  hideIsTaiwanMinimumWageListShownSwitch?: boolean
 }) {
   return (
     <FormSectionGroup showReset={showReset} onReset={onReset} title="顯示方式">
@@ -70,29 +72,31 @@ export function FormGroupDisplayOptions({
         )}
       </FormGroup>
 
-      <FormGroup title="其他指標">
-        {(
-          [
-            {
-              name: 'isTaiwanMinimumWageListShown',
-              label: '顯示台灣基本工資（月薪）',
-            },
-          ] as const
-        ).map(({ name, label }) => (
-          <Controller
-            key={name}
-            control={control}
-            name={name}
-            render={({ field }) => (
-              <Switch
-                checked={field.value}
-                onChange={field.onChange}
-                label={label}
-              />
-            )}
-          />
-        ))}
-      </FormGroup>
+      {!hideIsTaiwanMinimumWageListShownSwitch && (
+        <FormGroup title="其他指標">
+          {(
+            [
+              {
+                name: 'isTaiwanMinimumWageListShown',
+                label: '顯示台灣基本工資（月薪）',
+              },
+            ] as const
+          ).map(({ name, label }) => (
+            <Controller
+              key={name}
+              control={control}
+              name={name}
+              render={({ field }) => (
+                <Switch
+                  checked={field.value}
+                  onChange={field.onChange}
+                  label={label}
+                />
+              )}
+            />
+          ))}
+        </FormGroup>
+      )}
     </FormSectionGroup>
   )
 }

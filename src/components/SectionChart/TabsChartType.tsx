@@ -1,8 +1,8 @@
-import { cn } from '@/src/modules/cn'
 import {
   chartTypeOptions,
   type ChartTypeOptionValue,
 } from '../../modules/chartType'
+import { Tabs } from '../Tabs'
 
 interface Props {
   value?: ChartTypeOptionValue
@@ -20,27 +20,20 @@ export default function TabsChartType({
 
   return (
     <div className="flex flex-col items-start gap-y-3">
-      <div className="grid rounded-[1.9rem] bg-base-200 p-1 text-sm font-semibold">
+      <Tabs>
         {tabs.map((tab) => {
           const active = tab.value === value
           return (
-            <button
+            <Tabs.Tab
               key={tab.value}
-              type="button"
-              className={cn(
-                'row-start-1 inline-flex w-full select-none items-center rounded-[1.9rem] px-4 py-2',
-                {
-                  'hover:bg-base-content/10': !active,
-                  'bg-primary text-primary-content font-bold': active,
-                },
-              )}
               onClick={() => onChange?.(tab.value)}
+              active={active}
             >
               {tab.name}
-            </button>
+            </Tabs.Tab>
           )
         })}
-      </div>
+      </Tabs>
 
       <p className="text-sm text-base-content/80">{description}</p>
     </div>

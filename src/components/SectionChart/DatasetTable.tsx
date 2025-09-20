@@ -16,7 +16,7 @@ interface Column {
 const columns: Column[] = [
   { field: 'model', headerName: '型號' },
   { field: 'date', headerName: '發售年月' },
-  { field: 'value', headerName: '價格 (TWD)', align: 'right' },
+  { field: 'value', headerName: '價格', align: 'right' },
   { field: 'difference', headerName: '漲跌幅' },
 ]
 
