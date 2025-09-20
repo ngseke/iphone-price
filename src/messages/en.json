@@ -1,0 +1,12 @@
+{
+  "Hero": {
+    "button": {
+      "title1": "Taiwan's iPhone<br></br>Price ",
+      "title2": "Trends",
+      "description": "Visualize the price changes of past <b>iPhone</b> models through charts.",
+      "viewChart": "View Chart",
+      "viewTable": "View Table",
+      "updatedBadge": "Updated {modal} Price"
+    }
+  }
+}
