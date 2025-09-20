@@ -296,7 +296,7 @@ export default function Chart(props: {
   if (isEmpty) return <CardNoResult onReset={props.onReset} />
 
   return (
-    <div className="size-full min-w-[800px] overflow-hidden sm:min-w-0">
+    <div className="size-full overflow-hidden sm:min-w-0">
       <ReactECharts
         ref={(e) => {
           chartRef.current = e

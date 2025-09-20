@@ -92,8 +92,8 @@ export const SectionChart = forwardRef<HTMLElement>(
 
     return (
       <section ref={ref} className="flex flex-wrap gap-y-8">
-        <div className="-mx-4 min-w-full sm:mx-0 sm:flex-1 lg:min-w-0">
-          <div className="relative flex w-full flex-col items-start gap-8 overflow-auto overflow-y-hidden lg:sticky lg:top-8 lg:px-4">
+        <div className="-mx-4 min-w-full sm:mx-0 sm:flex-1 xl:min-w-0">
+          <div className="relative flex w-full flex-col items-start gap-8 overflow-x-auto overflow-y-hidden lg:sticky lg:top-8 lg:px-4">
             <div
               className={cn(
                 'absolute left-4 top-4 z-10 delay-300 duration-300',
@@ -113,9 +113,10 @@ export const SectionChart = forwardRef<HTMLElement>(
                 返回
               </Button>
             </div>
-            <div className="h-96 w-full min-w-[36rem] overflow-auto duration-300 sm:h-[32rem]">
+            <div className="aspect-video w-full min-w-[50rem] overflow-x-auto overflow-y-hidden duration-300">
               <Chart {...chartProps} />
             </div>
+
             <div className="flex w-full items-center justify-between px-4">
               <span className="text-xs opacity-70">
                 單位：{formattedCurrency}
@@ -124,7 +125,7 @@ export const SectionChart = forwardRef<HTMLElement>(
           </div>
         </div>
 
-        <div className="relative w-full lg:w-1/3">
+        <div className="relative w-full xl:w-1/3">
           {shouldShowTable && (
             <div className="inset-0 z-50 bg-base-100 sm:absolute">
               <div className="sticky top-0 flex flex-col gap-y-4 py-6">
