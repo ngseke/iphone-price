@@ -12,10 +12,7 @@ import { FormGroupFilter } from './FormGroupFilter'
 import { taiwanMinimumWageList } from '@/src/databases/taiwanMinimumWage'
 import dynamic from 'next/dynamic'
 import { Button } from '../Button'
-import {
-  IconChevronLeft,
-  IconInfoSquareRoundedFilled,
-} from '@tabler/icons-react'
+import { IconArrowLeft, IconInfoSquareRoundedFilled } from '@tabler/icons-react'
 import { Select } from '../Select'
 import { formatDatasetName } from '@/src/modules/iphoneDataset'
 import { FormGroupDisplayOptions } from './FormGroupDisplayOptions'
@@ -89,11 +86,30 @@ export const SectionChart = forwardRef<HTMLElement>(
     return (
       <section ref={ref} className="flex flex-wrap gap-y-8">
         <div className="-mx-4 min-w-full sm:mx-0 sm:flex-1 lg:min-w-0">
-          <div className="flex w-full flex-col items-start space-y-8 overflow-x-auto overflow-y-hidden lg:sticky lg:top-8 lg:px-4">
-            <div className="h-96 w-full min-w-[36rem] sm:h-[32rem]">
+          <div className="relative flex w-full flex-col items-start gap-8 overflow-auto overflow-y-hidden lg:sticky lg:top-8 lg:px-4">
+            <div
+              className={cn(
+                'absolute left-4 top-4 z-10 delay-300 duration-300',
+                {
+                  'opacity-0 pointer-events-none delay-0 duration-200':
+                    !shouldShowTable,
+                },
+              )}
+            >
+              <Button
+                onClick={() => {
+                  setSelectedDatasetName(null)
+                }}
+                disabled={!shouldShowTable}
+              >
+                <IconArrowLeft size={20} stroke={2.5} />
+                返回
+              </Button>
+            </div>
+            <div className="h-96 w-full min-w-[36rem] overflow-auto duration-300 sm:h-[32rem]">
               <Chart {...chartProps} />
             </div>
-            <div className="flex w-full items-center justify-between">
+            <div className="flex w-full items-center justify-between px-4">
               <span className="text-xs opacity-70">單位：新台幣</span>
             </div>
           </div>
@@ -103,7 +119,7 @@ export const SectionChart = forwardRef<HTMLElement>(
           {shouldShowTable && (
             <div className="inset-0 z-50 bg-base-100 sm:absolute">
               <div className="sticky top-0 flex flex-col gap-y-4 py-6">
-                <div className="flex">
+                {/* <div className="flex">
                   <Button
                     onClick={() => {
                       setSelectedDatasetName(null)
@@ -112,7 +128,7 @@ export const SectionChart = forwardRef<HTMLElement>(
                     <IconChevronLeft size={20} />
                     返回
                   </Button>
-                </div>
+                </div> */}
                 <Select
                   value={selectedDatasetName}
                   onChange={setSelectedDatasetName}

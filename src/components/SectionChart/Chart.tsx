@@ -247,6 +247,10 @@ export default function Chart(props: {
         },
         yAxis: {
           type: 'value',
+          max:
+            (props.selectedDataset?.source.length ?? 0) > 1
+              ? ({ max }) => max * 1.03
+              : undefined,
           min:
             (props.selectedDataset?.source.length ?? 0) > 1
               ? ({ min }) => min * 0.99
