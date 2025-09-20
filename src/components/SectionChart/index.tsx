@@ -68,6 +68,8 @@ export const SectionChart = forwardRef<HTMLElement>(
 
     const shouldShowTable = Boolean(selectedDataset)
 
+    const hideIsTaiwanMinimumWageListShownSwitch = currency !== 'twd'
+
     const chartProps: ComponentProps<typeof Chart> = {
       iphoneDataset,
       selectedDataset,
@@ -80,9 +82,9 @@ export const SectionChart = forwardRef<HTMLElement>(
       ),
       priceAbbreviation: displayOptionsForm.watch('isPriceAbbreviation'),
       hidePrice: displayOptionsForm.watch('isPriceHidden'),
-      showTaiwanMinimumWageList: displayOptionsForm.watch(
-        'isTaiwanMinimumWageListShown',
-      ),
+      showTaiwanMinimumWageList:
+        displayOptionsForm.watch('isTaiwanMinimumWageListShown') &&
+        !hideIsTaiwanMinimumWageListShownSwitch,
       hideTooltip: displayOptionsForm.watch('isTooltipHidden'),
 
       onReset: resetFilter,
@@ -179,6 +181,9 @@ export const SectionChart = forwardRef<HTMLElement>(
               watch={displayOptionsForm.watch}
               showReset={isSomeDisplayOptionsChanged}
               onReset={resetDisplayOptions}
+              hideIsTaiwanMinimumWageListShownSwitch={
+                hideIsTaiwanMinimumWageListShownSwitch
+              }
             />
           </div>
         </div>
