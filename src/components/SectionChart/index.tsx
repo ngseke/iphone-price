@@ -12,7 +12,10 @@ import { FormGroupFilter } from './FormGroupFilter'
 import { taiwanMinimumWageList } from '@/src/databases/taiwanMinimumWage'
 import dynamic from 'next/dynamic'
 import { Button } from '../Button'
-import { IconChevronLeft } from '@tabler/icons-react'
+import {
+  IconChevronLeft,
+  IconInfoSquareRoundedFilled,
+} from '@tabler/icons-react'
 import { Select } from '../Select'
 import { formatDatasetName } from '@/src/modules/iphoneDataset'
 import { FormGroupDisplayOptions } from './FormGroupDisplayOptions'
@@ -119,7 +122,14 @@ export const SectionChart = forwardRef<HTMLElement>(
                   }))}
                   label="查看系列"
                 />
+
                 <DatasetTable source={selectedDataset?.source} />
+                {selectedDataset?.source.length === 1 && (
+                  <div className="flex items-center gap-1 text-xs text-base-content/60">
+                    <IconInfoSquareRoundedFilled size={18} />
+                    此系列未調整過價格
+                  </div>
+                )}
               </div>
             </div>
           )}
