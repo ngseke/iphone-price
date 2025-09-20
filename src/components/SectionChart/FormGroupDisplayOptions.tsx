@@ -18,35 +18,37 @@ export function FormGroupDisplayOptions({
   return (
     <FormSectionGroup showReset={showReset} onReset={onReset} title="顯示方式">
       <FormGroup title="標籤">
-        {(
-          [
-            {
-              name: 'isModelNameAbbreviation',
-              label: '簡化產品名稱',
-              disabled: false,
-            },
-            { name: 'isPriceHidden', label: '隱藏價格', disabled: false },
-            {
-              name: 'isPriceAbbreviation',
-              label: '簡化價格',
-              disabled: watch('isPriceHidden'),
-            },
-          ] as const
-        ).map(({ name, label, disabled }) => (
-          <Controller
-            key={name}
-            control={control}
-            name={name}
-            render={({ field }) => (
-              <Switch
-                checked={field.value}
-                onChange={field.onChange}
-                label={label}
-                disabled={disabled}
-              />
-            )}
-          />
-        ))}
+        <div className="flex gap-4">
+          {(
+            [
+              {
+                name: 'isModelNameAbbreviation',
+                label: '簡化產品名稱',
+                disabled: false,
+              },
+              { name: 'isPriceHidden', label: '隱藏價格', disabled: false },
+              {
+                name: 'isPriceAbbreviation',
+                label: '簡化價格',
+                disabled: watch('isPriceHidden'),
+              },
+            ] as const
+          ).map(({ name, label, disabled }) => (
+            <Controller
+              key={name}
+              control={control}
+              name={name}
+              render={({ field }) => (
+                <Switch
+                  checked={field.value}
+                  onChange={field.onChange}
+                  label={label}
+                  disabled={disabled}
+                />
+              )}
+            />
+          ))}
+        </div>
       </FormGroup>
 
       <FormGroup title="提示框">
