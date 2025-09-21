@@ -1,0 +1,92 @@
+{
+  "Metadata": {
+    "title": "Taiwan's iPhone Price Trends",
+    "description": "Visualize the price changes of past iPhone models through charts."
+  },
+  "Hero": {
+    "button": {
+      "title1": "Taiwan's iPhone<br></br>Price ",
+      "title2": "Trends",
+      "description": "Visualize the price changes of past <b>iPhone</b> models through charts.",
+      "viewChart": "View Chart",
+      "viewTable": "View Table",
+      "updatedBadge": "Updated {modal} Price"
+    }
+  },
+  "Chart": {
+    "button": {
+      "back": "Back"
+    },
+    "section": {
+      "dataset": "Dataset",
+      "filter": "Filter",
+      "display": "Display"
+    },
+    "filter": {
+      "currency": {
+        "label": "Currency"
+      },
+      "chartType": {
+        "label": "Chart Type",
+        "options": {
+          "generation": {
+            "label": "Generational Trends",
+            "description": "Price changes across iPhone generations by product line."
+          },
+          "priceAdjustment": {
+            "label": "Price Adjustment Trends",
+            "description": "Price increases and decreases for the same iPhone model over time."
+          }
+        }
+      },
+      "storage": {
+        "label": "Storage"
+      },
+      "line": {
+        "label": "Product Line"
+      },
+      "year": {
+        "label": "Release Year"
+      },
+      "display": {
+        "chartLabel": "Label",
+        "tooltip": "Tooltip",
+        "otherMetrics": "Other Metrics",
+        "isModelNameAbbreviation": "Abbreviate Model Names",
+        "isPriceHidden": "Hide Prices",
+        "isPriceAbbreviation": "Abbreviate Prices",
+        "isTooltipHidden": "Hide Tooltip",
+        "isTaiwanMinimumWageListShown": "Show Taiwan Minimum Wage (Monthly Salary)"
+      }
+    },
+    "table": {
+      "viewSeries": "View Series",
+      "noPriceAdjustment": "This series has no price adjustments.",
+      "model": "Model",
+      "date": "Release Date",
+      "price": "Price",
+      "difference": "Change"
+    }
+  },
+  "Table": {
+    "title": "Launch Models by Year",
+    "releaseDate": "Release Date",
+    "all": "Show All",
+    "model": "Model"
+  },
+  "DataSource": {
+    "title": "Data Sources"
+  },
+  "Currency": {
+    "unit": "Unit",
+    "twd": "TWD",
+    "usd": "USD",
+    "eur": "EUR",
+    "jpy": "JPY"
+  },
+  "Line": {
+    "entry-level": "Entry Level",
+    "regular": "Regular",
+    "premium": "Premium"
+  }
+}

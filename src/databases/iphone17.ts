@@ -30,7 +30,7 @@ export const iphone17List: Iphone[] = [
   {
     model: 'iphone-air',
     storage: 256,
-    line: 'premium',
+    line: 'regular',
     suffix: 'air',
     releasedAt: '2025-09',
     price: { twd: 36_900, usd: 999, eur: 999 },
@@ -40,7 +40,7 @@ export const iphone17List: Iphone[] = [
   {
     model: 'iphone-air',
     storage: 512,
-    line: 'premium',
+    line: 'regular',
     suffix: 'air',
     releasedAt: '2025-09',
     price: { twd: 43_900, usd: 1_199, eur: 1_199 },
@@ -50,7 +50,7 @@ export const iphone17List: Iphone[] = [
   {
     model: 'iphone-air',
     storage: 1024,
-    line: 'premium',
+    line: 'regular',
     suffix: 'air',
     releasedAt: '2025-09',
     price: { twd: 50_900, usd: 1_399, eur: 1_399 },

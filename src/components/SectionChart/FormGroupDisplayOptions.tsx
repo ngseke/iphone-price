@@ -3,6 +3,7 @@ import { FormGroup } from './FormGroup'
 import { FormSectionGroup } from './FormSectionGroup'
 import { Switch } from '../Switch'
 import { DisplayOptions } from '@/src/modules/displayOptions'
+import { useTranslations } from 'next-intl'
 
 export function FormGroupDisplayOptions({
   control,
@@ -17,21 +18,31 @@ export function FormGroupDisplayOptions({
   onReset?: () => void
   hideIsTaiwanMinimumWageListShownSwitch?: boolean
 }) {
+  const t = useTranslations('Chart')
+
   return (
-    <FormSectionGroup showReset={showReset} onReset={onReset} title="顯示方式">
-      <FormGroup title="標籤">
-        <div className="flex gap-4">
+    <FormSectionGroup
+      showReset={showReset}
+      onReset={onReset}
+      title={t('section.display')}
+    >
+      <FormGroup title={t('filter.display.chartLabel')}>
+        <div className="flex flex-wrap gap-x-4 gap-y-1">
           {(
             [
               {
                 name: 'isModelNameAbbreviation',
-                label: '簡化產品名稱',
+                label: t('filter.display.isModelNameAbbreviation'),
                 disabled: false,
               },
-              { name: 'isPriceHidden', label: '隱藏價格', disabled: false },
+              {
+                name: 'isPriceHidden',
+                label: t('filter.display.isPriceHidden'),
+                disabled: false,
+              },
               {
                 name: 'isPriceAbbreviation',
-                label: '簡化價格',
+                label: t('filter.display.isPriceAbbreviation'),
                 disabled: watch('isPriceHidden'),
               },
             ] as const
@@ -53,32 +64,37 @@ export function FormGroupDisplayOptions({
         </div>
       </FormGroup>
 
-      <FormGroup title="提示框">
-        {([{ name: 'isTooltipHidden', label: '隱藏懸浮提示框' }] as const).map(
-          ({ name, label }) => (
-            <Controller
-              key={name}
-              control={control}
-              name={name}
-              render={({ field }) => (
-                <Switch
-                  checked={field.value}
-                  onChange={field.onChange}
-                  label={label}
-                />
-              )}
-            />
-          ),
-        )}
+      <FormGroup title={t('filter.display.tooltip')}>
+        {(
+          [
+            {
+              name: 'isTooltipHidden',
+              label: t('filter.display.isTooltipHidden'),
+            },
+          ] as const
+        ).map(({ name, label }) => (
+          <Controller
+            key={name}
+            control={control}
+            name={name}
+            render={({ field }) => (
+              <Switch
+                checked={field.value}
+                onChange={field.onChange}
+                label={label}
+              />
+            )}
+          />
+        ))}
       </FormGroup>
 
       {!hideIsTaiwanMinimumWageListShownSwitch && (
-        <FormGroup title="其他指標">
+        <FormGroup title={t('filter.display.otherMetrics')}>
           {(
             [
               {
                 name: 'isTaiwanMinimumWageListShown',
-                label: '顯示台灣基本工資（月薪）',
+                label: t('filter.display.isTaiwanMinimumWageListShown'),
               },
             ] as const
           ).map(({ name, label }) => (

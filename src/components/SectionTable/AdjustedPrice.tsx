@@ -1,8 +1,8 @@
 import { useMemo } from 'react'
 import { formatPrice } from '../../modules/price'
-import { formatDateChinese } from '../../modules/date'
 import { IconTrendingDown, IconTrendingUp } from '@tabler/icons-react'
 import { cn } from '@/src/modules/cn'
+import { useFormatDate } from '@/src/hooks/useFormatDate'
 
 interface Props {
   value?: number | null
@@ -11,13 +11,15 @@ interface Props {
 }
 
 export default function PriceTag({ value, original, releasedAt }: Props) {
+  const { formatDate } = useFormatDate()
+
   const isDecreased = useMemo(
     () => (value ?? 0) < (original ?? 0),
     [value, original],
   )
   if (!value) return null
 
-  const tooltip = `${formatDateChinese(releasedAt)}${isDecreased ? '降價' : '漲價'}`
+  const tooltip = formatDate(releasedAt)
 
   return (
     <span

@@ -2,6 +2,7 @@ import { currencyOptions, CurrencyValue } from '@/src/modules/currency'
 import { Tabs } from '../Tabs'
 import { IconFlaskFilled } from '@tabler/icons-react'
 import { ReactNode } from 'react'
+import { useFormatCurrency } from '@/src/hooks/useFormatCurrency'
 
 interface Props {
   value?: CurrencyValue
@@ -10,12 +11,12 @@ interface Props {
 
 function Item({
   name,
-  value,
+  currency,
   flag,
   isExperimental,
 }: {
-  name: ReactNode
-  value: ReactNode
+  name: string
+  currency: string
   flag: ReactNode
   isExperimental?: boolean
 }) {
@@ -24,7 +25,9 @@ function Item({
       <span className="text-xl">{flag}</span>
       <div className="flex flex-col">
         {name}
-        <span className="text-[8px] uppercase leading-none">{value}</span>
+        {name.toUpperCase() !== currency.toUpperCase() && (
+          <span className="text-[8px] uppercase leading-none">{currency}</span>
+        )}
       </div>
       {isExperimental && <IconFlaskFilled size={18} title="測試版" />}
     </div>
@@ -40,6 +43,8 @@ export default function TabsCurrency({ value = 'twd', onChange }: Props) {
 
   const description = currencyOptions[value].description
 
+  const { formatCurrency } = useFormatCurrency()
+
   return (
     <div className="flex flex-col items-start gap-y-3">
       <Tabs>
@@ -54,8 +59,8 @@ export default function TabsCurrency({ value = 'twd', onChange }: Props) {
                 active={value === item}
               >
                 <Item
-                  name={currencyOption.name}
-                  value={item}
+                  name={formatCurrency(item)}
+                  currency={item}
                   flag={currencyOption.flag}
                   isExperimental={currencyOption.isExperimental}
                 />

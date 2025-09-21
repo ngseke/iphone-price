@@ -28,6 +28,10 @@ const config = {
             transform: 'translateY(calc(-100% + (100% / var(--units))))',
           },
         },
+        'gradient-text': {
+          '0%': { backgroundPosition: '400%' },
+          '100%': { backgroundPosition: '0%' },
+        },
       },
     },
   },
