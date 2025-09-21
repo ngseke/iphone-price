@@ -12,7 +12,11 @@ import { FormGroupFilter } from './FormGroupFilter'
 import { taiwanMinimumWageList } from '@/src/databases/taiwanMinimumWage'
 import dynamic from 'next/dynamic'
 import { Button } from '../Button'
-import { IconArrowLeft, IconInfoSquareRoundedFilled } from '@tabler/icons-react'
+import {
+  IconArrowLeft,
+  IconInfoSquareRoundedFilled,
+  IconLoader,
+} from '@tabler/icons-react'
 import { Select } from '../Select'
 import { FormGroupDisplayOptions } from './FormGroupDisplayOptions'
 import { useDisplayOptions } from './useDisplayOptions'
@@ -24,7 +28,14 @@ import { useTranslations } from 'next-intl'
 import { CurrencyNote } from '../CurrencyNote'
 import { useFormatDatasetName } from '@/src/hooks/useFormatDatasetName'
 
-const Chart = dynamic(() => import('./Chart'), { ssr: false })
+const Chart = dynamic(() => import('./Chart'), {
+  ssr: false,
+  loading: () => (
+    <div className="flex size-full items-center justify-center rounded-lg bg-base-200/30 text-sm text-base-content/70">
+      <IconLoader className="animate-spin" />
+    </div>
+  ),
+})
 
 export const SectionChart = forwardRef<HTMLElement>(
   function SectionChart(_, ref) {
