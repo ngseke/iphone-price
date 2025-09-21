@@ -3,7 +3,7 @@ import {
   type TooltipComponentOption,
 } from 'echarts'
 import { formatPrice } from '../../modules/price'
-import { formatDateChinese } from '../../modules/date'
+import { useFormatDate } from '@/src/hooks/useFormatDate'
 
 function extractData(param: TooltipComponentFormatterCallbackParams) {
   if (
@@ -33,6 +33,8 @@ function extractData(param: TooltipComponentFormatterCallbackParams) {
 }
 
 export function useChartTooltip() {
+  const { formatDate } = useFormatDate()
+
   const tooltip: TooltipComponentOption = {
     trigger: 'axis',
     className:
@@ -41,7 +43,7 @@ export function useChartTooltip() {
       if (!Array.isArray(params)) return ''
 
       const { date } = extractData(params[0])
-      const formattedDate = formatDateChinese(date)
+      const formattedDate = formatDate(date)
 
       return `
         <div class="flex flex-col gap-2">

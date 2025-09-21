@@ -1,10 +1,11 @@
+import { useFormatDate } from '@/src/hooks/useFormatDate'
 import { cn } from '@/src/modules/cn'
-import { formatDateChinese } from '@/src/modules/date'
 import { IphoneDatasetSource } from '@/src/modules/iphoneDataset'
 import { formatIphoneModelAbbreviation } from '@/src/modules/iphoneModel'
 import { formatPrice } from '@/src/modules/price'
 import { Nullish } from '@/src/types/Nullish'
 import { IconArrowDown, IconArrowRight, IconArrowUp } from '@tabler/icons-react'
+import { useTranslations } from 'next-intl'
 import { Fragment, useMemo } from 'react'
 
 interface Column {
@@ -12,13 +13,6 @@ interface Column {
   headerName?: string
   align?: 'left' | 'right'
 }
-
-const columns: Column[] = [
-  { field: 'model', headerName: '型號' },
-  { field: 'date', headerName: '發售年月' },
-  { field: 'value', headerName: '價格', align: 'right' },
-  { field: 'difference', headerName: '漲跌幅' },
-]
 
 function TextPriceDifference({ value }: { value: Nullish<number> }) {
   if (value == null) return null
@@ -49,6 +43,15 @@ function TextPriceDifference({ value }: { value: Nullish<number> }) {
 }
 
 export function DatasetTable({ source }: { source?: IphoneDatasetSource[] }) {
+  const t = useTranslations('Chart')
+
+  const columns: Column[] = [
+    { field: 'model', headerName: t('table.model') },
+    { field: 'date', headerName: t('table.date') },
+    { field: 'value', headerName: t('table.price'), align: 'right' },
+    { field: 'difference', headerName: t('table.difference') },
+  ]
+
   const sourceWithDifference = useMemo(
     () =>
       source?.map((item, index, list) => {
@@ -60,6 +63,8 @@ export function DatasetTable({ source }: { source?: IphoneDatasetSource[] }) {
       }),
     [source],
   )
+
+  const { formatDate } = useFormatDate()
 
   return (
     <div className="overflow-x-auto">
@@ -107,9 +112,7 @@ export function DatasetTable({ source }: { source?: IphoneDatasetSource[] }) {
                       )
                     if (column.field === 'date')
                       return (
-                        <td className="w-0">
-                          {formatDateChinese(row[column.field])}
-                        </td>
+                        <td className="w-0">{formatDate(row[column.field])}</td>
                       )
 
                     if (column.field === 'value')

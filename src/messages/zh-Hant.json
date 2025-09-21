@@ -8,5 +8,81 @@
       "viewTable": "查看表格",
       "updatedBadge": "更新 {modal} 價格"
     }
+  },
+  "Chart": {
+    "button": {
+      "back": "返回"
+    },
+    "section": {
+      "dataset": "資料集",
+      "filter": "篩選條件",
+      "display": "顯示方式"
+    },
+    "filter": {
+      "currency": {
+        "label": "幣別"
+      },
+      "chartType": {
+        "label": "圖表類型",
+        "options": {
+          "generation": {
+            "label": "歷代趨勢",
+            "description": "各個產品線下的歷代 iPhone 價格變化"
+          },
+          "priceAdjustment": {
+            "label": "售價調整趨勢",
+            "description": "相同型號 iPhone 價格的漲跌變化"
+          }
+        }
+      },
+      "storage": {
+        "label": "儲存空間"
+      },
+      "line": {
+        "label": "產品線"
+      },
+      "year": {
+        "label": "發售年份"
+      },
+      "display": {
+        "chartLabel": "標籤",
+        "tooltip": "提示框",
+        "otherMetrics": "其他指標",
+        "isModelNameAbbreviation": "簡化產品名稱",
+        "isPriceHidden": "隱藏價格",
+        "isPriceAbbreviation": "簡化價格",
+        "isTooltipHidden": "隱藏懸浮提示框",
+        "isTaiwanMinimumWageListShown": "顯示台灣基本工資（月薪）"
+      }
+    },
+    "table": {
+      "viewSeries": "查看系列",
+      "noPriceAdjustment": "此系列未調整過價格",
+      "model": "型號",
+      "date": "發售年月",
+      "price": "價格",
+      "difference": "漲跌幅"
+    }
+  },
+  "Table": {
+    "title": "歷年首發機型",
+    "releaseDate": "發售年月",
+    "all": "顯示全部",
+    "model": "型號"
+  },
+  "DataSource": {
+    "title": "資料來源"
+  },
+  "Currency": {
+    "unit": "單位",
+    "twd": "新台幣",
+    "usd": "美金",
+    "eur": "歐元",
+    "jpy": "日圓"
+  },
+  "Line": {
+    "entry-level": "入門級",
+    "regular": "高階級",
+    "premium": "旗艦級"
   }
 }

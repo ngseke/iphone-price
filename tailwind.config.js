@@ -29,8 +29,8 @@ const config = {
           },
         },
         'gradient-text': {
-          '0%': { backgroundPosition: '0' },
-          '100%': { backgroundPosition: '400%' },
+          '0%': { backgroundPosition: '400%' },
+          '100%': { backgroundPosition: '0%' },
         },
       },
     },

@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl'
 import { StyledLink } from '../StyledLink'
 
 interface LinkItem {
@@ -11,6 +12,10 @@ const list: LinkItem[] = [
     url: 'https://www.apple.com/tw/',
   },
   {
+    name: 'Apple',
+    url: 'https://www.apple.com/',
+  },
+  {
     name: 'Timeline of iPhone models - 維基百科',
     url: 'https://zh.wikipedia.org/wiki/Template:Timeline_of_iPhone_models',
   },
@@ -21,9 +26,11 @@ const list: LinkItem[] = [
 ]
 
 export function DataSource() {
+  const t = useTranslations('DataSource')
+
   return (
     <div className="">
-      <h2 className="pb-4 font-semibold">資料來源</h2>
+      <h2 className="pb-4 font-semibold">{t('title')}</h2>
 
       <ol className="flex list-decimal flex-col gap-2 pl-5 text-sm">
         {list.map((item, index) => (

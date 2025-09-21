@@ -2,12 +2,14 @@ import { forwardRef, PropsWithChildren, useMemo, useState } from 'react'
 import groupBy from 'lodash-es/groupBy'
 import dayjs from 'dayjs'
 import { iphoneList } from '../../databases/iphone'
-import { formatDateChinese } from '../../modules/date'
 import TablePriceByDate from './TablePriceByDate'
 import { cn } from '@/src/modules/cn'
 import { NewBadge } from './NewBadge'
 import { IconTableFilled } from '@tabler/icons-react'
 import { useCurrency } from '../SectionChart/useCurrency'
+import { CurrencyNote } from '../CurrencyNote'
+import { useTranslations } from 'next-intl'
+import { useFormatDate } from '@/src/hooks/useFormatDate'
 
 function ListItem({
   active,
@@ -38,7 +40,9 @@ function ListItem({
 
 export const SectionTable = forwardRef<HTMLElement>(
   function SectionTable(_, ref) {
-    const { currency, formattedCurrency } = useCurrency()
+    const t = useTranslations('Table')
+
+    const { currency } = useCurrency()
 
     const groups = useMemo(
       () =>
@@ -67,14 +71,16 @@ export const SectionTable = forwardRef<HTMLElement>(
       return releaseDates.map((date) => ({ date, list: groups[date] }))
     }, [groups, releaseDates, selectedDate])
 
+    const { formatDate } = useFormatDate()
+
     return (
       <section className="mx-auto flex max-w-5xl flex-col gap-y-8" ref={ref}>
-        <h2 className="text-3xl font-bold">歷年首發機型</h2>
+        <h2 className="text-3xl font-bold">{t('title')}</h2>
 
         <div className="flex flex-wrap gap-4">
           <div className="relative w-full lg:w-1/5">
             <div className="sticky top-4 flex flex-col gap-y-4">
-              <h3 className="text-xl font-medium">發售年月</h3>
+              <h3 className="text-xl font-medium">{t('releaseDate')}</h3>
 
               <ul className="flex flex-col rounded-2xl bg-base-200 p-2 text-sm">
                 <ListItem
@@ -85,7 +91,7 @@ export const SectionTable = forwardRef<HTMLElement>(
                 >
                   <span className="inline-flex items-center">
                     <IconTableFilled className="mr-2 inline-block" size={20} />
-                    顯示全部
+                    {t('all')}
                   </span>
                 </ListItem>
 
@@ -100,7 +106,7 @@ export const SectionTable = forwardRef<HTMLElement>(
                         setSelectedDate(date)
                       }}
                     >
-                      {formatDateChinese(date)}
+                      {formatDate(date)}
                       {!index && (
                         <NewBadge
                           className={cn(
@@ -126,9 +132,7 @@ export const SectionTable = forwardRef<HTMLElement>(
               />
             ))}
 
-            <span className="text-xs opacity-70">
-              單位：{formattedCurrency}
-            </span>
+            <CurrencyNote currency={currency} />
           </div>
         </div>
       </section>

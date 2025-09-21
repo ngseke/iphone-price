@@ -5,6 +5,7 @@ import { Control, Controller } from 'react-hook-form'
 import { FormSectionGroup } from './FormSectionGroup'
 import { CheckboxGroupIphoneLine } from './CheckboxGroupIphoneLine'
 import { RangeSlider } from '../RangeSlider'
+import { useTranslations } from 'next-intl'
 
 export function FormGroupFilter({
   control,
@@ -29,12 +30,17 @@ export function FormGroupFilter({
   onResetLines?: () => void
   onResetYearRange?: () => void
 }) {
+  const t = useTranslations('Chart')
   return (
-    <FormSectionGroup showReset={showReset} onReset={onReset} title="篩選條件">
+    <FormSectionGroup
+      showReset={showReset}
+      onReset={onReset}
+      title={t('section.filter')}
+    >
       <FormGroup
         showReset={showStorageSizeReset}
         onReset={onResetStorageSize}
-        title="儲存空間"
+        title={t('filter.storage.label')}
       >
         <Controller
           control={control}
@@ -48,7 +54,7 @@ export function FormGroupFilter({
       <FormGroup
         showReset={showLinesReset}
         onReset={onResetLines}
-        title="產品線"
+        title={t('filter.line.label')}
       >
         <Controller
           control={control}
@@ -65,7 +71,7 @@ export function FormGroupFilter({
       <FormGroup
         showReset={showYearRangeReset}
         onReset={onResetYearRange}
-        title="發售年份"
+        title={t('filter.year.label')}
       >
         <Controller
           control={control}

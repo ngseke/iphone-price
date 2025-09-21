@@ -1,6 +1,5 @@
 import { useMemo } from 'react'
 import { uniq } from 'lodash-es'
-import { formatDateChinese } from '../../modules/date'
 import { formatPrice } from '../../modules/price'
 import { formatStorageSize } from '../../modules/storageSize'
 import { formatIphoneModel } from '../../modules/iphoneModel'
@@ -11,6 +10,8 @@ import type { Nullish } from '../../types/Nullish'
 import { findAdjustedList } from '../../databases/iphone'
 import { StyledLink } from '../StyledLink'
 import { CurrencyValue } from '@/src/modules/currency'
+import { useTranslations } from 'next-intl'
+import { useFormatDate } from '@/src/hooks/useFormatDate'
 
 interface Row {
   model: IphoneModel
@@ -27,6 +28,10 @@ export default function IphonePriceTable({
   list: Nullish<Iphone[]>
   currency: CurrencyValue
 }) {
+  const t = useTranslations('Table')
+
+  const { formatDate } = useFormatDate()
+
   const columns = useMemo<StorageSize[]>(
     () =>
       uniq((list ?? []).map((iphone) => iphone.storage)).sort((a, b) => a - b),
@@ -57,7 +62,7 @@ export default function IphonePriceTable({
   return (
     <div className="flex w-full flex-col items-start gap-4">
       <h3 className="text-xl font-bold text-base-content/80">
-        {formatDateChinese(date)}
+        {formatDate(date)}
       </h3>
 
       <div className="w-full min-w-0">
@@ -65,7 +70,7 @@ export default function IphonePriceTable({
           <table className="w-full text-left [&_tr]:border-b [&_tr]:border-base-content/10">
             <thead className="text-xs font-bold text-base-content/60">
               <tr>
-                <th className="px-4 py-3 align-middle">型號</th>
+                <th className="px-4 py-3 align-middle">{t('model')}</th>
                 {columns.map((col) => (
                   <th key={col} className="px-4 py-3">
                     {formatStorageSize(col)}

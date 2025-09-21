@@ -1,6 +1,6 @@
 import { iphoneLineSchema, type IphoneLine } from '../../types/Iphone'
-import { iphoneLines } from '../../modules/iphoneLine'
 import { Checkbox } from '../Checkbox'
+import { useTranslations } from 'next-intl'
 
 const options = iphoneLineSchema.options
 
@@ -11,6 +11,8 @@ export function CheckboxGroupIphoneLine({
   value: IphoneLine[]
   onChange: (value: IphoneLine[]) => void
 }) {
+  const t = useTranslations('Line')
+
   return (
     <div className="flex flex-wrap items-start gap-2">
       {options.map((item) => {
@@ -26,7 +28,13 @@ export function CheckboxGroupIphoneLine({
                   onChange(value.filter((valueItem) => valueItem !== item))
                 }
               }}
-              label={iphoneLines[item].name}
+              label={
+                {
+                  'entry-level': t('entry-level'),
+                  regular: t('regular'),
+                  premium: t('premium'),
+                }[item]
+              }
             />
           </div>
         )

@@ -14,20 +14,24 @@ import dynamic from 'next/dynamic'
 import { Button } from '../Button'
 import { IconArrowLeft, IconInfoSquareRoundedFilled } from '@tabler/icons-react'
 import { Select } from '../Select'
-import { formatDatasetName } from '@/src/modules/iphoneDataset'
 import { FormGroupDisplayOptions } from './FormGroupDisplayOptions'
 import { useDisplayOptions } from './useDisplayOptions'
 import { DatasetTable } from './DatasetTable'
 import TabsCurrency from './TabsCurrency'
 import { useCurrency } from './useCurrency'
 import { FormGroup } from './FormGroup'
+import { useTranslations } from 'next-intl'
+import { CurrencyNote } from '../CurrencyNote'
+import { useFormatDatasetName } from '@/src/hooks/useFormatDatasetName'
 
 const Chart = dynamic(() => import('./Chart'), { ssr: false })
 
 export const SectionChart = forwardRef<HTMLElement>(
   function SectionChart(_, ref) {
+    const t = useTranslations('Chart')
+
     const [chartType, setChartType] = useChartType()
-    const { currency, setCurrency, formattedCurrency } = useCurrency()
+    const { currency, setCurrency } = useCurrency()
 
     const {
       form,
@@ -90,6 +94,8 @@ export const SectionChart = forwardRef<HTMLElement>(
       onReset: resetFilter,
     }
 
+    const { formatDatasetName } = useFormatDatasetName()
+
     return (
       <section ref={ref} className="flex flex-wrap gap-y-8">
         <div className="-mx-4 min-w-full sm:mx-0 sm:flex-1 xl:min-w-0">
@@ -110,7 +116,7 @@ export const SectionChart = forwardRef<HTMLElement>(
                 disabled={!shouldShowTable}
               >
                 <IconArrowLeft size={20} stroke={2.5} />
-                返回
+                {t('button.back')}
               </Button>
             </div>
             <div className="aspect-video w-full min-w-[50rem] overflow-x-auto overflow-y-hidden duration-300">
@@ -118,9 +124,7 @@ export const SectionChart = forwardRef<HTMLElement>(
             </div>
 
             <div className="flex w-full items-center justify-between px-4">
-              <span className="text-xs opacity-70">
-                單位：{formattedCurrency}
-              </span>
+              <CurrencyNote currency={currency} />
             </div>
           </div>
         </div>
@@ -136,14 +140,14 @@ export const SectionChart = forwardRef<HTMLElement>(
                     label: formatDatasetName(name),
                     value: name,
                   }))}
-                  label="查看系列"
+                  label={t('table.viewSeries')}
                 />
 
                 <DatasetTable source={selectedDataset?.source} />
                 {selectedDataset?.source.length === 1 && (
                   <div className="flex items-center gap-1 text-xs text-base-content/60">
                     <IconInfoSquareRoundedFilled size={18} />
-                    此系列未調整過價格
+                    {t('table.noPriceAdjustment')}
                   </div>
                 )}
               </div>
@@ -156,11 +160,11 @@ export const SectionChart = forwardRef<HTMLElement>(
               shouldShowTable ? 'hidden sm:invisible sm:flex' : 'flex',
             )}
           >
-            <FormSectionGroup title="資料集">
-              <FormGroup title="幣別">
+            <FormSectionGroup title={t('section.dataset')}>
+              <FormGroup title={t('filter.currency.label')}>
                 <TabsCurrency value={currency} onChange={setCurrency} />
               </FormGroup>
-              <FormGroup title="圖表類型">
+              <FormGroup title={t('filter.chartType.label')}>
                 <TabsChartType value={chartType} onChange={setChartType} />
               </FormGroup>
             </FormSectionGroup>

@@ -12,23 +12,14 @@ function getTagsByIphoneLine(line: IphoneLine) {
   ]
 }
 
-export const iphoneLines: Record<
-  IphoneLine,
-  {
-    name: string
-    tags: string[]
-  }
-> = {
+export const iphoneLines: Record<IphoneLine, { tags: string[] }> = {
   'entry-level': {
-    name: '入門級',
     tags: getTagsByIphoneLine('entry-level'),
   },
   regular: {
-    name: '高階級',
     tags: getTagsByIphoneLine('regular'),
   },
   premium: {
-    name: '旗艦級',
     tags: getTagsByIphoneLine('premium'),
   },
 }
