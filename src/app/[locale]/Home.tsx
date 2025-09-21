@@ -7,6 +7,7 @@ import { DataSource } from '../../components/DataSource'
 import { SectionTable } from '../../components/SectionTable'
 import { SectionChart } from '../../components/SectionChart'
 import { CurrencyProvider } from '../../providers/CurrencyProvider'
+import { Navbar } from '@/src/components/Navbar'
 
 export function Home() {
   const chartRef = useRef<HTMLElement | null>(null)
@@ -21,6 +22,7 @@ export function Home() {
 
   return (
     <CurrencyProvider>
+      <Navbar />
       <Hero onClickViewChart={scrollToChart} onClickViewTable={scrollToTable} />
       <main className="container min-h-screen space-y-20 px-4 py-6">
         <SectionChart ref={chartRef} />
