@@ -1,4 +1,3 @@
-import type { Metadata } from 'next'
 import { Noto_Sans_TC, Rubik } from 'next/font/google'
 import '../globals.css'
 import { cn } from '../../modules/cn'
@@ -69,7 +68,7 @@ export default async function RootLayout({
   setRequestLocale(locale)
 
   return (
-    <html lang="en">
+    <html lang={locale}>
       <body
         className={cn(
           'font-sans antialiased',
