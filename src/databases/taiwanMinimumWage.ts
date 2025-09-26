@@ -58,4 +58,8 @@ export const taiwanMinimumWageList: TaiwanMinimumWage[] = [
     implementedAt: '2025-01-01',
     monthlySalary: { twd: 28_590 },
   },
+  {
+    implementedAt: '2026-01-01',
+    monthlySalary: { twd: 29_500 },
+  },
 ]
