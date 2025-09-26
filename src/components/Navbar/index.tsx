@@ -20,7 +20,7 @@ export function Navbar() {
   const router = useRouter()
 
   return (
-    <nav className={cn('fixed inset-x-0 top-0 z-30')}>
+    <nav className={cn('absolute inset-x-0 top-0 z-30')}>
       <div className="container flex w-full flex-wrap justify-end px-4 py-5">
         <label className="relative flex items-center gap-1 rounded-[1.9rem] bg-base-content/10 px-3 py-1 text-sm backdrop-blur-sm hover:bg-base-content/20">
           <select
