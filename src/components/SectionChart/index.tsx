@@ -129,8 +129,11 @@ export const SectionChart = forwardRef<HTMLElement>(
                 {t('button.back')}
               </Button>
             </div>
-            <div className="aspect-video w-full min-w-[50rem] overflow-x-auto overflow-y-hidden duration-300">
-              <Chart {...chartProps} />
+
+            <div className="w-full max-w-full overflow-auto duration-200">
+              <div className="aspect-video w-full min-w-[50rem] overflow-x-auto overflow-y-hidden duration-300">
+                <Chart {...chartProps} />
+              </div>
             </div>
 
             <div className="flex w-full items-center justify-between px-4">
