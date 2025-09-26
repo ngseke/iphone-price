@@ -1,4 +1,10 @@
-import { forwardRef, PropsWithChildren, useMemo, useState } from 'react'
+import {
+  forwardRef,
+  PropsWithChildren,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react'
 import groupBy from 'lodash-es/groupBy'
 import dayjs from 'dayjs'
 import { iphoneList } from '../../databases/iphone'
@@ -60,9 +66,11 @@ export const SectionTable = forwardRef<HTMLElement>(
       [groups],
     )
 
-    const [selectedDate, setSelectedDate] = useState<string | null>(
-      releaseDates[0] ?? null,
-    )
+    const [selectedDate, setSelectedDate] = useState<string | null>(null)
+
+    useEffect(() => {
+      setSelectedDate(releaseDates[0])
+    }, [releaseDates])
 
     const displayed = useMemo(() => {
       if (selectedDate) {
