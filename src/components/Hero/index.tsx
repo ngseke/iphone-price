@@ -19,7 +19,10 @@ export function Hero({
 }) {
   const t = useTranslations('Hero')
   const locale = useLocale()
-  const isLatin = !locale.includes('zh')
+  const isLatin =
+    !locale.startsWith('zh') &&
+    !locale.startsWith('ja') &&
+    !locale.startsWith('ko')
 
   return (
     <div className="relative grid w-full place-items-center bg-base-200 bg-[linear-gradient(rgba(16,16,16,1)_1px,transparent_1px),linear-gradient(90deg,rgba(16,16,16,1)_1px,transparent_1px)] bg-[length:1rem_1rem] py-8 sm:min-h-screen  sm:py-0">

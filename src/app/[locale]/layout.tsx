@@ -1,4 +1,9 @@
-import { Noto_Sans_TC, Rubik } from 'next/font/google'
+import {
+  Noto_Sans_JP,
+  Noto_Sans_KR,
+  Noto_Sans_TC,
+  Rubik,
+} from 'next/font/google'
 import '../globals.css'
 import { cn } from '../../modules/cn'
 import Script from 'next/script'
@@ -10,6 +15,18 @@ import { PropsWithChildren } from 'react'
 const notoSansTc = Noto_Sans_TC({
   weight: ['400', '500', '600', '700', '800', '900'],
   variable: '--font-noto-sans-tc',
+  subsets: ['latin'],
+})
+
+const notoSansJp = Noto_Sans_JP({
+  weight: ['400', '500', '600', '700', '800', '900'],
+  variable: '--font-noto-sans-jp',
+  subsets: ['latin'],
+})
+
+const notoSansKr = Noto_Sans_KR({
+  weight: ['400', '500', '600', '700', '800', '900'],
+  variable: '--font-noto-sans-kr',
   subsets: ['latin'],
 })
 
@@ -72,8 +89,14 @@ export default async function RootLayout({
       <body
         className={cn(
           'font-sans antialiased',
-          notoSansTc.variable,
           rubik.variable,
+          notoSansTc.variable,
+          notoSansJp.variable,
+          notoSansKr.variable,
+          {
+            'font-sans-jp': locale === 'ja',
+            'font-sans-kr': locale === 'ko',
+          },
         )}
       >
         <NextIntlClientProvider>{children}</NextIntlClientProvider>

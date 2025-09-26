@@ -1,0 +1,92 @@
+{
+  "Metadata": {
+    "title": "台湾 iPhone 価格の歴史推移",
+    "description": "グラフで iPhone 17 と歴代モデルの価格変化を比較します。"
+  },
+  "Hero": {
+    "button": {
+      "title1": "台湾 iPhone 価格の<br></br>",
+      "title2": "歴史推移",
+      "description": "歴代の <b>iPhone</b> の価格変化をグラフで比較",
+      "viewChart": "グラフを見る",
+      "viewTable": "表を見る",
+      "updatedBadge": "{modal} の価格を更新"
+    }
+  },
+  "Chart": {
+    "button": {
+      "back": "戻る"
+    },
+    "section": {
+      "dataset": "データセット",
+      "filter": "フィルター",
+      "display": "表示"
+    },
+    "filter": {
+      "currency": {
+        "label": "通貨"
+      },
+      "chartType": {
+        "label": "チャートタイプ",
+        "options": {
+          "generation": {
+            "label": "世代別トレンド",
+            "description": "製品ラインごとの歴代 iPhone の価格変化"
+          },
+          "priceAdjustment": {
+            "label": "価格調整トレンド",
+            "description": "同一 iPhone モデルの価格の増減推移"
+          }
+        }
+      },
+      "storage": {
+        "label": "ストレージ"
+      },
+      "line": {
+        "label": "製品ライン"
+      },
+      "year": {
+        "label": "発売年"
+      },
+      "display": {
+        "chartLabel": "ラベル",
+        "tooltip": "ツールチップ",
+        "otherMetrics": "その他の指標",
+        "isModelNameAbbreviation": "モデル名を省略",
+        "isPriceHidden": "価格を非表示",
+        "isPriceAbbreviation": "価格を省略表示",
+        "isTooltipHidden": "ツールチップを非表示",
+        "isTaiwanMinimumWageListShown": "台湾の最低賃金（月給）を表示"
+      }
+    },
+    "table": {
+      "viewSeries": "シリーズを見る",
+      "noPriceAdjustment": "このシリーズに価格調整はありません",
+      "model": "モデル",
+      "date": "発売年月",
+      "price": "価格",
+      "difference": "増減幅"
+    }
+  },
+  "Table": {
+    "title": "年ごとのローンチモデル",
+    "releaseDate": "発売年月",
+    "all": "すべて表示",
+    "model": "モデル"
+  },
+  "DataSource": {
+    "title": "データソース"
+  },
+  "Currency": {
+    "unit": "単位",
+    "twd": "新台湾ドル",
+    "usd": "米ドル",
+    "eur": "ユーロ",
+    "jpy": "日本円"
+  },
+  "Line": {
+    "entry-level": "エントリー",
+    "regular": "レギュラー ",
+    "premium": "プレミアム"
+  }
+}
