@@ -1,0 +1,92 @@
+{
+  "Metadata": {
+    "title": "대만 iPhone 가격 추이",
+    "description": "그래프를 통해 iPhone 17과 역대 모델의 가격 변화를 비교합니다."
+  },
+  "Hero": {
+    "button": {
+      "title1": "대만 iPhone<br></br>가격",
+      "title2": "역사적 추이",
+      "description": "그래프로 본 역대 <b>iPhone</b> 가격 변화",
+      "viewChart": "그래프 보기",
+      "viewTable": "표 보기",
+      "updatedBadge": "{modal} 가격 업데이트"
+    }
+  },
+  "Chart": {
+    "button": {
+      "back": "뒤로"
+    },
+    "section": {
+      "dataset": "데이터셋",
+      "filter": "필터",
+      "display": "표시"
+    },
+    "filter": {
+      "currency": {
+        "label": "통화"
+      },
+      "chartType": {
+        "label": "차트 유형",
+        "options": {
+          "generation": {
+            "label": "세대별 추이",
+            "description": "제품 라인별 iPhone 세대 가격 변화"
+          },
+          "priceAdjustment": {
+            "label": "가격 조정 추이",
+            "description": "동일 iPhone 모델의 가격 인상·인하 추세"
+          }
+        }
+      },
+      "storage": {
+        "label": "저장 용량"
+      },
+      "line": {
+        "label": "제품 라인"
+      },
+      "year": {
+        "label": "출시 연도"
+      },
+      "display": {
+        "chartLabel": "라벨",
+        "tooltip": "툴팁",
+        "otherMetrics": "기타 지표",
+        "isModelNameAbbreviation": "모델명 축약",
+        "isPriceHidden": "가격 숨기기",
+        "isPriceAbbreviation": "가격 축약 표시",
+        "isTooltipHidden": "툴팁 숨기기",
+        "isTaiwanMinimumWageListShown": "대만 최저임금(월급) 표시"
+      }
+    },
+    "table": {
+      "viewSeries": "시리즈 보기",
+      "noPriceAdjustment": "이 시리즈에는 가격 조정이 없습니다",
+      "model": "모델",
+      "date": "출시 연월",
+      "price": "가격",
+      "difference": "변동폭"
+    }
+  },
+  "Table": {
+    "title": "연도별 첫 출시 모델",
+    "releaseDate": "출시 연월",
+    "all": "전체 보기",
+    "model": "모델"
+  },
+  "DataSource": {
+    "title": "데이터 출처"
+  },
+  "Currency": {
+    "unit": "단위",
+    "twd": "신타이완 달러",
+    "usd": "미국 달러",
+    "eur": "유로",
+    "jpy": "엔화"
+  },
+  "Line": {
+    "entry-level": "엔트리",
+    "regular": "레귤러",
+    "premium": "프리미엄"
+  }
+}

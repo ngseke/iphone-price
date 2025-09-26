@@ -8,6 +8,8 @@ const config = {
     extend: {
       fontFamily: {
         sans: ['var(--font-noto-sans-tc)', 'sans-serif'],
+        'sans-jp': ['var(--font-noto-sans-jp)', 'sans-serif'],
+        'sans-kr': ['var(--font-noto-sans-kr)', 'sans-serif'],
         rubik: ['var(--font-rubik)', 'sans-serif'],
       },
       colors: {

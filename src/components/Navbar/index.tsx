@@ -13,6 +13,8 @@ export function Navbar() {
   }[] = [
     { label: '中文', locale: 'zh-Hant' },
     { label: 'English', locale: 'en' },
+    { label: '日本語', locale: 'ja' },
+    { label: '한국어', locale: 'ko' },
   ]
 
   const locale = useLocale()
