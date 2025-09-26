@@ -9,7 +9,6 @@ import { cn } from '@/src/modules/cn'
 import { FormSectionGroup } from './FormSectionGroup'
 import TabsChartType from './TabsChartType'
 import { FormGroupFilter } from './FormGroupFilter'
-import { taiwanMinimumWageList } from '@/src/databases/taiwanMinimumWage'
 import dynamic from 'next/dynamic'
 import { Button } from '../Button'
 import {
@@ -27,6 +26,7 @@ import { FormGroup } from './FormGroup'
 import { useTranslations } from 'next-intl'
 import { CurrencyNote } from '../CurrencyNote'
 import { useFormatDatasetName } from '@/src/hooks/useFormatDatasetName'
+import { useTaiwanMinimumWageList } from './useTaiwanMinimumWageList'
 
 const Chart = dynamic(() => import('./Chart'), {
   ssr: false,
@@ -84,6 +84,10 @@ export const SectionChart = forwardRef<HTMLElement>(
     const shouldShowTable = Boolean(selectedDataset)
 
     const hideIsTaiwanMinimumWageListShownSwitch = currency !== 'twd'
+
+    const { taiwanMinimumWageList } = useTaiwanMinimumWageList({
+      yearRange: watch('yearRange'),
+    })
 
     const chartProps: ComponentProps<typeof Chart> = {
       iphoneDataset: selectedDataset ? [selectedDataset] : iphoneDataset,
