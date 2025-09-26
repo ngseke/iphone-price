@@ -86,11 +86,10 @@ export const SectionChart = forwardRef<HTMLElement>(
     const hideIsTaiwanMinimumWageListShownSwitch = currency !== 'twd'
 
     const chartProps: ComponentProps<typeof Chart> = {
-      iphoneDataset,
-      selectedDataset,
+      iphoneDataset: selectedDataset ? [selectedDataset] : iphoneDataset,
       taiwanMinimumWageList,
       selectedSeriesName: selectedDatasetName,
-      onChangeSelectedSeriesName: setSelectedDatasetName,
+      onClickSeries: setSelectedDatasetName,
 
       modelNameAbbreviation: displayOptionsForm.watch(
         'isModelNameAbbreviation',

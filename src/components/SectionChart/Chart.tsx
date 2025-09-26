@@ -34,13 +34,22 @@ use([
   MarkLineComponent,
 ])
 
-export default function Chart(props: {
+export default function Chart({
+  iphoneDataset,
+  taiwanMinimumWageList,
+  onClickSeries,
+  modelNameAbbreviation,
+  priceAbbreviation,
+  hidePrice,
+  hideTooltip,
+  showTaiwanMinimumWageList,
+  onReset,
+}: {
   iphoneDataset: IphoneDataset[]
-  selectedDataset: Nullish<IphoneDataset>
   taiwanMinimumWageList: TaiwanMinimumWage[]
 
   selectedSeriesName?: string | null
-  onChangeSelectedSeriesName?: (index: string | null) => void
+  onClickSeries?: (index: string | null) => void
 
   modelNameAbbreviation: boolean
   priceAbbreviation: boolean
@@ -50,9 +59,6 @@ export default function Chart(props: {
   showTaiwanMinimumWageList: boolean
   onReset?: () => void
 }) {
-  const selectedSeriesNameRef = useRef(props.selectedSeriesName)
-  selectedSeriesNameRef.current = props.selectedSeriesName
-
   const [isDark] = useState(true)
   const shade = isDark ? 800 : 600
   const commonLabelRich = useMemo(
@@ -75,12 +81,12 @@ export default function Chart(props: {
     () => ({
       ...commonLabelRich,
       color: colors.neutral[isDark ? 400 : 600],
-      fontSize: props.hidePrice ? 12 : 10,
-      fontWeight: props.hidePrice ? 500 : 400,
+      fontSize: hidePrice ? 12 : 10,
+      fontWeight: hidePrice ? 500 : 400,
       lineHeight: 16,
       padding: [0, 4, 0, 0],
     }),
-    [commonLabelRich, isDark, props.hidePrice],
+    [commonLabelRich, isDark, hidePrice],
   )
 
   const label = useMemo(
@@ -92,20 +98,20 @@ export default function Chart(props: {
           const iphone = params.data as Iphone
 
           const { model } = iphone
-          const formattedModelName = props.modelNameAbbreviation
+          const formattedModelName = modelNameAbbreviation
             ? formatIphoneModelAbbreviation(model)
             : formatIphoneModel(model)
 
-          const formattedPrice = props.priceAbbreviation
+          const formattedPrice = priceAbbreviation
             ? formatPriceAbbreviation(price)
             : formatPrice(price)
 
           return [
             `{name|${formattedModelName}}`,
-            props.hidePrice ? null : `{price|${String(formattedPrice)}}`,
+            hidePrice ? null : `{price|${String(formattedPrice)}}`,
           ]
             .filter(Boolean)
-            .join(props.modelNameAbbreviation ? '' : '\n')
+            .join(modelNameAbbreviation ? '' : '\n')
         },
         rich: {
           name: labelRichName,
@@ -115,9 +121,9 @@ export default function Chart(props: {
     [
       labelRichName,
       labelRichPrice,
-      props.hidePrice,
-      props.modelNameAbbreviation,
-      props.priceAbbreviation,
+      hidePrice,
+      modelNameAbbreviation,
+      priceAbbreviation,
     ],
   )
 
@@ -128,19 +134,17 @@ export default function Chart(props: {
         if (!Array.isArray(params.value)) return ''
 
         const price = Number(params.value[1])
-        const formattedPrice = props.priceAbbreviation
+        const formattedPrice = priceAbbreviation
           ? formatPriceAbbreviation(price)
           : formatPrice(price)
-        const name = props.modelNameAbbreviation
-          ? '月薪'
-          : '台灣基本工資（月薪）'
+        const name = modelNameAbbreviation ? '月薪' : '台灣基本工資（月薪）'
 
         return [
           !params.dataIndex ? `{name|${name}}` : null,
-          props.hidePrice ? null : `{price|${String(formattedPrice)}}`,
+          hidePrice ? null : `{price|${String(formattedPrice)}}`,
         ]
           .filter(Boolean)
-          .join(props.modelNameAbbreviation ? '' : '\n')
+          .join(modelNameAbbreviation ? '' : '\n')
       },
       rich: {
         name: labelRichName,
@@ -150,9 +154,9 @@ export default function Chart(props: {
     [
       labelRichName,
       labelRichPrice,
-      props.hidePrice,
-      props.modelNameAbbreviation,
-      props.priceAbbreviation,
+      hidePrice,
+      modelNameAbbreviation,
+      priceAbbreviation,
     ],
   )
 
@@ -169,7 +173,7 @@ export default function Chart(props: {
       emphasis: { focus: 'series' },
       encode: { x: 'date', y: 'value', itemName: 'name' },
       name: taiwanMinimumWageSeriesName,
-      data: props.taiwanMinimumWageList.map((item) => ({
+      data: taiwanMinimumWageList.map((item) => ({
         name: taiwanMinimumWageSeriesName,
         date: +dayjs(item.implementedAt, 'YYYY-MM-DD'),
         value: [
@@ -178,25 +182,22 @@ export default function Chart(props: {
         ],
       })),
     }),
-    [isDark, props.taiwanMinimumWageList, taiwanMinimumWageLabel],
+    [isDark, taiwanMinimumWageList, taiwanMinimumWageLabel],
   )
 
   const { tooltip } = useChartTooltip()
 
-  const displayedDataset = useMemo(
-    () =>
-      props.selectedDataset ? [props.selectedDataset] : props.iphoneDataset,
-    [props.iphoneDataset, props.selectedDataset],
-  )
+  const isOneDataset =
+    iphoneDataset.length === 1 && (iphoneDataset[0]?.source.length ?? 0) > 1
 
   const option = useMemo(
     () =>
       ({
         darkMode: isDark,
-        dataset: displayedDataset,
-        tooltip: props.hideTooltip ? undefined : tooltip,
+        dataset: iphoneDataset,
+        tooltip: hideTooltip ? undefined : tooltip,
         series: [
-          ...displayedDataset.map<LineSeriesOption>((dataset, index) => ({
+          ...iphoneDataset.map<LineSeriesOption>((dataset, index) => ({
             type: 'line',
             label,
             symbol: 'circle',
@@ -210,7 +211,7 @@ export default function Chart(props: {
             triggerLineEvent: true,
             color: dataset.color,
           })),
-          ...(props.showTaiwanMinimumWageList ? [taiwanMinimumWageSeries] : []),
+          ...(showTaiwanMinimumWageList ? [taiwanMinimumWageSeries] : []),
         ],
         animationDuration: 300,
         animationDurationUpdate: 400,
@@ -247,43 +248,34 @@ export default function Chart(props: {
         },
         yAxis: {
           type: 'value',
-          max:
-            (props.selectedDataset?.source.length ?? 0) > 1
-              ? ({ max }) => max * 1.03
-              : undefined,
-          min:
-            (props.selectedDataset?.source.length ?? 0) > 1
-              ? ({ min }) => min * 0.99
-              : 'dataMin',
+          max: isOneDataset ? ({ max }) => max * 1.03 : undefined,
+          min: isOneDataset ? ({ min }) => min * 0.99 : 'dataMin',
           axisLabel: { formatter: formatPriceAbbreviation },
           splitLine: { lineStyle: { color: isDark ? '#666' : '#ccc' } },
         },
       }) satisfies EChartsOption,
     [
-      displayedDataset,
       isDark,
+      isOneDataset,
       label,
-      props.hideTooltip,
-      props.selectedDataset,
-      props.showTaiwanMinimumWageList,
+      hideTooltip,
+      iphoneDataset,
+      showTaiwanMinimumWageList,
       shade,
       taiwanMinimumWageSeries,
       tooltip,
     ],
   )
 
-  const isEmpty = !props.iphoneDataset.length
+  const isEmpty = !iphoneDataset.length
 
   const chartRef = useRef<ReactECharts | null>(null)
 
   const handleClick = useCallback(
     (event: { seriesName: Nullish<string> }) => {
-      if (event.seriesName === taiwanMinimumWageSeriesName) return
-
-      const callback = props.onChangeSelectedSeriesName
-      callback?.(event.seriesName ?? null)
+      onClickSeries?.(event.seriesName ?? null)
     },
-    [props.onChangeSelectedSeriesName],
+    [onClickSeries],
   )
 
   const onEvents = useMemo(
@@ -293,7 +285,7 @@ export default function Chart(props: {
     [handleClick],
   )
 
-  if (isEmpty) return <CardNoResult onReset={props.onReset} />
+  if (isEmpty) return <CardNoResult onReset={onReset} />
 
   return (
     <div className="size-full overflow-hidden sm:min-w-0">
