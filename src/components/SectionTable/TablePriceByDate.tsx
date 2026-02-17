@@ -30,7 +30,7 @@ export default function IphonePriceTable({
 }) {
   const t = useTranslations('Table')
 
-  const { formatDate } = useFormatDate()
+  const { formatDate, formatDateRelative } = useFormatDate()
 
   const columns = useMemo<StorageSize[]>(
     () =>
@@ -61,8 +61,11 @@ export default function IphonePriceTable({
 
   return (
     <div className="flex w-full flex-col items-start gap-4">
-      <h3 className="text-xl font-bold text-base-content/80">
-        {formatDate(date)}
+      <h3 className="text-xl font-bold">
+        <span className="text-base-content/80">{formatDate(date)}</span>
+        <small className="ml-3 text-[70%] text-base-content/60">
+          {formatDateRelative(date)}
+        </small>
       </h3>
 
       <div className="w-full min-w-0">
