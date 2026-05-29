@@ -5,24 +5,29 @@ on:
       - 'main'
       - 'next'
 
+# Cancel superseded deploys for the same branch (only the latest commit matters)
+concurrency:
+  group: cd-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build-and-deploy:
-    concurrency: ci-${{ github.ref }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
-        uses: actions/checkout@v3
-
-      - uses: actions/setup-node@v2
-        with:
-          node-version: '20'
+        uses: actions/checkout@v4
 
       - uses: pnpm/action-setup@v4.0.0
         with:
           version: 9.6.0
 
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
       - name: Install Dependencies
-        run: pnpm i
+        run: pnpm i --frozen-lockfile
 
       - name: Build
         run: pnpm run build
