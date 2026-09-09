@@ -93,7 +93,6 @@ export function RangeSlider({
   }
 
   const handleInput = (index: 0 | 1) => (e: InputEvent<HTMLInputElement>) => {
-    console.log('handleInput')
     const nextDraft: Value = [...draft]
     nextDraft[index] = e.currentTarget.valueAsNumber
 
