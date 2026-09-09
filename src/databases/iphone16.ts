@@ -167,4 +167,14 @@ export const iphone16List: Iphone[] = [
     price: { twd: 33_400, usd: 899, eur: 899 },
     url: iphone16PlusUrl,
   },
+
+  {
+    model: 'iphone-16',
+    storage: 128,
+    line: 'regular',
+    suffix: 'base',
+    releasedAt: '2026-09',
+    price: { twd: 29_900, usd: 799 },
+    url: iphone16Url,
+  },
 ]

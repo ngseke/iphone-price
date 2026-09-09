@@ -23,8 +23,10 @@ import { iphoneSeList } from './iphoneSe'
 import { iphone6List } from './iphone6'
 import { iphone17List } from './iphone17'
 import { iphone17eList } from './iphone17e'
+import { iphone18List } from './iphone18'
 
 export const iphoneList: Iphone[] = [
+  ...iphone18List,
   ...iphone17eList,
   ...iphone17List,
   ...iphone16eList,

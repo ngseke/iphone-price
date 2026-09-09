@@ -23,4 +23,23 @@ export const iphone17eList: Iphone[] = [
     isInitialRelease: true,
     url,
   },
+
+  {
+    model: 'iphone-17e',
+    storage: 256,
+    line: 'entry-level',
+    suffix: 'base',
+    releasedAt: '2026-09',
+    price: { twd: 25_900, usd: 699 },
+    url,
+  },
+  {
+    model: 'iphone-17e',
+    storage: 512,
+    line: 'entry-level',
+    suffix: 'base',
+    releasedAt: '2026-09',
+    price: { twd: 32_900, usd: 899 },
+    url,
+  },
 ]

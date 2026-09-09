@@ -3,6 +3,9 @@ import { type Price } from '../modules/currency'
 import { type StorageSize } from './StorageSize'
 
 export type IphoneModel =
+  | 'iphone-duo'
+  | 'iphone-18-pro'
+  | 'iphone-18-pro-max'
   | 'iphone-17e'
   | 'iphone-17-pro'
   | 'iphone-17-pro-max'
@@ -58,6 +61,7 @@ export const iphoneSuffixSchema = z.enum([
   'pro-max',
   'mini',
   'air',
+  'fold',
 ])
 export type IphoneSuffix = z.infer<typeof iphoneSuffixSchema>
 
