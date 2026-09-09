@@ -47,6 +47,7 @@ function generateColor(
     'pro-max': colors.fuchsia[shade],
     mini: colors.yellow[shade],
     air: colors.blue[shade],
+    fold: colors.orange[shade],
   }[suffix]
 }
 

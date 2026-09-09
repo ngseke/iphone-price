@@ -24,6 +24,7 @@ export function useFormatDatasetName() {
           'pro-max': 'Pro Max',
           mini: 'mini',
           air: 'Air',
+          fold: 'Fold',
         }
 
         return suffixMap[chunk as IphoneSuffix]
