@@ -1,5 +1,5 @@
 import {
-  ChangeEvent,
+  InputEvent,
   ComponentProps,
   useEffect,
   useMemo,
@@ -92,10 +92,10 @@ export function RangeSlider({
     onChange?.(sorted)
   }
 
-  const handleInput = (index: 0 | 1) => (e: ChangeEvent<HTMLInputElement>) => {
+  const handleInput = (index: 0 | 1) => (e: InputEvent<HTMLInputElement>) => {
     console.log('handleInput')
     const nextDraft: Value = [...draft]
-    nextDraft[index] = e.target.valueAsNumber
+    nextDraft[index] = e.currentTarget.valueAsNumber
 
     setDraft(nextDraft)
     commitChange(nextDraft)
