@@ -2,6 +2,10 @@
   "name": "iphone-price",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@12.3.4",
+  "engines": {
+    "node": ">=24"
+  },
   "scripts": {
     "dev": "COMMIT_HASH=$(git rev-parse --short HEAD) next dev --turbopack",
     "build": "COMMIT_HASH=$(git rev-parse --short HEAD) next build --turbopack",
@@ -30,7 +34,7 @@
     "@tailwindcss/postcss": "^4",
     "@types/eslint-plugin-tailwindcss": "^3.17.0",
     "@types/lodash-es": "^4.17.12",
-    "@types/node": "^20",
+    "@types/node": "^24",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
