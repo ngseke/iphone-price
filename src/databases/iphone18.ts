@@ -89,8 +89,8 @@ export const iphone18List: Iphone[] = [
   {
     model: 'iphone-duo',
     storage: 256,
-    line: 'premium',
-    suffix: 'fold',
+    line: 'foldable',
+    suffix: 'duo',
     releasedAt: '2026-09',
     price: { twd: 74_900, usd: 1_999 },
     isInitialRelease: true,
@@ -99,8 +99,8 @@ export const iphone18List: Iphone[] = [
   {
     model: 'iphone-duo',
     storage: 512,
-    line: 'premium',
-    suffix: 'fold',
+    line: 'foldable',
+    suffix: 'duo',
     releasedAt: '2026-09',
     price: { twd: 81_900, usd: 2_199 },
     isInitialRelease: true,
@@ -109,8 +109,8 @@ export const iphone18List: Iphone[] = [
   {
     model: 'iphone-duo',
     storage: 1024,
-    line: 'premium',
-    suffix: 'fold',
+    line: 'foldable',
+    suffix: 'duo',
     releasedAt: '2026-09',
     price: { twd: 96_900, usd: 2_599 },
     isInitialRelease: true,
@@ -119,8 +119,8 @@ export const iphone18List: Iphone[] = [
   {
     model: 'iphone-duo',
     storage: 2048,
-    line: 'premium',
-    suffix: 'fold',
+    line: 'foldable',
+    suffix: 'duo',
     releasedAt: '2026-09',
     price: { twd: 118_900, usd: 3_199 },
     isInitialRelease: true,

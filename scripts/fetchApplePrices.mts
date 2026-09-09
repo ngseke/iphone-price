@@ -37,7 +37,7 @@
 import { existsSync, readdirSync, readFileSync, writeFileSync } from 'node:fs'
 import { join } from 'node:path'
 
-type Line = 'premium' | 'regular' | 'entry-level'
+type Line = 'foldable' | 'premium' | 'regular' | 'entry-level'
 
 interface Product {
   model: string
@@ -65,14 +65,15 @@ const DB_DIR = 'src/databases'
 const UA =
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/128 Safari/537.36'
 
-const KNOWN_SUFFIXES = ['base', 'plus', 'pro', 'pro-max', 'mini', 'air', 'fold']
-const PREMIUM_SUFFIXES = ['pro', 'pro-max', 'fold']
+const KNOWN_SUFFIXES = ['base', 'plus', 'pro', 'pro-max', 'mini', 'air', 'duo']
+const PREMIUM_SUFFIXES = ['pro', 'pro-max']
+const FOLDABLE_SUFFIXES = ['duo']
 
 /** Manual overrides for models the heuristics can't classify. */
 const OVERRIDES: Partial<
   Record<string, Partial<Pick<Product, 'line' | 'suffix'>>>
 > = {
-  'iphone-duo': { line: 'premium', suffix: 'fold' },
+  // 'iphone-ultra': { line: 'premium', suffix: 'pro-max' },
 }
 
 // ---------------------------------------------------------------------------
@@ -218,6 +219,7 @@ function classify(model: string): { line: Line; suffix: string } {
 
   if (parts.some((p) => /^\d+e$/.test(p))) line = 'entry-level'
   else if (PREMIUM_SUFFIXES.includes(suffix)) line = 'premium'
+  else if (FOLDABLE_SUFFIXES.includes(suffix)) line = 'foldable'
 
   const override = OVERRIDES[model]
   if (override?.line) line = override.line

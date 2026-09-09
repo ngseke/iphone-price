@@ -51,7 +51,12 @@ export type IphoneModel =
   | 'iphone-6'
   | 'iphone-SE'
 
-export const iphoneLineSchema = z.enum(['premium', 'regular', 'entry-level'])
+export const iphoneLineSchema = z.enum([
+  'foldable',
+  'premium',
+  'regular',
+  'entry-level',
+])
 export type IphoneLine = z.infer<typeof iphoneLineSchema>
 
 export const iphoneSuffixSchema = z.enum([
@@ -61,7 +66,7 @@ export const iphoneSuffixSchema = z.enum([
   'pro-max',
   'mini',
   'air',
-  'fold',
+  'duo',
 ])
 export type IphoneSuffix = z.infer<typeof iphoneSuffixSchema>
 

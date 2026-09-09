@@ -87,6 +87,7 @@
   "Line": {
     "entry-level": "Entry Level",
     "regular": "Regular",
-    "premium": "Premium"
+    "premium": "Premium",
+    "foldable": "Foldable"
   }
 }

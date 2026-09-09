@@ -14,7 +14,7 @@ export type Filter = z.infer<typeof filterSchema>
 
 export const defaultFilter: Readonly<Filter> = {
   storage: 256,
-  lines: ['entry-level', 'regular', 'premium'],
+  lines: ['entry-level', 'regular', 'premium', 'foldable'],
   yearRange: [
     dayjs(earliestReleasedAt, 'YYYY-MM').year(),
     dayjs(latestReleasedAt, 'YYYY-MM').year(),

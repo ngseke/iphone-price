@@ -12,6 +12,7 @@ export function useFormatDatasetName() {
       const chunks = name.split(',').map((chunk, index) => {
         if (!index)
           return {
+            foldable: t('foldable'),
             'entry-level': t('entry-level'),
             regular: t('regular'),
             premium: t('premium'),
@@ -24,7 +25,7 @@ export function useFormatDatasetName() {
           'pro-max': 'Pro Max',
           mini: 'mini',
           air: 'Air',
-          fold: 'Fold',
+          duo: 'Duo',
         }
 
         return suffixMap[chunk as IphoneSuffix]
