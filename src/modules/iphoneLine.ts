@@ -22,4 +22,7 @@ export const iphoneLines: Record<IphoneLine, { tags: string[] }> = {
   premium: {
     tags: getTagsByIphoneLine('premium'),
   },
+  foldable: {
+    tags: getTagsByIphoneLine('foldable'),
+  },
 }

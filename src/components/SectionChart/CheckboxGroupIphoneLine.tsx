@@ -30,6 +30,7 @@ export function CheckboxGroupIphoneLine({
               }}
               label={
                 {
+                  foldable: t('foldable'),
                   'entry-level': t('entry-level'),
                   regular: t('regular'),
                   premium: t('premium'),

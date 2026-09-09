@@ -10,7 +10,8 @@
     "dev": "COMMIT_HASH=$(git rev-parse --short HEAD) next dev --turbopack",
     "build": "COMMIT_HASH=$(git rev-parse --short HEAD) next build --turbopack",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "fetch-prices": "node scripts/fetchApplePrices.mts"
   },
   "dependencies": {
     "@tabler/icons-react": "^3.34.1",

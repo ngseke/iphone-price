@@ -9,6 +9,7 @@ export function formatIphoneModel(model: IphoneModel) {
     ['max', 'Max'],
     ['plus', 'Plus'],
     ['air', 'Air'],
+    ['duo', 'Duo'],
     [/(\d{1,2}\w{2}) gen/g, '($1 generation)'],
   ] as const
 
@@ -28,6 +29,7 @@ export function formatIphoneModelAbbreviation(model: IphoneModel) {
     ['max', 'Max'],
     ['plus', 'Plus'],
     ['air', 'Air'],
+    ['duo', 'Duo'],
     [/(\d{1,2}\w{2}) gen/g, '($1)'],
   ] as const
 
