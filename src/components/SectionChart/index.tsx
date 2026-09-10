@@ -104,6 +104,7 @@ export const SectionChart = forwardRef<HTMLElement>(
         displayOptionsForm.watch('isTaiwanMinimumWageListShown') &&
         !hideIsTaiwanMinimumWageListShownSwitch,
       hideTooltip: displayOptionsForm.watch('isTooltipHidden'),
+      collapsePriceGap: displayOptionsForm.watch('isPriceGapCollapsed'),
 
       onReset: resetFilter,
     }

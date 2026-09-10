@@ -53,11 +53,13 @@
         "chartLabel": "ラベル",
         "tooltip": "ツールチップ",
         "otherMetrics": "その他の指標",
+        "axis": "座標軸",
         "isModelNameAbbreviation": "モデル名を省略",
         "isPriceHidden": "価格を非表示",
         "isPriceAbbreviation": "価格を省略表示",
         "isTooltipHidden": "ツールチップを非表示",
-        "isTaiwanMinimumWageListShown": "台湾の最低賃金（月給）を表示"
+        "isTaiwanMinimumWageListShown": "台湾の最低賃金（月給）を表示",
+        "isPriceGapCollapsed": "空白の価格帯を省略"
       }
     },
     "table": {

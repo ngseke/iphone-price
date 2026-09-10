@@ -6,6 +6,7 @@ export const displayOptionsSchema = z.object({
   isPriceHidden: z.boolean(),
   isTooltipHidden: z.boolean(),
   isTaiwanMinimumWageListShown: z.boolean(),
+  isPriceGapCollapsed: z.boolean(),
 })
 
 export type DisplayOptions = z.infer<typeof displayOptionsSchema>
@@ -16,4 +17,5 @@ export const defaultDisplayOptions: Readonly<DisplayOptions> = {
   isPriceHidden: false,
   isTooltipHidden: false,
   isTaiwanMinimumWageListShown: false,
+  isPriceGapCollapsed: true,
 }

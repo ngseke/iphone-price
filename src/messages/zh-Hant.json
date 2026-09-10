@@ -53,11 +53,13 @@
         "chartLabel": "標籤",
         "tooltip": "提示框",
         "otherMetrics": "其他指標",
+        "axis": "座標軸",
         "isModelNameAbbreviation": "簡化產品名稱",
         "isPriceHidden": "隱藏價格",
         "isPriceAbbreviation": "簡化價格",
         "isTooltipHidden": "隱藏懸浮提示框",
-        "isTaiwanMinimumWageListShown": "顯示台灣基本工資（月薪）"
+        "isTaiwanMinimumWageListShown": "顯示台灣基本工資（月薪）",
+        "isPriceGapCollapsed": "省略空白價格區間"
       }
     },
     "table": {

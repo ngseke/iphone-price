@@ -46,6 +46,7 @@ export default function Chart({
   hidePrice,
   hideTooltip,
   showTaiwanMinimumWageList,
+  collapsePriceGap,
   onReset,
 }: {
   iphoneDataset: IphoneDataset[]
@@ -60,6 +61,7 @@ export default function Chart({
   hideTooltip: boolean
 
   showTaiwanMinimumWageList: boolean
+  collapsePriceGap: boolean
   onReset?: () => void
 }) {
   const t = useTranslations('Chart')
@@ -213,6 +215,7 @@ export default function Chart({
    * the foldable) so one outlier series doesn't squash everything else.
    */
   const yAxisBreaks = useMemo(() => {
+    if (!collapsePriceGap) return []
     // Only break the axis when a foldable series is shown together with
     // other lines; the band marks the gap between the two groups.
     const items = iphoneDataset.flatMap((dataset) => dataset.source)
@@ -241,7 +244,7 @@ export default function Chart({
     if (start >= end) return []
 
     return [{ start, end, gap: '2.5%' }]
-  }, [iphoneDataset])
+  }, [iphoneDataset, collapsePriceGap])
 
   const option = useMemo(
     () =>

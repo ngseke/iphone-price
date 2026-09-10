@@ -88,6 +88,30 @@ export function FormGroupDisplayOptions({
         ))}
       </FormGroup>
 
+      <FormGroup title={t('filter.display.axis')}>
+        {(
+          [
+            {
+              name: 'isPriceGapCollapsed',
+              label: t('filter.display.isPriceGapCollapsed'),
+            },
+          ] as const
+        ).map(({ name, label }) => (
+          <Controller
+            key={name}
+            control={control}
+            name={name}
+            render={({ field }) => (
+              <Switch
+                checked={field.value}
+                onChange={field.onChange}
+                label={label}
+              />
+            )}
+          />
+        ))}
+      </FormGroup>
+
       {!hideIsTaiwanMinimumWageListShownSwitch && (
         <FormGroup title={t('filter.display.otherMetrics')}>
           {(
