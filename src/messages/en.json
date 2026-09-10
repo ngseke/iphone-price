@@ -53,11 +53,13 @@
         "chartLabel": "Label",
         "tooltip": "Tooltip",
         "otherMetrics": "Other Metrics",
+        "axis": "Axis",
         "isModelNameAbbreviation": "Abbreviate Model Names",
         "isPriceHidden": "Hide Prices",
         "isPriceAbbreviation": "Abbreviate Prices",
         "isTooltipHidden": "Hide Tooltip",
-        "isTaiwanMinimumWageListShown": "Show Taiwan Minimum Wage (Monthly Salary)"
+        "isTaiwanMinimumWageListShown": "Show Taiwan Minimum Wage (Monthly Salary)",
+        "isPriceGapCollapsed": "Collapse Empty Price Range"
       }
     },
     "table": {

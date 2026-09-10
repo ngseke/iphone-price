@@ -53,11 +53,13 @@
         "chartLabel": "라벨",
         "tooltip": "툴팁",
         "otherMetrics": "기타 지표",
+        "axis": "축",
         "isModelNameAbbreviation": "모델명 축약",
         "isPriceHidden": "가격 숨기기",
         "isPriceAbbreviation": "가격 축약 표시",
         "isTooltipHidden": "툴팁 숨기기",
-        "isTaiwanMinimumWageListShown": "대만 최저임금(월급) 표시"
+        "isTaiwanMinimumWageListShown": "대만 최저임금(월급) 표시",
+        "isPriceGapCollapsed": "빈 가격 구간 생략"
       }
     },
     "table": {
