@@ -24,6 +24,10 @@ export function useFormatDate() {
       return dayjs(date, 'YYYY-MM').format('YYYY 年 M 月')
     }
 
+    if (locale.startsWith('ko')) {
+      return dayjs(date, 'YYYY-MM').format('YYYY년 M월')
+    }
+
     return dayjs(date, 'YYYY-MM').format('MMM YYYY')
   }
 

@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "title": "대만 iPhone 가격 추이",
-    "description": "그래프를 통해 iPhone 17과 역대 모델의 가격 변화를 비교합니다."
+    "description": "그래프를 통해 {model} 및 역대 모델의 가격 변화를 비교합니다."
   },
   "Hero": {
     "button": {
@@ -10,12 +10,13 @@
       "description": "그래프로 본 역대 <b>iPhone</b> 가격 변화",
       "viewChart": "그래프 보기",
       "viewTable": "표 보기",
-      "updatedBadge": "{modal} 가격 업데이트"
+      "updatedBadge": "{model} 가격 업데이트"
     }
   },
   "Chart": {
     "button": {
-      "back": "뒤로"
+      "back": "뒤로",
+      "reset": "초기화"
     },
     "section": {
       "dataset": "데이터셋",
@@ -66,6 +67,15 @@
       "date": "출시 연월",
       "price": "가격",
       "difference": "변동폭"
+    },
+    "noResult": {
+      "title": "조건에 맞는 제품이 없습니다",
+      "description": "필터 조건을 조정해 보세요",
+      "reset": "필터 초기화"
+    },
+    "series": {
+      "taiwanMinimumWage": "대만 최저임금(월급)",
+      "taiwanMinimumWageAbbreviation": "월급"
     }
   },
   "Table": {
@@ -75,14 +85,21 @@
     "model": "모델"
   },
   "DataSource": {
-    "title": "데이터 출처"
+    "title": "데이터 출처",
+    "links": {
+      "appleTaiwan": "Apple(대만)",
+      "apple": "Apple",
+      "iphoneTimeline": "Timeline of iPhone models - 위키백과",
+      "taiwanMinimumWage": "중화민국 최저임금 - 위키백과"
+    }
   },
   "Currency": {
     "unit": "단위",
     "twd": "신타이완 달러",
     "usd": "미국 달러",
     "eur": "유로",
-    "jpy": "엔화"
+    "jpy": "엔화",
+    "experimental": "베타"
   },
   "Line": {
     "entry-level": "엔트리",

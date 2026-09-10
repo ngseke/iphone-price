@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "title": "台湾 iPhone 価格の歴史推移",
-    "description": "グラフで iPhone 17 と歴代モデルの価格変化を比較します。"
+    "description": "グラフで {model} と歴代モデルの価格変化を比較します。"
   },
   "Hero": {
     "button": {
@@ -10,12 +10,13 @@
       "description": "歴代の <b>iPhone</b> の価格変化をグラフで比較",
       "viewChart": "グラフを見る",
       "viewTable": "表を見る",
-      "updatedBadge": "{modal} の価格を更新"
+      "updatedBadge": "{model} の価格を更新"
     }
   },
   "Chart": {
     "button": {
-      "back": "戻る"
+      "back": "戻る",
+      "reset": "リセット"
     },
     "section": {
       "dataset": "データセット",
@@ -66,6 +67,15 @@
       "date": "発売年月",
       "price": "価格",
       "difference": "増減幅"
+    },
+    "noResult": {
+      "title": "該当する製品がありません",
+      "description": "フィルター条件を調整してください",
+      "reset": "フィルターをリセット"
+    },
+    "series": {
+      "taiwanMinimumWage": "台湾の最低賃金（月給）",
+      "taiwanMinimumWageAbbreviation": "月給"
     }
   },
   "Table": {
@@ -75,14 +85,21 @@
     "model": "モデル"
   },
   "DataSource": {
-    "title": "データソース"
+    "title": "データソース",
+    "links": {
+      "appleTaiwan": "Apple（台湾）",
+      "apple": "Apple",
+      "iphoneTimeline": "Timeline of iPhone models - Wikipedia",
+      "taiwanMinimumWage": "中華民国の最低賃金 - Wikipedia"
+    }
   },
   "Currency": {
     "unit": "単位",
     "twd": "新台湾ドル",
     "usd": "米ドル",
     "eur": "ユーロ",
-    "jpy": "日本円"
+    "jpy": "日本円",
+    "experimental": "ベータ版"
   },
   "Line": {
     "entry-level": "エントリー",

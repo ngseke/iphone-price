@@ -23,6 +23,7 @@ import { Nullish } from '@/src/types/Nullish'
 import { useChartTooltip } from './useChartTooltip'
 import { CardNoResult } from './CardNoResult'
 import { IphoneDataset } from '@/src/modules/iphoneDataset'
+import { useTranslations } from 'next-intl'
 
 // eslint-disable-next-line react-hooks/rules-of-hooks
 use([
@@ -59,6 +60,8 @@ export default function Chart({
   showTaiwanMinimumWageList: boolean
   onReset?: () => void
 }) {
+  const t = useTranslations('Chart')
+
   const [isDark] = useState(true)
   const shade = isDark ? 800 : 600
   const commonLabelRich = useMemo(
@@ -127,6 +130,11 @@ export default function Chart({
     ],
   )
 
+  const taiwanMinimumWageSeriesName = t('series.taiwanMinimumWage')
+  const taiwanMinimumWageAbbreviation = t(
+    'series.taiwanMinimumWageAbbreviation',
+  )
+
   const taiwanMinimumWageLabel = useMemo<LineSeriesOption['label']>(
     () => ({
       show: true,
@@ -137,7 +145,9 @@ export default function Chart({
         const formattedPrice = priceAbbreviation
           ? formatPriceAbbreviation(price)
           : formatPrice(price)
-        const name = modelNameAbbreviation ? '月薪' : '台灣基本工資（月薪）'
+        const name = modelNameAbbreviation
+          ? taiwanMinimumWageAbbreviation
+          : taiwanMinimumWageSeriesName
 
         return [
           !params.dataIndex ? `{name|${name}}` : null,
@@ -157,10 +167,11 @@ export default function Chart({
       hidePrice,
       modelNameAbbreviation,
       priceAbbreviation,
+      taiwanMinimumWageAbbreviation,
+      taiwanMinimumWageSeriesName,
     ],
   )
 
-  const taiwanMinimumWageSeriesName = '台灣基本工資（月薪）'
   const taiwanMinimumWageSeries: LineSeriesOption = useMemo(
     () => ({
       type: 'line',
@@ -182,7 +193,12 @@ export default function Chart({
         ],
       })),
     }),
-    [isDark, taiwanMinimumWageList, taiwanMinimumWageLabel],
+    [
+      isDark,
+      taiwanMinimumWageList,
+      taiwanMinimumWageLabel,
+      taiwanMinimumWageSeriesName,
+    ],
   )
 
   const { tooltip } = useChartTooltip()

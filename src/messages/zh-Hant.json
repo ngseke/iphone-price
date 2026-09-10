@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "title": "台灣 iPhone 價格歷史趨勢",
-    "description": "透過圖表比較 iPhone 17 和歷代的價格變化"
+    "description": "透過圖表比較 {model} 和歷代 iPhone 的價格變化"
   },
   "Hero": {
     "button": {
@@ -10,12 +10,13 @@
       "description": "透過圖表比較歷代 <b>iPhone</b> 的價格變化",
       "viewChart": "查看圖表",
       "viewTable": "查看表格",
-      "updatedBadge": "更新 {modal} 價格"
+      "updatedBadge": "更新 {model} 價格"
     }
   },
   "Chart": {
     "button": {
-      "back": "返回"
+      "back": "返回",
+      "reset": "重置"
     },
     "section": {
       "dataset": "資料集",
@@ -66,6 +67,15 @@
       "date": "發售年月",
       "price": "價格",
       "difference": "漲跌幅"
+    },
+    "noResult": {
+      "title": "沒有符合的產品",
+      "description": "請嘗試調整篩選條件",
+      "reset": "重置篩選條件"
+    },
+    "series": {
+      "taiwanMinimumWage": "台灣基本工資（月薪）",
+      "taiwanMinimumWageAbbreviation": "月薪"
     }
   },
   "Table": {
@@ -75,14 +85,21 @@
     "model": "型號"
   },
   "DataSource": {
-    "title": "資料來源"
+    "title": "資料來源",
+    "links": {
+      "appleTaiwan": "Apple (台灣)",
+      "apple": "Apple",
+      "iphoneTimeline": "Timeline of iPhone models - 維基百科",
+      "taiwanMinimumWage": "中華民國基本工資 - 維基百科"
+    }
   },
   "Currency": {
     "unit": "單位",
     "twd": "新台幣",
     "usd": "美金",
     "eur": "歐元",
-    "jpy": "日圓"
+    "jpy": "日圓",
+    "experimental": "測試版"
   },
   "Line": {
     "entry-level": "入門級",

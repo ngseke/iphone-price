@@ -9,6 +9,7 @@ import {
   IconTrendingUp,
 } from '@tabler/icons-react'
 import { cn } from '@/src/modules/cn'
+import { latestIphoneName } from '@/src/modules/latestIphone'
 
 export function Hero({
   onClickViewChart,
@@ -34,7 +35,7 @@ export function Hero({
               onClick={onClickViewChart}
               className="rounded-full border border-primary bg-primary/10 px-4 py-1 text-sm font-medium duration-300 hover:brightness-125"
             >
-              {t('button.updatedBadge', { modal: 'iPhone 18 Pro / Duo' })}
+              {t('button.updatedBadge', { model: latestIphoneName })}
             </button>
 
             <h1

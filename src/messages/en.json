@@ -1,7 +1,7 @@
 {
   "Metadata": {
     "title": "Taiwan's iPhone Price Trends",
-    "description": "Visualize the price changes of past iPhone models through charts."
+    "description": "Compare {model} with past iPhone models and visualize price changes through charts."
   },
   "Hero": {
     "button": {
@@ -10,12 +10,13 @@
       "description": "Visualize the price changes of past <b>iPhone</b> models through charts.",
       "viewChart": "View Chart",
       "viewTable": "View Table",
-      "updatedBadge": "Updated {modal} Price"
+      "updatedBadge": "Updated {model} Price"
     }
   },
   "Chart": {
     "button": {
-      "back": "Back"
+      "back": "Back",
+      "reset": "Reset"
     },
     "section": {
       "dataset": "Dataset",
@@ -66,6 +67,15 @@
       "date": "Release Date",
       "price": "Price",
       "difference": "Change"
+    },
+    "noResult": {
+      "title": "No matching products",
+      "description": "Try adjusting the filters.",
+      "reset": "Reset filters"
+    },
+    "series": {
+      "taiwanMinimumWage": "Taiwan Minimum Wage (Monthly Salary)",
+      "taiwanMinimumWageAbbreviation": "Monthly Salary"
     }
   },
   "Table": {
@@ -75,14 +85,21 @@
     "model": "Model"
   },
   "DataSource": {
-    "title": "Data Sources"
+    "title": "Data Sources",
+    "links": {
+      "appleTaiwan": "Apple (Taiwan)",
+      "apple": "Apple",
+      "iphoneTimeline": "Timeline of iPhone models - Wikipedia",
+      "taiwanMinimumWage": "Minimum wage in Taiwan - Wikipedia"
+    }
   },
   "Currency": {
     "unit": "Unit",
     "twd": "TWD",
     "usd": "USD",
     "eur": "EUR",
-    "jpy": "JPY"
+    "jpy": "JPY",
+    "experimental": "Experimental"
   },
   "Line": {
     "entry-level": "Entry Level",
