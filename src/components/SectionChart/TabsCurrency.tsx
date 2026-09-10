@@ -3,6 +3,7 @@ import { Tabs } from '../Tabs'
 import { IconFlaskFilled } from '@tabler/icons-react'
 import { ReactNode } from 'react'
 import { useFormatCurrency } from '@/src/hooks/useFormatCurrency'
+import { useTranslations } from 'next-intl'
 
 interface Props {
   value?: CurrencyValue
@@ -20,6 +21,8 @@ function Item({
   flag: ReactNode
   isExperimental?: boolean
 }) {
+  const t = useTranslations('Currency')
+
   return (
     <div className="flex items-center gap-2">
       <span className="text-xl">{flag}</span>
@@ -29,7 +32,9 @@ function Item({
           <span className="text-[8px] uppercase leading-none">{currency}</span>
         )}
       </div>
-      {isExperimental && <IconFlaskFilled size={18} title="測試版" />}
+      {isExperimental && (
+        <IconFlaskFilled size={18} title={t('experimental')} />
+      )}
     </div>
   )
 }

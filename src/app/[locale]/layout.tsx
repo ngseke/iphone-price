@@ -11,6 +11,7 @@ import { NextIntlClientProvider } from 'next-intl'
 import { routing } from '@/src/i18n/routing'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 import { PropsWithChildren } from 'react'
+import { latestIphoneName } from '@/src/modules/latestIphone'
 
 const notoSansTc = Noto_Sans_TC({
   weight: ['400', '500', '600', '700', '800', '900'],
@@ -51,7 +52,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'Metadata' })
 
   const title = t('title')
-  const description = t('description')
+  const description = t('description', { model: latestIphoneName })
 
   return {
     title,
